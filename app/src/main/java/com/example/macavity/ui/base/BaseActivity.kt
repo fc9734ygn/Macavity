@@ -1,4 +1,4 @@
-package com.example.macavity.ui
+package com.example.macavity.ui.base
 
 import androidx.appcompat.app.AppCompatActivity
 

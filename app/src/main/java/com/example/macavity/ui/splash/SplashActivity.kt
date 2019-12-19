@@ -1,7 +1,8 @@
-package com.example.macavity.ui
+package com.example.macavity.ui.splash
 
 import android.os.Bundle
 import com.example.macavity.R
+import com.example.macavity.ui.base.BaseActivity
 
 class SplashActivity : BaseActivity() {
 
