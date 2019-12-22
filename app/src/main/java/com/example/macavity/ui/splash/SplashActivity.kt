@@ -3,11 +3,12 @@ package com.example.macavity.ui.splash
 import android.os.Bundle
 import com.example.macavity.R
 import com.example.macavity.ui.base.BaseActivity
+import org.androidannotations.annotations.EActivity
 
-class SplashActivity : BaseActivity() {
-
+@EActivity(resName = "activity_splash")
+open class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+     //   setContentView(R.layout.activity_splash)
     }
 }
