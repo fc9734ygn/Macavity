@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Macavity</string>
+    <string name="default_error_message">Oops, something went wrong</string>
 </resources>
