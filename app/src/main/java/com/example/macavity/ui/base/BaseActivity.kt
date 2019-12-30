@@ -11,7 +11,7 @@ open class BaseActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    fun showError(message: String = getString(R.string.default_error_message)){
-        Toast.makeText(this,message, Toast.LENGTH_LONG).show()
+    fun showError(message: String? = getString(R.string.default_error_message)) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }

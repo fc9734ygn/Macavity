@@ -10,7 +10,7 @@ import org.androidannotations.annotations.EActivity
 @EActivity(resName = "activity_splash")
 open class SplashActivity : BaseActivity() {
 
-    lateinit var vm: SplashViewModel
+    private lateinit var vm: SplashViewModel
 
     @AfterViews
     fun afterViews() {

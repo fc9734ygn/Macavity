@@ -39,7 +39,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     // Timber
-   implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     //Dagger2 - newer versions break stuff
     implementation "com.google.dagger:dagger:2.14.1"
@@ -54,7 +54,7 @@ dependencies {
 
     //TODO: check what's wrong with this one
     // Rx2Firebase
-  //  implementation 'com.github.FrangSierra:RxFirebase:1.5.6'
+    //  implementation 'com.github.FrangSierra:RxFirebase:1.5.6'
 
     // Firebase
     implementation "com.google.firebase:firebase-core:17.2.1"
@@ -63,8 +63,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.1'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
 
-    // Google Map
+
+    // Google
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
 
     // Crashlytics
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
