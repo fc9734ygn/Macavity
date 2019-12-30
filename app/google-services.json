@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "769984106768",
+    "firebase_url": "https://macavity-8e6e8.firebaseio.com",
+    "project_id": "macavity-8e6e8",
+    "storage_bucket": "macavity-8e6e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769984106768:android:a35d129ed65e5cfa019595",
+        "android_client_info": {
+          "package_name": "com.example.macavity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769984106768-nomudgl4tl0nllind72iehi8cq2p6uhl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.macavity",
+            "certificate_hash": "860d09d035c29acd48c02a8cb9d1ce9eb630b870"
+          }
+        },
+        {
+          "client_id": "769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuj__Y2yItZrA_7LLyTaG-vG1Czp4R6LA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
