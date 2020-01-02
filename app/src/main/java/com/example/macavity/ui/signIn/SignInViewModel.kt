@@ -1,8 +1,8 @@
-package com.example.macavity.ui.signin
+package com.example.macavity.ui.signIn
 
 import com.example.macavity.ui.base.BaseViewModel
 import javax.inject.Inject
 
-class SignInViewModel @Inject constructor() : BaseViewModel() {
+open class SignInViewModel @Inject constructor() : BaseViewModel() {
 
 }
