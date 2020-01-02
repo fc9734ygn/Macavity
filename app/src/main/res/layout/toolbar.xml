@@ -32,8 +32,8 @@
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/endIcon"
-        app:layout_constraintStart_toEndOf="@+id/startIcon"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="title"
         tools:visibility="visible" />

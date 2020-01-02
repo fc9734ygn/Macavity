@@ -23,11 +23,6 @@ open class BaseActivity : DaggerAppCompatActivity() {
         startActivity(intent)
     }
 
-    override fun onStart() {
-        super.onStart()
-        setFullScreen()
-    }
-
     private fun setFullScreen(){
         this.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
