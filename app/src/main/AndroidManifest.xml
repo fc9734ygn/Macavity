@@ -15,7 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".ui.signin.SignInActivity"></activity>
+        <activity
+            android:name=".ui.home.HomeActivity_"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.signIn.SignInActivity_"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.splash.SplashActivity_"
             android:screenOrientation="portrait">

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Macavity</string>
     <string name="default_error_message">Oops, something went wrong</string>
+    <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>
 </resources>
