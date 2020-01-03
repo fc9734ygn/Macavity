@@ -1,7 +1,8 @@
-package com.example.macavity.ui
+package com.example.macavity.ui.editProfile
 
 import androidx.lifecycle.ViewModel
+import com.example.macavity.ui.base.BaseViewModel
 
-class EditProfileViewModel : ViewModel() {
+class EditProfileViewModel : BaseViewModel() {
     // TODO: Implement the ViewModel
 }

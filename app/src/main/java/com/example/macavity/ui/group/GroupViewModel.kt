@@ -1,4 +1,4 @@
-package com.example.macavity.ui
+package com.example.macavity.ui.group
 
 import androidx.lifecycle.ViewModel
 import com.example.macavity.ui.base.BaseViewModel

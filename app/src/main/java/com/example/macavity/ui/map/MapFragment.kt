@@ -2,32 +2,24 @@ package com.example.macavity.ui.map
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 
 import com.example.macavity.R
+import com.example.macavity.ui.base.BaseFragment
+import org.androidannotations.annotations.EFragment
 
-class MapFragment : Fragment() {
+@EFragment(resName = "fragment_map")
+open class MapFragment : BaseFragment() {
 
-    companion object {
-        fun newInstance() = MapFragment()
-    }
-
-    private lateinit var viewModel: MapViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.map_fragment, container, false)
-    }
+    private lateinit var vm: MapViewModel
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MapViewModel::class.java)
+        vm = ViewModelProviders.of(this).get(MapViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
 }

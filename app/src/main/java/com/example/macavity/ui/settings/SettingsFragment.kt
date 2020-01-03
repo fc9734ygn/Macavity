@@ -1,13 +1,8 @@
-package com.example.macavity.ui
+package com.example.macavity.ui.settings
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 
-import com.example.macavity.R
 import com.example.macavity.ui.base.BaseFragment
 import org.androidannotations.annotations.EFragment
 
