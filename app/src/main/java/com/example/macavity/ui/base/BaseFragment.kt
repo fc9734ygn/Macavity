@@ -10,7 +10,7 @@ import com.example.macavity.R
 import dagger.android.DaggerFragment
 
 
-open class BaseFragment : Fragment() {
+open class BaseFragment : dagger.android.support.DaggerFragment() {
 
     private lateinit var navController: NavController
 

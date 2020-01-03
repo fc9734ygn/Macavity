@@ -2,8 +2,17 @@ package com.example.macavity.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.macavity.ui.tutorial.TutorialViewModel
+import com.example.macavity.ui.addJourney.AddJourneyViewModel
 import com.example.macavity.ui.base.BaseViewModel
+import com.example.macavity.ui.calendar.CalendarViewModel
+import com.example.macavity.ui.chat.ChatViewModel
+import com.example.macavity.ui.editJourney.EditJourneyViewModel
+import com.example.macavity.ui.editProfile.EditProfileViewModel
 import com.example.macavity.ui.home.HomeViewModel
+import com.example.macavity.ui.map.MapViewModel
+import com.example.macavity.ui.profile.ProfileViewModel
+import com.example.macavity.ui.settings.SettingsViewModel
 import com.example.macavity.ui.signIn.SignInViewModel
 import com.example.macavity.ui.splash.SplashViewModel
 import dagger.Binds
@@ -42,6 +51,51 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(HomeViewModel::class)
     internal abstract fun homeViewModel(viewModel: HomeViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddJourneyViewModel::class)
+    internal abstract fun addJourneyViewModel(viewModel: AddJourneyViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CalendarViewModel::class)
+    internal abstract fun calendarViewModel(viewModel: CalendarViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChatViewModel::class)
+    internal abstract fun chatViewModel(viewModel: ChatViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(EditJourneyViewModel::class)
+    internal abstract fun editJourneyViewModel(viewModel: EditJourneyViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(EditProfileViewModel::class)
+    internal abstract fun editProfileViewModel(viewModel: EditProfileViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MapViewModel::class)
+    internal abstract fun mapViewModel(viewModel: MapViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProfileViewModel::class)
+    internal abstract fun profileViewModel(viewModel: ProfileViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SettingsViewModel::class)
+    internal abstract fun settingsViewModel(viewModel: SettingsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TutorialViewModel::class)
+    internal abstract fun tutorialViewModel(viewModel: TutorialViewModel): ViewModel
 
     //Add more ViewModels here
     //endregion
