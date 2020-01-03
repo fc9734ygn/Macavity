@@ -1,15 +1,14 @@
-package com.example.macavity.ui.home
+package com.example.macavity.ui.main
 
 import com.example.macavity.R
 import com.example.macavity.ui.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_home.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EActivity
 
 
 @EActivity(resName = "activity_home")
-open class HomeActivity : BaseActivity() {
+open class MainActivity : BaseActivity() {
 
     @AfterViews
     fun afterViews() {

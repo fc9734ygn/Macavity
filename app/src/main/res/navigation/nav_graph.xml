@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/mapFragment_">
+
+    <fragment
+        android:id="@+id/calendarFragment_"
+        android:name="com.example.macavity.ui.calendar.CalendarFragment_"
+        android:label="CalendarFragment_" />
+    <fragment
+        android:id="@+id/chatFragment_"
+        android:name="com.example.macavity.ui.chat.ChatFragment_"
+        android:label="ChatFragment_" />
+    <fragment
+        android:id="@+id/mapFragment_"
+        android:name="com.example.macavity.ui.map.MapFragment_"
+        android:label="MapFragment_" />
+</navigation>

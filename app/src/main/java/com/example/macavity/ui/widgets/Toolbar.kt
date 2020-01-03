@@ -1,4 +1,4 @@
-package com.example.macavity.ui
+package com.example.macavity.ui.widgets
 
 import android.content.Context
 import android.util.AttributeSet
