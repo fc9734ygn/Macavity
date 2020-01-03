@@ -17,10 +17,9 @@ open class HomeActivity : BaseActivity() {
     }
 
     private fun initToolbar() {
-        //TODO: finish implementing toolbar with icons etc.
         toolbar
             .setTitle(getString(R.string.toolbar_title_home))
-            .setStartIcon(R.drawable.common_full_open_on_phone)
+            .setStartIcon(R.drawable.ic_menu)
 
         toolbar.startIconListener = { onBackPressed() }
     }
