@@ -2,17 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/profileFragment_"
-        android:iconTint="@color/white"
         android:icon="@drawable/ic_person"
         android:title="@string/drawer_title_profile" />
     <item
         android:id="@+id/groupFragment_"
-        android:iconTint="@color/white"
         android:icon="@drawable/ic_group"
         android:title="@string/drawer_title_group" />
     <item
         android:id="@+id/settingsFragment_"
-        android:iconTint="@color/white"
         android:icon="@drawable/ic_settings_applications"
         android:title="@string/drawer_title_settings" />
 </menu>

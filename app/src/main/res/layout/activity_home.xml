@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_app_bar_height"
             android:layout_gravity="bottom"
-            android:backgroundTint="@color/primary"
+            android:backgroundTint="@color/blue_primary"
             app:contentInsetStart="0dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,8 +83,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/grey_primary"
         android:fitsSystemWindows="true"
-        android:background="@color/primaryLight"
-        app:headerLayout="@layout/drawer_header"
-        app:menu="@menu/drawer" />
+        app:headerLayout="@layout/header_drawer"
+        app:itemIconTint="@color/drawer_item"
+        app:itemTextColor="@color/drawer_item"
+        app:menu="@menu/menu_drawer" />
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -7,13 +7,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.example.macavity.R
 import com.example.macavity.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.drawer_header.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EActivity
@@ -39,7 +37,7 @@ open class HomeActivity : BaseActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val retValue = super.onCreateOptionsMenu(menu)
         if (nav_view == null) {
-            menuInflater.inflate(R.menu.drawer, menu)
+            menuInflater.inflate(R.menu.menu_drawer, menu)
             return true
         }
         return retValue

@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Primary Colour-->
-    <color name="primary">#3d5afe</color>
-    <color name="primaryLight">#8187ff</color>
-    <color name="primaryDark">#0031ca</color>
+    <color name="blue_primary">#3d5afe</color>
+    <color name="blue_light">#8187ff</color>
+    <color name="blue_dark">#0031ca</color>
     <!--Secondary Colour-->
-    <color name="secondary">#ffab00</color>
-    <color name="secondaryLight">#ffdd4b</color>
-    <color name="secondaryDark">#c67c00</color>
+    <color name="amber_primary">#ffab00</color>
+    <color name="amber_light">#ffdd4b</color>
+    <color name="amber_dark">#c67c00</color>
+    <!--Grey-->
+    <color name="grey_primary">#263238</color>
+    <color name="grey_light">#4f5b62</color>
+    <color name="grey_dark">#000a12</color>
     <!--Text Colour-->
     <color name="primaryText">#FFFFFF</color>
     <color name="secondaryText">#000000</color>
     <!--Other-->
     <color name="transparent">#00000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="grey">#666666</color>
+    <color name="black">#000000</color>
 </resources>
