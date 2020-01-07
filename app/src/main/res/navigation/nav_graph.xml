@@ -15,4 +15,16 @@
         android:id="@+id/mapFragment_"
         android:name="com.example.macavity.ui.map.MapFragment_"
         android:label="MapFragment_" />
+    <fragment
+        android:id="@+id/profileFragment_"
+        android:name="com.example.macavity.ui.profile.ProfileFragment_"
+        android:label="ProfileFragment_" />
+    <fragment
+        android:id="@+id/groupFragment_"
+        android:name="com.example.macavity.ui.group.GroupFragment_"
+        android:label="GroupFragment_" />
+    <fragment
+        android:id="@+id/settingsFragment_"
+        android:name="com.example.macavity.ui.settings.SettingsFragment_"
+        android:label="SettingsFragment_" />
 </navigation>

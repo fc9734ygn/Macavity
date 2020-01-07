@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.macavity.R
+import com.example.macavity.ui.home.HomeActivity
 import dagger.android.DaggerFragment
 
 
@@ -17,5 +18,9 @@ open class BaseFragment : dagger.android.support.DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
+    }
+
+    public fun openDrawer() {
+        (activity as HomeActivity).openDrawer()
     }
 }

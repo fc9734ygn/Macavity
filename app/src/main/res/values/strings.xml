@@ -1,11 +1,21 @@
 <resources>
     <!--Home-->
     <string name="toolbar_title_home">Home</string>
+    <string name="drawer_title_profile">Profile</string>
+    <string name="drawer_title_group">Group</string>
+    <string name="drawer_title_settings">Settings</string>
     <!--Chat-->
+    <string name="toolbar_title_chat">Chat</string>
     <!--Calendar-->
+    <string name="toolbar_title_calendar">Calendar</string>
+    <!--Map-->
+    <string name="toolbar_title_map">Map</string>
     <!--Profile-->
+    <string name="toolbar_title_profile">Your Profile</string>
     <!--Settings-->
-
+    <string name="toolbar_title_settings">Settings</string>
+    <!--Group-->
+    <string name="toolbar_title_group">Your Group</string>
     <!--Global-->
     <string name="app_name">Macavity</string>
     <string name="default_error_message">Oops, something went wrong</string>

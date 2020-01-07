@@ -10,6 +10,10 @@ import androidx.navigation.Navigation
 
 import com.example.macavity.R
 import com.example.macavity.ui.base.BaseFragment
+import com.example.macavity.ui.home.HomeActivity
+import com.example.macavity.ui.home.HomeActivity_
+import kotlinx.android.synthetic.main.fragment_map.*
+import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.EFragment
 
 @EFragment(resName = "fragment_map")
@@ -17,9 +21,16 @@ open class MapFragment : BaseFragment() {
 
     private lateinit var vm: MapViewModel
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    @AfterViews
+    fun afterViews() {
         vm = ViewModelProviders.of(this).get(MapViewModel::class.java)
-        // TODO: Use the ViewModel
+        initToolbar()
+    }
+
+    private fun initToolbar() {
+        toolbar.setStartIcon(R.drawable.ic_menu)
+            .setTitle(getString(R.string.toolbar_title_map))
+
+        toolbar.startIconListener = { openDrawer() }
     }
 }
