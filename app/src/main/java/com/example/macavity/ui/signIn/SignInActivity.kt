@@ -31,6 +31,7 @@ open class SignInActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.web_client))
             .requestProfile()
@@ -39,6 +40,7 @@ open class SignInActivity : BaseActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         vm = ViewModelProviders.of(this, viewModelFactory)[SignInViewModel::class.java]
         auth = FirebaseAuth.getInstance()
+        auth.uid
     }
 
     override fun onStart() {

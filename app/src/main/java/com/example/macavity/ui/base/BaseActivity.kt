@@ -39,7 +39,6 @@ open class BaseActivity : DaggerAppCompatActivity() {
             .setBgGradientEnd(getColor(R.color.blue_dark))
             .setButtonColor(getColor(R.color.amber_primary))
             .build()
-
     }
 
     fun showError(message: String? = getString(R.string.default_error_message)) {

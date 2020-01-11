@@ -73,6 +73,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_map"
             android:tint="@color/white"
+            app:behavior_autoHide="false"
             app:fabCustomSize="@dimen/custom_fab_size"
             app:layout_anchor="@id/bottom_app_bar" />
 

@@ -20,7 +20,11 @@ open class BaseFragment : dagger.android.support.DaggerFragment() {
         navController = Navigation.findNavController(view)
     }
 
-    public fun openDrawer() {
+    fun openDrawer() {
         (activity as HomeActivity).openDrawer()
+    }
+
+    fun toggleBottomNav(show: Boolean){
+        (activity as HomeActivity).toggleBottomNavigation(show)
     }
 }
