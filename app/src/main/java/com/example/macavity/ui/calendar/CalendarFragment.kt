@@ -18,6 +18,7 @@ open class CalendarFragment : BaseFragment() {
     fun afterViews() {
         vm = ViewModelProviders.of(this).get(CalendarViewModel::class.java)
         initToolbar()
+        toggleBottomNav(true)
     }
 
     private fun initToolbar() {

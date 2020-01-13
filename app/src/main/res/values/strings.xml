@@ -23,4 +23,5 @@
     <!--Keys-->
     <!--TODO: find a better solution-->
     <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
