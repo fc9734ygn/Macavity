@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.chat.ChatFragment">
 
     <com.example.macavity.ui.widgets.Toolbar_
@@ -16,12 +16,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.stfalcon.chatkit.messages.MessagesList
-        android:id="@+id/messagesList"
+        android:id="@+id/messages_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:incomingDefaultBubbleColor="@color/amber_light"
+        app:layout_constraintBottom_toTopOf="@+id/message_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:outcomingDefaultBubbleColor="@color/blue_primary" />
+
+    <com.stfalcon.chatkit.messages.MessageInput
+        android:id="@+id/message_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:inputBackground="@drawable/background_chat_input"
+        app:inputButtonDefaultBgColor="@color/blue_primary"
+        app:inputButtonDefaultBgPressedColor="@color/amber_primary"
+        app:inputButtonDefaultBgDisabledColor="@color/grey_light"
+        app:inputButtonDefaultIconColor="@color/white"
+        app:inputButtonDefaultIconPressedColor="@color/white"
+        app:inputButtonDefaultIconDisabledColor="@color/grey_dark"
+        app:inputButtonHeight="40dp"
+        app:inputButtonWidth="40dp"
+        app:inputHint="@string/chat_input_hint"
+        app:inputMaxLines="6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,16 +2,16 @@
 <resources>
     <!--Primary Colour-->
     <color name="blue_primary">#3d5afe</color>
-    <color name="blue_light">#8187ff</color>
+    <color name="blue_light">#75a7ff</color>
     <color name="blue_dark">#0031ca</color>
     <!--Secondary Colour-->
     <color name="amber_primary">#ffab00</color>
     <color name="amber_light">#ffdd4b</color>
     <color name="amber_dark">#c67c00</color>
     <!--Grey-->
-    <color name="grey_primary">#263238</color>
-    <color name="grey_light">#4f5b62</color>
-    <color name="grey_dark">#000a12</color>
+    <color name="grey_primary">#bdbdbd</color>
+    <color name="grey_light">#efefef</color>
+    <color name="grey_dark">#8d8d8d</color>
     <!--Text Colour-->
     <color name="primaryText">#FFFFFF</color>
     <color name="secondaryText">#000000</color>
