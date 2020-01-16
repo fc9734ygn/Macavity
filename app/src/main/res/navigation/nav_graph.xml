@@ -18,7 +18,11 @@
     <fragment
         android:id="@+id/profileFragment_"
         android:name="com.example.macavity.ui.profile.ProfileFragment_"
-        android:label="ProfileFragment_" />
+        android:label="ProfileFragment_" >
+        <action
+            android:id="@+id/action_profileFragment__to_editProfileFragment_"
+            app:destination="@id/editProfileFragment_" />
+    </fragment>
     <fragment
         android:id="@+id/groupFragment_"
         android:name="com.example.macavity.ui.group.GroupFragment_"
@@ -27,4 +31,8 @@
         android:id="@+id/settingsFragment_"
         android:name="com.example.macavity.ui.settings.SettingsFragment_"
         android:label="SettingsFragment_" />
+    <fragment
+        android:id="@+id/editProfileFragment_"
+        android:name="com.example.macavity.ui.editProfile.EditProfileFragment_"
+        android:label="EditProfileFragment_" />
 </navigation>

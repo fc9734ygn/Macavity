@@ -30,7 +30,7 @@
         android:id="@+id/message_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:inputBackground="@drawable/background_chat_input"
+        app:inputBackground="@drawable/background_grey_rounded"
         app:inputButtonDefaultBgColor="@color/blue_primary"
         app:inputButtonDefaultBgPressedColor="@color/amber_primary"
         app:inputButtonDefaultBgDisabledColor="@color/grey_light"

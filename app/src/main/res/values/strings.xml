@@ -25,4 +25,6 @@
     <!--TODO: find a better solution-->
     <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>
     <string name="title_activity_maps">Map</string>
+    <string name="profile_edit_toolbar_title">Edit Profile</string>
+    <string name="profile_create_toolbar_title">Create Profile</string>
 </resources>
