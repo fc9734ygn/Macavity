@@ -1,22 +1,10 @@
 package com.example.macavity.ui.createProfile
 
 import android.view.View
+import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_create_profile.*
-import kotlinx.android.synthetic.main.activity_create_profile.car_number_plate
-import kotlinx.android.synthetic.main.activity_create_profile.car_number_plate_title
-import kotlinx.android.synthetic.main.activity_create_profile.car_seats
-import kotlinx.android.synthetic.main.activity_create_profile.car_seats_title
-import kotlinx.android.synthetic.main.activity_create_profile.driver_switch
-import kotlinx.android.synthetic.main.activity_create_profile.email
-import kotlinx.android.synthetic.main.activity_create_profile.email_title
-import kotlinx.android.synthetic.main.activity_create_profile.name
-import kotlinx.android.synthetic.main.activity_create_profile.name_title
-import kotlinx.android.synthetic.main.activity_create_profile.phone
-import kotlinx.android.synthetic.main.activity_create_profile.phone_title
-import kotlinx.android.synthetic.main.activity_create_profile.toolbar
-import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.CheckedChange
 import org.androidannotations.annotations.EActivity
@@ -24,9 +12,11 @@ import org.androidannotations.annotations.TextChange
 
 @EActivity(resName = "activity_create_profile")
 open class CreateProfileActivity : BaseActivity() {
+
     @AfterViews
     fun afterViews(){
         initToolbar()
+        setAvatarImage("https://i.ytimg.com/vi/OIZqAOBJNOw/hqdefault.jpg")
     }
 
     private fun initToolbar(){
@@ -37,6 +27,15 @@ open class CreateProfileActivity : BaseActivity() {
         toolbar.startIconListener = { onBackPressed() }
         //TODO: save changes
         toolbar.endIconListener = {}
+    }
+
+    private fun setAvatarImage(url: String) {
+        Glide.with(this)
+            .load(url)
+            .circleCrop()
+            .placeholder(R.drawable.ic_person)
+            .error(R.drawable.ic_person)
+            .into(profile_avatar)
     }
 
     @TextChange(resName = ["name"])
