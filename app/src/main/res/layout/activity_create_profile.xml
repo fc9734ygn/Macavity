@@ -50,7 +50,7 @@
                 android:id="@+id/edit_avatar"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_edit"
+                android:src="@drawable/ic_add"
                 android:tint="@color/amber_primary"
                 app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
                 app:layout_constraintEnd_toEndOf="@id/profile_avatar" />
@@ -60,7 +60,6 @@
                 style="@style/EditTextTitle"
                 android:layout_marginTop="32dp"
                 android:text="@string/edit_profile_title_name"
-                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/name"
                 app:layout_constraintStart_toStartOf="@+id/name"
                 app:layout_constraintTop_toBottomOf="@+id/profile_avatar" />
@@ -80,7 +79,6 @@
                 style="@style/EditTextTitle"
                 android:layout_marginTop="8dp"
                 android:text="@string/edit_profile_title_phone"
-                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/phone"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/phone"
@@ -101,7 +99,6 @@
                 style="@style/EditTextTitle"
                 android:layout_marginTop="8dp"
                 android:text="@string/edit_profile_title_email"
-                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/email"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/email"
@@ -200,8 +197,5 @@
                 app:layout_constraintGuide_end="16dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.core.widget.NestedScrollView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

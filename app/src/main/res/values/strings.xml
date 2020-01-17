@@ -13,6 +13,22 @@
     <string name="toolbar_title_map">Map</string>
     <!--Profile-->
     <string name="toolbar_title_profile">Your Profile</string>
+    <!--Edit Profile-->
+    <string name="edit_profile_toolbar_title">Edit Profile</string>
+    <string name="edit_profile_hint_name"><i>Name</i></string>
+    <string name="edit_profile_hint_phone"><i>Phone number</i></string>
+    <string name="edit_profile_hint_car_number"><i>Car number plate</i></string>
+    <string name="edit_profile_hint_free_seats"><i>Amount of free seats</i></string>
+    <string name="edit_profile_hint_email"><i>Email</i></string>
+    <string name="edit_profile_title_name">Name</string>
+    <string name="edit_profile_title_phone">Phone number</string>
+    <string name="edit_profile_title_email">Email</string>
+    <string name="edit_profile_title_driver_switch">Are you a driver?</string>
+    <string name="edit_profile_title_car_number">Car number plate</string>
+    <string name="edit_profile_title_free_seats">Amount of free seats</string>
+
+    <!--Create Profile-->
+    <string name="profile_create_toolbar_title">Create Profile</string>
     <!--Settings-->
     <string name="toolbar_title_settings">Settings</string>
     <!--Group-->
@@ -25,6 +41,5 @@
     <!--TODO: find a better solution-->
     <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>
     <string name="title_activity_maps">Map</string>
-    <string name="profile_edit_toolbar_title">Edit Profile</string>
-    <string name="profile_create_toolbar_title">Create Profile</string>
+
 </resources>

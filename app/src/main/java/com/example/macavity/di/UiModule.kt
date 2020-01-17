@@ -3,6 +3,8 @@ package com.example.macavity.di
 import com.example.macavity.ui.addJourney.AddJourneyFragment_
 import com.example.macavity.ui.calendar.CalendarFragment_
 import com.example.macavity.ui.chat.ChatFragment_
+import com.example.macavity.ui.createProfile.CreateProfileActivity
+import com.example.macavity.ui.createProfile.CreateProfileActivity_
 import com.example.macavity.ui.editJourney.EditJourneyFragment_
 import com.example.macavity.ui.editProfile.EditProfileFragment_
 import com.example.macavity.ui.group.GroupFragment_
@@ -31,6 +33,9 @@ abstract class UiModule {
 
     @ContributesAndroidInjector
     abstract fun contributeTutorialActivity(): TutorialActivity_
+
+    @ContributesAndroidInjector
+    abstract fun contributeCreateProfileActivity(): CreateProfileActivity_
 
     //endregion
 

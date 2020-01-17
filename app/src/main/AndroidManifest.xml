@@ -31,6 +31,10 @@
         <activity
             android:name=".ui.signIn.SignInActivity_"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.createProfile.CreateProfileActivity_"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.splash.SplashActivity_"
             android:screenOrientation="portrait">
