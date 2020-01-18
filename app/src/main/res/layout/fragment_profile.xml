@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/grey_light">
 
     <com.example.macavity.ui.widgets.Toolbar_
         android:id="@+id/toolbar"
@@ -12,15 +14,211 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/edit"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="goto edit profile"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
+
+        <ImageView
+            android:id="@+id/profile_avatar"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/personal_info_title"
+            style="@style/edit_text_title"
+            android:layout_marginTop="24dp"
+            android:text="@string/profile_personal_info_title"
+            android:textColor="@color/blue_dark"
+            android:textSize="18sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/profile_avatar" />
+
+        <TextView
+            android:id="@+id/name_title"
+            style="@style/edit_text_title"
+            android:layout_marginTop="8dp"
+            android:text="@string/edit_profile_title_name"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/personal_info_title" />
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/profile_item"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/name_title"
+            tools:text="John" />
+
+        <View
+            android:id="@+id/divider_name"
+            style="@style/divider"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            android:layout_marginEnd="64dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+        <TextView
+            android:id="@+id/phone_title"
+            style="@style/edit_text_title"
+            android:layout_marginTop="16dp"
+            android:text="@string/edit_profile_title_phone"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/divider_name" />
+
+        <TextView
+            android:id="@+id/phone"
+            style="@style/profile_item"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/phone_title"
+            tools:text="+4491238491" />
+
+        <ImageView
+            android:id="@+id/phone_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/background_circle"
+            android:padding="8dp"
+            android:src="@drawable/ic_call"
+            app:layout_constraintBottom_toBottomOf="@+id/phone"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/phone"
+            app:layout_constraintTop_toTopOf="@+id/phone" />
+
+        <View
+            android:id="@+id/divider_phone"
+            style="@style/divider"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            android:layout_marginEnd="64dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+        <TextView
+            android:id="@+id/email_title"
+            style="@style/edit_text_title"
+            android:layout_marginTop="16dp"
+            android:text="@string/edit_profile_title_email"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/divider_phone" />
+
+        <TextView
+            android:id="@+id/email"
+            style="@style/profile_item"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/email_title"
+            tools:text="john.doe@gmail.com" />
+
+        <ImageView
+            android:id="@+id/email_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/background_circle"
+            android:padding="8dp"
+            android:src="@drawable/ic_email"
+            app:layout_constraintBottom_toBottomOf="@+id/email"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/email"
+            app:layout_constraintTop_toTopOf="@+id/email" />
+
+        <View
+            android:id="@+id/divider_email"
+            style="@style/divider"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
+
+        <TextView
+            android:id="@+id/stats_title"
+            style="@style/edit_text_title"
+            android:layout_marginTop="24dp"
+            android:text="@string/profile_stats_title"
+            android:textSize="18sp"
+            android:textColor="@color/blue_dark"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/divider_email" />
+
+        <TextView
+            android:id="@+id/driver_stat_title"
+            style="@style/edit_text_title"
+            android:layout_marginTop="8dp"
+            android:text="Journeys taken as a driver"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/stats_title" />
+
+        <TextView
+            android:id="@+id/driver_stat"
+            style="@style/profile_item"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/driver_stat_title"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/passenger_stat_title"
+            style="@style/edit_text_title"
+            android:layout_marginTop="16dp"
+            android:text="Journeys taken as a passenger"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/driver_stat" />
+
+        <TextView
+            android:id="@+id/passenger_stat"
+            style="@style/profile_item"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/passenger_stat_title"
+            tools:text="23" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

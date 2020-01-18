@@ -1,6 +1,7 @@
 package com.example.macavity.ui.createProfile
 
 import android.view.View
+import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.ui.base.BaseActivity
@@ -13,8 +14,11 @@ import org.androidannotations.annotations.TextChange
 @EActivity(resName = "activity_create_profile")
 open class CreateProfileActivity : BaseActivity() {
 
+    private lateinit var vm: CreateProfileViewModel
+
     @AfterViews
     fun afterViews(){
+        vm = ViewModelProviders.of(this).get(CreateProfileViewModel::class.java)
         initToolbar()
         setAvatarImage("https://i.ytimg.com/vi/OIZqAOBJNOw/hqdefault.jpg")
     }

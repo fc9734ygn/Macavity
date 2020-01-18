@@ -35,7 +35,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/profile_avatar"
@@ -57,7 +57,7 @@
 
             <TextView
                 android:id="@+id/name_title"
-                style="@style/EditTextTitle"
+                style="@style/edit_text_title"
                 android:layout_marginTop="32dp"
                 android:text="@string/edit_profile_title_name"
                 android:visibility="visible"
@@ -67,7 +67,7 @@
 
             <EditText
                 android:id="@+id/name"
-                style="@style/EditText"
+                style="@style/edit_text"
                 android:layout_marginTop="4dp"
                 android:hint="@string/edit_profile_hint_name"
                 android:inputType="textPersonName"
@@ -77,7 +77,7 @@
 
             <TextView
                 android:id="@+id/phone_title"
-                style="@style/EditTextTitle"
+                style="@style/edit_text_title"
                 android:layout_marginTop="8dp"
                 android:text="@string/edit_profile_title_phone"
                 android:visibility="visible"
@@ -88,7 +88,7 @@
 
             <EditText
                 android:id="@+id/phone"
-                style="@style/EditText"
+                style="@style/edit_text"
                 android:layout_marginTop="4dp"
                 android:hint="@string/edit_profile_hint_phone"
                 android:inputType="phone"
@@ -98,7 +98,7 @@
 
             <TextView
                 android:id="@+id/email_title"
-                style="@style/EditTextTitle"
+                style="@style/edit_text_title"
                 android:layout_marginTop="8dp"
                 android:text="@string/edit_profile_title_email"
                 android:visibility="visible"
@@ -109,7 +109,7 @@
 
             <EditText
                 android:id="@+id/email"
-                style="@style/EditText"
+                style="@style/edit_text"
                 android:layout_marginTop="4dp"
                 android:hint="@string/edit_profile_hint_email"
                 android:inputType="textEmailAddress"
@@ -120,7 +120,7 @@
 
             <TextView
                 android:id="@+id/driver_switch_title"
-                style="@style/EditTextTitle"
+                style="@style/edit_text_title"
                 android:layout_marginTop="16dp"
                 android:text="@string/edit_profile_title_driver_switch"
                 android:visibility="visible"
@@ -141,7 +141,7 @@
 
             <TextView
                 android:id="@+id/car_number_plate_title"
-                style="@style/EditTextTitle"
+                style="@style/edit_text_title"
                 android:layout_marginTop="8dp"
                 android:text="@string/edit_profile_title_car_number"
                 android:visibility="gone"
@@ -152,7 +152,7 @@
 
             <EditText
                 android:id="@+id/car_number_plate"
-                style="@style/EditText"
+                style="@style/edit_text"
                 android:layout_marginTop="4dp"
                 android:hint="@string/edit_profile_hint_car_number"
                 android:inputType="text"
@@ -163,7 +163,7 @@
 
             <TextView
                 android:id="@+id/car_seats_title"
-                style="@style/EditTextTitle"
+                style="@style/edit_text_title"
                 android:layout_marginTop="8dp"
                 android:text="@string/edit_profile_title_free_seats"
                 android:visibility="gone"
@@ -174,7 +174,7 @@
 
             <EditText
                 android:id="@+id/car_seats"
-                style="@style/EditText"
+                style="@style/edit_text"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="24dp"
                 android:hint="@string/edit_profile_hint_free_seats"

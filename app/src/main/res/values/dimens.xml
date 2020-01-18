@@ -2,6 +2,6 @@
 <resources>
     <!--FIXME: I will not add common margin and padding dimensions here like margin_small, margin_big etc. as I believe it's an anti-pattern-->
     <dimen name="toolbar_height">56dp</dimen>
-    <dimen name="bottom_app_bar_height">56dp</dimen>
-    <dimen name="custom_fab_size">72dp</dimen>
+    <dimen name="bottom_app_bar_height">48dp</dimen>
+    <dimen name="custom_fab_size">56dp</dimen>
 </resources>

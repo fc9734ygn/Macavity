@@ -9,7 +9,7 @@
         <item name="windowActionBar">false</item>
     </style>
 
-    <style name="EditTextTitle">
+    <style name="edit_text_title">
         <item name="android:textSize">12sp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
@@ -19,12 +19,26 @@
         <item name="android:visibility">invisible</item>
     </style>
 
-    <style name="EditText">
+    <style name="edit_text">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:textColor">@color/secondaryText</item>
         <item name="android:background">@drawable/background_grey_rounded</item>
         <item name="android:textColorHint">@color/grey_dark</item>
+    </style>
+
+    <style name="divider">
+        <item name="android:layout_height">2dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:background">@color/blue_light</item>
+    </style>
+
+    <style name="profile_item">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondaryText</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>
