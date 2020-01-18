@@ -36,11 +36,11 @@ open class ProfileFragment : BaseFragment() {
     }
 
     private fun initToolbar() {
-        toolbar.setStartIcon(R.drawable.ic_menu)
+        toolbar.setStartIcon(R.drawable.ic_arrow_back)
             .setEndIcon(R.drawable.ic_edit)
             .setTitle(getString(R.string.toolbar_title_profile))
 
-        toolbar.startIconListener = { openDrawer() }
+        toolbar.startIconListener = { activity!!.onBackPressed() }
         //TODO: disable if not your profile
         toolbar.endIconListener = { goToEditProfile() }
     }
