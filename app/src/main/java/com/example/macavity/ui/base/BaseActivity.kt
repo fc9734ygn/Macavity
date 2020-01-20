@@ -20,7 +20,7 @@ open class BaseActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    lateinit var noInternetDialog: NoInternetDialog
+    private lateinit var noInternetDialog: NoInternetDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

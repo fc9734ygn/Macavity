@@ -108,5 +108,8 @@ dependencies {
 
     //Permissions
     implementation 'com.karumi:dexter:6.0.1'
+
+    //Places
+    implementation 'com.google.android.libraries.places:places:2.0.0'
 }
 apply plugin: 'com.google.gms.google-services'

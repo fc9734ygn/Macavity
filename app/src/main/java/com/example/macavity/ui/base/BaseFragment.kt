@@ -27,4 +27,8 @@ open class BaseFragment : dagger.android.support.DaggerFragment() {
     fun toggleBottomNav(show: Boolean){
         (activity as HomeActivity).toggleBottomNavigation(show)
     }
+
+    fun showError(message:String?){
+        (activity as BaseActivity).showError(message)
+    }
 }

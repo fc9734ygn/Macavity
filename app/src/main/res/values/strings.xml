@@ -13,6 +13,8 @@
     <string name="toolbar_title_map">Map</string>
     <!--Profile-->
     <string name="toolbar_title_profile">Your Profile</string>
+    <string name="profile_personal_info_title">Personal information</string>
+    <string name="profile_stats_title">Statistics</string>
     <!--Edit Profile-->
     <string name="edit_profile_toolbar_title">Edit Profile</string>
     <string name="edit_profile_hint_name"><i>Name</i></string>
@@ -40,8 +42,6 @@
     <!--Keys-->
     <!--TODO: find a better solution-->
     <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="profile_personal_info_title">Personal information</string>
-    <string name="profile_stats_title">Statistics</string>
+    <string name="places_api_key">AIzaSyBFAKKZIOg_zVnIj_n26Dco8-9ehWvZp8c</string>
 
 </resources>
