@@ -33,6 +33,7 @@ open class EditProfileFragment : HomeFragment() {
         vm = ViewModelProviders.of(this).get(EditProfileViewModel::class.java)
         initToolbar()
         toggleBottomNav(false)
+
         //TODO: use real data
         val avatar = "https://i.ytimg.com/vi/OIZqAOBJNOw/hqdefault.jpg"
         user = User(

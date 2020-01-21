@@ -114,6 +114,45 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/email_title"
                 tools:visibility="visible" />
+            <TextView
+                android:id="@+id/location_title"
+                style="@style/edit_text_title"
+                android:layout_marginTop="8dp"
+                android:text="location address"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/location"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/location"
+                app:layout_constraintTop_toBottomOf="@+id/email" />
+
+            <TextView
+                android:id="@+id/location"
+                style="@style/edit_text"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/location_title"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/destination_title"
+                style="@style/edit_text_title"
+                android:layout_marginTop="8dp"
+                android:text="Destination address"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/destination"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/destination"
+                app:layout_constraintTop_toBottomOf="@+id/location" />
+
+            <TextView
+                android:id="@+id/destination"
+                style="@style/edit_text"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/destination_title"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/driver_switch_title"
@@ -123,7 +162,7 @@
                 android:visibility="visible"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/driver_switch"
-                app:layout_constraintTop_toBottomOf="@+id/email" />
+                app:layout_constraintTop_toBottomOf="@+id/destination" />
 
             <Switch
                 android:id="@+id/driver_switch"
