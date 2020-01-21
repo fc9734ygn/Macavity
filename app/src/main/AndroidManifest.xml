@@ -24,20 +24,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ui.tutorial.TutorialActivity_"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ui.home.HomeActivity_"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.signIn.SignInActivity_"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.createProfile.CreateProfileActivity_"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.splash.SplashActivity_"
+            android:name=".ui.auth.AuthActivity_"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

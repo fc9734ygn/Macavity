@@ -2,7 +2,7 @@ package com.example.macavity.ui.map
 
 import androidx.lifecycle.ViewModelProviders
 import com.example.macavity.R
-import com.example.macavity.ui.base.BaseFragment
+import com.example.macavity.ui.base.HomeFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -14,7 +14,7 @@ import org.androidannotations.annotations.EFragment
 
 
 @EFragment(resName = "fragment_map")
-open class MapFragment : BaseFragment() {
+open class MapFragment : HomeFragment() {
 
     private lateinit var vm: MapViewModel
     private lateinit var map: GoogleMap

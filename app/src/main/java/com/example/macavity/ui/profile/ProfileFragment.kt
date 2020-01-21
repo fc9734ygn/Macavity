@@ -1,12 +1,10 @@
 package com.example.macavity.ui.profile
 
-import android.content.Intent
-import android.net.Uri
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.macavity.R
-import com.example.macavity.ui.base.BaseFragment
+import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.utils.callPhoneNumber
 import com.example.macavity.utils.sendEmail
 import kotlinx.android.synthetic.main.fragment_map.toolbar
@@ -17,7 +15,7 @@ import org.androidannotations.annotations.EFragment
 
 
 @EFragment(resName = "fragment_profile")
-open class ProfileFragment : BaseFragment() {
+open class ProfileFragment : HomeFragment() {
 
     private lateinit var vm: ProfileViewModel
 

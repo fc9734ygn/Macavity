@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.macavity.ui.tutorial.TutorialViewModel
 import com.example.macavity.ui.addJourney.AddJourneyViewModel
+import com.example.macavity.ui.auth.AuthViewModel
 import com.example.macavity.ui.base.BaseViewModel
 import com.example.macavity.ui.calendar.CalendarViewModel
 import com.example.macavity.ui.chat.ChatViewModel
@@ -102,6 +103,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CreateProfileViewModel::class)
     internal abstract fun createProfileViewModel(viewModel: CreateProfileViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AuthViewModel::class)
+    internal abstract fun authViewModel(viewModel: AuthViewModel): ViewModel
 
     //Add more ViewModels here
     //endregion

@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.User
-import com.example.macavity.ui.base.BaseFragment
+import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
 import com.google.android.gms.common.api.Status
@@ -23,7 +23,7 @@ import org.androidannotations.annotations.EFragment
 
 
 @EFragment(resName = "fragment_edit_profile")
-open class EditProfileFragment : BaseFragment() {
+open class EditProfileFragment : HomeFragment() {
 
     private lateinit var vm: EditProfileViewModel
     private lateinit var user: User

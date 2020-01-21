@@ -5,13 +5,14 @@ import android.os.Bundle
 import com.example.macavity.R
 
 import com.example.macavity.ui.base.BaseFragment
+import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.ui.profile.ProfileViewModel
 import kotlinx.android.synthetic.main.fragment_map.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.EFragment
 
 @EFragment(resName = "fragment_settings")
-open class SettingsFragment : BaseFragment() {
+open class SettingsFragment : HomeFragment() {
 
     private lateinit var vm: SettingsViewModel
 

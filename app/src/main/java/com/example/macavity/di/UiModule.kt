@@ -1,10 +1,10 @@
 package com.example.macavity.di
 
 import com.example.macavity.ui.addJourney.AddJourneyFragment_
+import com.example.macavity.ui.auth.AuthActivity_
 import com.example.macavity.ui.calendar.CalendarFragment_
 import com.example.macavity.ui.chat.ChatFragment_
-import com.example.macavity.ui.createProfile.CreateProfileActivity
-import com.example.macavity.ui.createProfile.CreateProfileActivity_
+import com.example.macavity.ui.createProfile.CreateProfileFragment_
 import com.example.macavity.ui.editJourney.EditJourneyFragment_
 import com.example.macavity.ui.editProfile.EditProfileFragment_
 import com.example.macavity.ui.group.GroupFragment_
@@ -12,9 +12,9 @@ import com.example.macavity.ui.home.HomeActivity_
 import com.example.macavity.ui.map.MapFragment_
 import com.example.macavity.ui.profile.ProfileFragment_
 import com.example.macavity.ui.settings.SettingsFragment_
-import com.example.macavity.ui.signIn.SignInActivity_
-import com.example.macavity.ui.splash.SplashActivity_
-import com.example.macavity.ui.tutorial.TutorialActivity_
+import com.example.macavity.ui.signIn.SignInFragment_
+import com.example.macavity.ui.splash.SplashFragment_
+import com.example.macavity.ui.tutorial.TutorialFragment_
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -23,19 +23,10 @@ abstract class UiModule {
 
     //region Activities
     @ContributesAndroidInjector
-    abstract fun contributeSplashActivity(): SplashActivity_
-
-    @ContributesAndroidInjector
-    abstract fun contributeSignInActivity(): SignInActivity_
-
-    @ContributesAndroidInjector
     abstract fun contributeHomeActivity(): HomeActivity_
 
     @ContributesAndroidInjector
-    abstract fun contributeTutorialActivity(): TutorialActivity_
-
-    @ContributesAndroidInjector
-    abstract fun contributeCreateProfileActivity(): CreateProfileActivity_
+    abstract fun contributeAuthActivity(): AuthActivity_
 
     //endregion
 
@@ -66,5 +57,18 @@ abstract class UiModule {
 
     @ContributesAndroidInjector
     abstract fun contributeSettingsFragment(): SettingsFragment_
+
+    @ContributesAndroidInjector
+    abstract fun contributeTutorialActivity(): TutorialFragment_
+
+    @ContributesAndroidInjector
+    abstract fun contributeCreateProfileActivity(): CreateProfileFragment_
+
+    @ContributesAndroidInjector
+    abstract fun contributeSplashFragment(): SplashFragment_
+
+    @ContributesAndroidInjector
+    abstract fun contributeSignInFragment(): SignInFragment_
+
     //endregion
 }

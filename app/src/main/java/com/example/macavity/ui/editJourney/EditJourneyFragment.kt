@@ -3,11 +3,11 @@ package com.example.macavity.ui.editJourney
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 
-import com.example.macavity.ui.base.BaseFragment
+import com.example.macavity.ui.base.HomeFragment
 import org.androidannotations.annotations.EFragment
 
 @EFragment(resName = "fragment_edit_journey")
-open class EditJourneyFragment : BaseFragment() {
+open class EditJourneyFragment : HomeFragment() {
 
     private lateinit var vm: EditJourneyViewModel
 

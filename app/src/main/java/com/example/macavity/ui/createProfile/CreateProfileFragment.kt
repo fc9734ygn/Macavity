@@ -4,15 +4,13 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.macavity.R
+import com.example.macavity.ui.base.AuthFragment
 import com.example.macavity.ui.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_create_profile.*
-import org.androidannotations.annotations.AfterViews
-import org.androidannotations.annotations.CheckedChange
-import org.androidannotations.annotations.EActivity
-import org.androidannotations.annotations.TextChange
+import kotlinx.android.synthetic.main.fragment_create_profile.*
+import org.androidannotations.annotations.*
 
-@EActivity(resName = "activity_create_profile")
-open class CreateProfileActivity : BaseActivity() {
+@EFragment(resName = "fragment_create_profile")
+open class CreateProfileFragment : AuthFragment() {
 
     private lateinit var vm: CreateProfileViewModel
 
@@ -28,8 +26,8 @@ open class CreateProfileActivity : BaseActivity() {
             .setStartIcon(R.drawable.ic_arrow_back)
             .setEndIcon(R.drawable.ic_save)
 
-        toolbar.startIconListener = { onBackPressed() }
-        //TODO: save changes
+        toolbar.startIconListener = { activity!!.onBackPressed() }
+        //todo: finish nav
         toolbar.endIconListener = {}
     }
 

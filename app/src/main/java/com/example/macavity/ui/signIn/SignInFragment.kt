@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.example.macavity.R
+import com.example.macavity.ui.base.AuthFragment
 import com.example.macavity.ui.base.BaseActivity
 import com.example.macavity.ui.home.HomeActivity_
 import com.example.macavity.utils.RC_SIGN_IN
@@ -16,13 +17,14 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.fragment_sign_in.*
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EActivity
+import org.androidannotations.annotations.EFragment
 
 
-@EActivity(resName = "activity_sign_in")
-open class SignInActivity : BaseActivity() {
+@EFragment(resName = "fragment_sign_in")
+open class SignInFragment : AuthFragment() {
 
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var vm: SignInViewModel
@@ -31,14 +33,8 @@ open class SignInActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.web_client))
-            .requestProfile()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-        vm = ViewModelProviders.of(this, viewModelFactory)[SignInViewModel::class.java]
+        buildGoogleSignInClient()
+        vm = ViewModelProviders.of(this).get(SignInViewModel::class.java)
         auth = FirebaseAuth.getInstance()
         auth.uid
     }
@@ -55,6 +51,15 @@ open class SignInActivity : BaseActivity() {
         } else {
             HomeActivity_.intent(this).start()
         }
+    }
+
+    private fun buildGoogleSignInClient(){
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.web_client))
+            .requestProfile()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(activity!!, gso)
     }
 
     @Click(resName = ["sign_in_button"])
@@ -81,15 +86,14 @@ open class SignInActivity : BaseActivity() {
     }
 
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
+            .addOnCompleteListener(activity!!) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
                     HomeActivity_.intent(this).start()
                 } else {
-                    showError()
+                    showError(task.exception?.message)
                 }
             }
     }

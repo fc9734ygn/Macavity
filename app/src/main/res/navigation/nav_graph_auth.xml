@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph_auth"
+    app:startDestination="@id/splashFragment_">
+
+    <fragment
+        android:id="@+id/splashFragment_"
+        android:name="com.example.macavity.ui.splash.SplashFragment_"
+        android:label="SplashFragment_" >
+        <action
+            android:id="@+id/action_splashFragment__to_signInFragment_"
+            app:destination="@id/signInFragment_" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment_"
+        android:name="com.example.macavity.ui.signIn.SignInFragment_"
+        android:label="SignInFragment_" >
+        <action
+            android:id="@+id/action_signInFragment__to_createProfileFragment_2"
+            app:destination="@id/createProfileFragment_" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorialFragment_"
+        android:name="com.example.macavity.ui.tutorial.TutorialFragment_"
+        android:label="TutorialFragment_" />
+    <fragment
+        android:id="@+id/createProfileFragment_"
+        android:name="com.example.macavity.ui.createProfile.CreateProfileFragment_"
+        android:label="CreateProfileFragment_" >
+        <action
+            android:id="@+id/action_createProfileFragment__to_tutorialFragment_2"
+            app:destination="@id/tutorialFragment_" />
+    </fragment>
+</navigation>

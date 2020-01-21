@@ -5,11 +5,10 @@ import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.chat.Author
 import com.example.macavity.data.models.chat.Message
-import com.example.macavity.ui.base.BaseFragment
+import com.example.macavity.ui.base.HomeFragment
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.messages.MessageInput
 import com.stfalcon.chatkit.messages.MessagesListAdapter
-import io.fabric.sdk.android.services.common.CurrentTimeProvider
 import kotlinx.android.synthetic.main.fragment_chat.*
 import kotlinx.android.synthetic.main.fragment_map.toolbar
 import org.androidannotations.annotations.AfterViews
@@ -17,7 +16,7 @@ import org.androidannotations.annotations.EFragment
 
 
 @EFragment(resName = "fragment_chat")
-open class ChatFragment : BaseFragment() {
+open class ChatFragment : HomeFragment() {
 
     private lateinit var vm: ChatViewModel
     private lateinit var messageAdapter: MessagesListAdapter<Message>

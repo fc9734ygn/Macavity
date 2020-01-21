@@ -15,7 +15,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.ui.base.BaseActivity
-import com.karumi.dexter.Dexter
 import kotlinx.android.synthetic.main.activity_home.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click
