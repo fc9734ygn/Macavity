@@ -102,7 +102,7 @@ dependencies {
     //No internet dialog
     implementation 'am.appwise.components:NoInternetDialog:1.1.3'
 
-    //Chat
+    //Chat UI
     implementation 'com.github.stfalcon:chatkit:0.3.3'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
 
@@ -111,5 +111,8 @@ dependencies {
 
     //Places
     implementation 'com.google.android.libraries.places:places:2.0.0'
+
+    //Calendar UI
+    implementation 'com.github.kizitonwose:CalendarView:0.3.2'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -5,6 +5,7 @@ import android.content.Context
 import com.example.macavity.di.DaggerAppComponent
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.net.PlacesClient
+import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.android.support.DaggerApplication
 import timber.log.Timber
 import timber.log.Timber.DebugTree
@@ -12,13 +13,13 @@ import timber.log.Timber.DebugTree
 
 class App : DaggerApplication() {
 
+    private lateinit var placesClient: PlacesClient
+
     private val applicationInjector = DaggerAppComponent.builder()
         .application(this)
         .build()
 
     override fun applicationInjector() = applicationInjector
-    lateinit var placesClient: PlacesClient
-
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
@@ -31,6 +32,11 @@ class App : DaggerApplication() {
         super.onCreate()
         instance = this
         initPlaces()
+        initCalendarLib()
+    }
+
+    private fun initCalendarLib(){
+        AndroidThreeTen.init(this)
     }
 
     private fun initPlaces() {

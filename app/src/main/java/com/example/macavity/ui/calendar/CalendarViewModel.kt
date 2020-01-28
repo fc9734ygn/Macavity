@@ -6,4 +6,7 @@ import javax.inject.Inject
 
 class CalendarViewModel @Inject constructor()  : BaseViewModel() {
     // TODO: Implement the ViewModel
+
+    fun bookSeats(journeyId: String){
+    }
 }
