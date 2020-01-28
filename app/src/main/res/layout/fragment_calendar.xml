@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:paddingBottom="@dimen/bottom_app_bar_height"
     android:background="@color/grey_light"
     tools:context=".ui.calendar.CalendarFragment">
 
@@ -25,25 +27,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:clipToPadding="false"
+            android:clipChildren="false"
             android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/month_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:elevation="4dp"
-                android:paddingStart="16dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="8dp"
-                android:text="January"
-                android:textColor="@color/secondaryText"
-                android:textSize="24sp"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <include
                 android:id="@+id/calendar_header"
@@ -52,36 +38,31 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/month_title" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.kizitonwose.calendarview.CalendarView
                 android:id="@+id/calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/grey_light"
                 app:cv_inDateStyle="allMonths"
                 app:cv_dayViewResource="@layout/view_calendar_day"
                 app:cv_orientation="horizontal"
                 app:cv_scrollMode="paged"
+                android:clipToPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:elevation="4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calendar_header"/>
 
-            <View
-                android:id="@+id/divider"
-                style="@style/divider"
-                android:background="@color/grey_primary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/calendar" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/journeys_recycler_view"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:overScrollMode="never"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider" />
+                app:layout_constraintTop_toBottomOf="@id/calendar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

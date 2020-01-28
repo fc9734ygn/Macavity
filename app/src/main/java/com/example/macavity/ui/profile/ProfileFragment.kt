@@ -38,7 +38,7 @@ open class ProfileFragment : HomeFragment() {
             .setEndIcon(R.drawable.ic_edit)
             .setTitle(getString(R.string.toolbar_title_profile))
 
-        toolbar.startIconListener = { activity!!.onBackPressed() }
+        toolbar.startIconListener = { requireActivity().onBackPressed() }
         //TODO: disable if not your profile
         toolbar.endIconListener = { goToEditProfile() }
     }
@@ -58,7 +58,7 @@ open class ProfileFragment : HomeFragment() {
 
     @Click(resName = ["phone_button"])
     fun callPhone() {
-        callPhoneNumber(activity!!, phone.text.toString())
+        callPhoneNumber(requireActivity(), phone.text.toString())
     }
 
     @Click(resName = ["email_button"])

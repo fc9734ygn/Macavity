@@ -9,6 +9,7 @@ import com.example.macavity.ui.editJourney.EditJourneyFragment_
 import com.example.macavity.ui.editProfile.EditProfileFragment_
 import com.example.macavity.ui.group.GroupFragment_
 import com.example.macavity.ui.home.HomeActivity_
+import com.example.macavity.ui.journeyDetails.JourneyDetailFragment_
 import com.example.macavity.ui.map.MapFragment_
 import com.example.macavity.ui.profile.ProfileFragment_
 import com.example.macavity.ui.settings.SettingsFragment_
@@ -69,6 +70,9 @@ abstract class UiModule {
 
     @ContributesAndroidInjector
     abstract fun contributeSignInFragment(): SignInFragment_
+
+    @ContributesAndroidInjector
+    abstract fun contributeJourneyDetailsFragment(): JourneyDetailFragment_
 
     //endregion
 }

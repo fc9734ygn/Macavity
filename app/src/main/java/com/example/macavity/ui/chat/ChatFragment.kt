@@ -37,7 +37,7 @@ open class ChatFragment : HomeFragment() {
         //TODO: use real data
         val dummySenderId = "23f34f"
         val imageLoader =
-            ImageLoader { imageView, url, _ -> Glide.with(activity!!).load(url).centerCrop().into(imageView) }
+            ImageLoader { imageView, url, _ -> Glide.with(requireActivity()).load(url).centerCrop().into(imageView) }
 
         messageAdapter = MessagesListAdapter(dummySenderId, imageLoader)
         messages_list.setAdapter(messageAdapter)
@@ -110,6 +110,6 @@ open class ChatFragment : HomeFragment() {
         toolbar.setStartIcon(R.drawable.ic_arrow_back)
             .setTitle(getString(R.string.toolbar_title_chat))
 
-        toolbar.startIconListener = { activity!!.onBackPressed() }
+        toolbar.startIconListener = { requireActivity().onBackPressed() }
     }
 }

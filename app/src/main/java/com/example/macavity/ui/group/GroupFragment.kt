@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.macavity.R
 
 import com.example.macavity.ui.base.HomeFragment
-import kotlinx.android.synthetic.main.fragment_map.*
+import kotlinx.android.synthetic.main.fragment_group.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.EFragment
 

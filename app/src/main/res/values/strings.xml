@@ -10,6 +10,13 @@
     <!--Calendar-->
     <string name="toolbar_title_calendar">Calendar</string>
     <string name="item_journey_seats_left">%1$d / %2$d</string>
+    <string name="calendar_header_item_monday">M</string>
+    <string name="calendar_header_item_tuesday">T</string>
+    <string name="calendar_header_item_wednesday">W</string>
+    <string name="calendar_header_item_thursday">T</string>
+    <string name="calendar_header_item_friday">F</string>
+    <string name="calendar_header_item_saturday">S</string>
+    <string name="calendar_header_item_sunday">S</string>
     <!--Map-->
     <string name="toolbar_title_map">Map</string>
     <!--Profile-->
@@ -29,7 +36,6 @@
     <string name="edit_profile_title_driver_switch">Are you a driver?</string>
     <string name="edit_profile_title_car_number">Car number plate</string>
     <string name="edit_profile_title_free_seats">Amount of free seats</string>
-
     <!--Create Profile-->
     <string name="profile_create_toolbar_title">Create Profile</string>
     <!--Settings-->
@@ -39,17 +45,12 @@
     <!--Global-->
     <string name="app_name">Macavity</string>
     <string name="default_error_message">Oops, something went wrong</string>
-
+    <!--Journey Details-->
+    <string name="toolbar_title_journey_details">Journey Details</string>
     <!--Keys-->
     <!--TODO: find a better solution-->
     <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>
     <string name="places_api_key">AIzaSyBFAKKZIOg_zVnIj_n26Dco8-9ehWvZp8c</string>
-    <string name="calendar_header_item_monday">M</string>
-    <string name="calendar_header_item_tuesday">T</string>
-    <string name="calendar_header_item_wednesday">W</string>
-    <string name="calendar_header_item_thursday">T</string>
-    <string name="calendar_header_item_friday">F</string>
-    <string name="calendar_header_item_saturday">S</string>
-    <string name="calendar_header_item_sunday">S</string>
+
 
 </resources>

@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="@dimen/toolbar_height"
-    android:elevation="8dp"
+    android:elevation="12dp"
     android:background="@color/blue_primary">
 
     <ImageView

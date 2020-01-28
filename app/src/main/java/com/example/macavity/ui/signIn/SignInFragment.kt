@@ -59,7 +59,7 @@ open class SignInFragment : AuthFragment() {
             .requestProfile()
             .build()
 
-        googleSignInClient = GoogleSignIn.getClient(activity!!, gso)
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
     }
 
     @Click(resName = ["sign_in_button"])
@@ -88,7 +88,7 @@ open class SignInFragment : AuthFragment() {
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         auth.signInWithCredential(credential)
-            .addOnCompleteListener(activity!!) { task ->
+            .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
                     HomeActivity_.intent(this).start()

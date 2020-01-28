@@ -72,7 +72,7 @@ open class EditProfileFragment : HomeFragment() {
             .setStartIcon(R.drawable.ic_arrow_back)
             .setEndIcon(R.drawable.ic_save)
 
-        toolbar.startIconListener = { activity!!.onBackPressed() }
+        toolbar.startIconListener = { requireActivity().onBackPressed() }
         //TODO: save changes
         toolbar.endIconListener = {}
     }

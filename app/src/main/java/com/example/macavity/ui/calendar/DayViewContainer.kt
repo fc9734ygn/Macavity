@@ -17,7 +17,6 @@ class DayViewContainer(view: View, private val clickListener: (LocalDate) -> Uni
         view.setOnClickListener {
             if (day.owner == DayOwner.THIS_MONTH) {
                 clickListener.invoke(day.date)
-             //   selectDate(day.date)
             }
         }
     }

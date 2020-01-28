@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/mapFragment_">
 
     <fragment
         android:id="@+id/calendarFragment_"
         android:name="com.example.macavity.ui.calendar.CalendarFragment_"
-        android:label="CalendarFragment_" />
+        android:label="CalendarFragment_" >
+        <action
+            android:id="@+id/action_calendarFragment__to_journeyDetailFragment_"
+            app:destination="@id/journeyDetailFragment_" />
+    </fragment>
     <fragment
         android:id="@+id/chatFragment_"
         android:name="com.example.macavity.ui.chat.ChatFragment_"
@@ -35,4 +41,9 @@
         android:id="@+id/editProfileFragment_"
         android:name="com.example.macavity.ui.editProfile.EditProfileFragment_"
         android:label="EditProfileFragment_" />
+    <fragment
+        android:id="@+id/journeyDetailFragment_"
+        android:name="com.example.macavity.ui.journeyDetails.JourneyDetailFragment_"
+        android:label="fragment_journey_detail"
+        tools:layout="@layout/fragment_journey_detail" />
 </navigation>

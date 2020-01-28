@@ -34,7 +34,7 @@ open class CreateProfileFragment : AuthFragment() {
             .setStartIcon(R.drawable.ic_arrow_back)
             .setEndIcon(R.drawable.ic_save)
 
-        toolbar.startIconListener = { activity!!.onBackPressed() }
+        toolbar.startIconListener = { requireActivity().onBackPressed() }
         //todo: finish nav
         toolbar.endIconListener = {}
     }
