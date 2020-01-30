@@ -16,6 +16,7 @@ import com.example.macavity.ui.settings.SettingsFragment_
 import com.example.macavity.ui.signIn.SignInFragment_
 import com.example.macavity.ui.splash.SplashFragment_
 import com.example.macavity.ui.tutorial.TutorialFragment_
+import com.example.macavity.ui.yourJourneys.YourJourneysFragment_
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -73,6 +74,9 @@ abstract class UiModule {
 
     @ContributesAndroidInjector
     abstract fun contributeJourneyDetailsFragment(): JourneyDetailFragment_
+
+    @ContributesAndroidInjector
+    abstract fun contributeYourJourneysFragment(): YourJourneysFragment_
 
     //endregion
 }

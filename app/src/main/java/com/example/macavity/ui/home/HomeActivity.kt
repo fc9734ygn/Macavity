@@ -36,6 +36,7 @@ open class HomeActivity : BaseActivity() {
     private fun initDrawerNavigation(){
         navController = nav_host_fragment.findNavController()
         nav_view.setupWithNavController(navController)
+        bottom_nav.setupWithNavController(navController)
         setDrawerAvatarImg()
     }
 
@@ -64,20 +65,20 @@ open class HomeActivity : BaseActivity() {
                 || super.onOptionsItemSelected(item)
     }
 
-    @Click(resName = ["calendar_button"])
-    fun goToCalendar(){
-        navController.navigate(R.id.calendarFragment_)
-    }
-
-    @Click(resName = ["chat_button"])
-    fun goToChat(){
-        navController.navigate(R.id.chatFragment_)
-    }
+//    @Click(resName = ["calendar_button"])
+//    fun goToCalendar(){
+//        navController.navigate(R.id.calendarFragment_)
+//    }
+//
+//    @Click(resName = ["chat_button"])
+//    fun goToChat(){
+//        navController.navigate(R.id.chatFragment_)
+//    }
     
-    @Click(resName = ["fab"])
-    fun onFabClick(){
-        navController.navigate(R.id.mapFragment_)
-    }
+//    @Click(resName = ["fab"])
+//    fun onFabClick(){
+//        navController.navigate(R.id.mapFragment_)
+//    }
 
     fun openDrawer(){
         drawer_layout.openDrawer(GravityCompat.START)
@@ -86,8 +87,8 @@ open class HomeActivity : BaseActivity() {
     @SuppressLint("RestrictedApi") //app:behavior_autoHide="false" in XML
     fun toggleBottomNavigation(show: Boolean){
         val desiredVisibility = if(show) View.VISIBLE else View.GONE
-        bottom_app_bar.visibility = desiredVisibility
-        fab.visibility = desiredVisibility
+//        bottom_app_bar.visibility = desiredVisibility
+//        fab.visibility = desiredVisibility
     }
 
     override fun onBackPressed() {

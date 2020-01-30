@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:paddingBottom="@dimen/bottom_app_bar_height"
     android:background="@color/grey_light"
     tools:context=".ui.calendar.CalendarFragment">
 
@@ -54,7 +53,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calendar_header"/>
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/journeys_recycler_view"
                 android:layout_width="0dp"
@@ -66,6 +64,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
