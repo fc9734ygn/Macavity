@@ -4,4 +4,5 @@
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="bottom_app_bar_height">48dp</dimen>
     <dimen name="custom_fab_size">56dp</dimen>
+    <dimen name="journey_details_map_height">280dp</dimen>
 </resources>

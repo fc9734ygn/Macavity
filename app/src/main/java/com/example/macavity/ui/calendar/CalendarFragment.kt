@@ -144,16 +144,14 @@ open class CalendarFragment : HomeFragment() {
         )
         journeysAdapter.submitList(
             mutableListOf(
-                Journey("123", driver, 2, 1, listOf("asd", "gt"), 42124432),
-                Journey("123", driver, 2, 1, listOf("asd", "gt"), 42124432),
-                Journey("123", driver, 2, 1, listOf("asd", "gt"), 42124432),
-                Journey("123", driver, 2, 1, listOf("asd", "gt"), 42124432),
-                Journey("123", driver, 2, 1, listOf("asd", "gt"), 42124432),
-                Journey("123", driver, 4, 2, listOf("afa", "cgw"), 42142443)
+                Journey("123", driver, 2, 1, listOf(driver), 42124432),
+                Journey("123", driver, 2, 1, listOf(driver), 42124432),
+                Journey("123", driver, 2, 1, listOf(driver), 42124432),
+                Journey("123", driver, 2, 1, listOf(driver), 42124432),
+                Journey("123", driver, 2, 1, listOf(driver), 42124432),
+                Journey("123", driver, 4, 2, listOf(driver), 42142443)
             )
         )
-
-//        journeysAdapter.currentList.addAll()
         journeysAdapter.notifyDataSetChanged()
     }
 }

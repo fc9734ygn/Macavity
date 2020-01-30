@@ -47,10 +47,16 @@
     <string name="default_error_message">Oops, something went wrong</string>
     <!--Journey Details-->
     <string name="toolbar_title_journey_details">Journey Details</string>
+    <string name="driver_stat">%1$d completed journeys as a driver</string>
+    <string name="leaving_at">Leaving at: %1$s</string>
+    <string name="seats">Seats: %1$d / %2$d</string>
+    <string name="passenger_stat">%1$d completed journeys as a passenger</string>
+    <string name="button_book_a_seat">Book a seat</string>
+    <string name="title_driver">Driver</string>
+    <string name="title_passengers">Passengers</string>
     <!--Keys-->
     <!--TODO: find a better solution-->
     <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>
     <string name="places_api_key">AIzaSyBFAKKZIOg_zVnIj_n26Dco8-9ehWvZp8c</string>
-
-
+    <string name="title_journey">Journey</string>
 </resources>

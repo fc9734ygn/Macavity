@@ -45,5 +45,9 @@
         android:id="@+id/journeyDetailFragment_"
         android:name="com.example.macavity.ui.journeyDetails.JourneyDetailFragment_"
         android:label="fragment_journey_detail"
-        tools:layout="@layout/fragment_journey_detail" />
+        tools:layout="@layout/fragment_journey_detail" >
+        <action
+            android:id="@+id/action_journeyDetailFragment__to_profileFragment_"
+            app:destination="@id/profileFragment_" />
+    </fragment>
 </navigation>
