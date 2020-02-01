@@ -58,6 +58,8 @@
     <string name="button_book_a_seat">Book a seat</string>
     <string name="title_driver">Driver</string>
     <string name="title_passengers">Passengers</string>
+    <!--Your Journeys-->
+    <string name="toolbar_title_your_journeys">Upcoming journeys</string>
     <!--Keys-->
     <!--TODO: find a better solution-->
     <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>

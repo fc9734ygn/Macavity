@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/yourJourneysFragment_"
-        android:icon="@drawable/ic_person"
+        android:icon="@drawable/ic_directions_car"
         android:title="@string/bottom_nav_title_your_journeys" />
     <item
         android:id="@+id/calendarFragment_"
