@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.addJourney.AddJourneyFragment">
 
     <com.example.macavity.ui.widgets.Toolbar_
@@ -14,11 +15,92 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TimePicker
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        tools:text="02 Jan"
+        android:textAlignment="center"
+        android:textColor="@color/blue_light"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/time_title"
+        style="@style/edit_text_title"
+        android:layout_marginTop="24dp"
+        android:text="@string/add_journey_departure_time_title"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/date" />
+
+    <TextView
+        android:id="@+id/time"
+        style="@style/edit_text"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/time_title" />
+
+    <TextView
+        android:id="@+id/free_seats_title"
+        style="@style/edit_text_title"
+        android:layout_marginTop="8dp"
+        android:text="@string/add_journey_available_seats_title"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/time" />
+
+    <EditText
+        android:id="@+id/free_seats"
+        style="@style/edit_text"
+        android:layout_marginTop="4dp"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/free_seats_title" />
+
+    <TextView
+        android:id="@+id/note_title"
+        style="@style/edit_text_title"
+        android:layout_marginTop="8dp"
+        android:text="@string/add_journey_additional_note_title"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/free_seats" />
+
+    <EditText
+        android:id="@+id/note"
+        style="@style/edit_text"
+        android:layout_marginTop="4dp"
+        android:hint="@string/add_journey_note_hint"
+        android:gravity="top"
+        android:maxLength="250"
+        android:maxLines="6"
+        android:minLines="6"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/note_title" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

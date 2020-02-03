@@ -18,7 +18,7 @@ import com.example.macavity.ui.profile.ProfileViewModel
 import com.example.macavity.ui.settings.SettingsViewModel
 import com.example.macavity.ui.signIn.SignInViewModel
 import com.example.macavity.ui.splash.SplashViewModel
-import com.example.macavity.ui.yourJourneys.YourJourneysViewModel
+import com.example.macavity.ui.yourJourneys.UpcomingJourneysViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -118,8 +118,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(YourJourneysViewModel::class)
-    internal abstract fun yourJourneysViewModel(viewModel: YourJourneysViewModel): ViewModel
+    @ViewModelKey(UpcomingJourneysViewModel::class)
+    internal abstract fun yourJourneysViewModel(viewModel: UpcomingJourneysViewModel): ViewModel
 
     //Add more ViewModels here
     //endregion

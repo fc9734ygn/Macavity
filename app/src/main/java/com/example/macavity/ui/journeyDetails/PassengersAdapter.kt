@@ -50,7 +50,7 @@ class PassengersAdapter(private val itemClickListener: (User) -> Unit = {}) :
     inner class PassengerItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(passenger: User, position: Int) {
             itemView.passenger_name.text = passenger.name
-            itemView.passenger_stat.text = String.format(itemView.context.getString(R.string.passenger_stat), passenger.passengerStat)
+            itemView.passenger_stat.text = String.format(itemView.context.getString(R.string.journey_details_passenger_stat), passenger.passengerStat)
             setAvatarImage(passenger.avatarUrl)
             itemView.setOnClickListener {
                 itemClickListener.invoke(passenger)

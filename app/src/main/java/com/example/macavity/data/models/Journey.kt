@@ -6,5 +6,6 @@ data class Journey(
     val freeSeats: Int,
     val takenSeats: Int,
     val passengers: List<User>,
-    val timeStamp: Long
+    val timeStamp: Long,
+    val note: String?
 )

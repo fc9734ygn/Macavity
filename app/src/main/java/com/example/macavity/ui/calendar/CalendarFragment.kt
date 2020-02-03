@@ -17,6 +17,7 @@ import com.kizitonwose.calendarview.ui.DayBinder
 import kotlinx.android.synthetic.main.fragment_calendar.*
 import kotlinx.android.synthetic.main.fragment_map.toolbar
 import org.androidannotations.annotations.AfterViews
+import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EFragment
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.LocalDate
@@ -144,14 +145,20 @@ open class CalendarFragment : HomeFragment() {
         )
         journeysAdapter.submitList(
             mutableListOf(
-                Journey("123", driver, 2, 1, listOf(driver), 42124432),
-                Journey("123", driver, 2, 1, listOf(driver), 42124432),
-                Journey("123", driver, 2, 1, listOf(driver), 42124432),
-                Journey("123", driver, 2, 1, listOf(driver), 42124432),
-                Journey("123", driver, 2, 1, listOf(driver), 42124432),
-                Journey("123", driver, 4, 2, listOf(driver), 42142443)
+                Journey("123", driver, 2, 1, listOf(driver), 42124432,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver, 2, 1, listOf(driver), 42124432,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver, 2, 1, listOf(driver), 42124432,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver, 2, 1, listOf(driver), 42124432,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver, 2, 1, listOf(driver), 42124432,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver, 4, 2, listOf(driver), 42142443,"will have to stop by the gas station, should take additional 10mins")
             )
         )
         journeysAdapter.notifyDataSetChanged()
+    }
+
+    @Click(resName = ["fab"])
+    fun goToAddJourney(){
+        //TODO: hide this fab if user is not a driver
+        findNavController().navigate(R.id.action_calendarFragment__to_addJourneyFragment_)
     }
 }

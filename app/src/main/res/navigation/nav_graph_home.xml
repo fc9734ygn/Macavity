@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mapFragment_">
+    app:startDestination="@id/yourJourneysFragment_">
 
     <fragment
         android:id="@+id/calendarFragment_"
@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_calendarFragment__to_journeyDetailFragment_"
             app:destination="@id/journeyDetailFragment_" />
+        <action
+            android:id="@+id/action_calendarFragment__to_addJourneyFragment_"
+            app:destination="@id/addJourneyFragment_" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment_"
@@ -52,11 +55,15 @@
     </fragment>
     <fragment
         android:id="@+id/yourJourneysFragment_"
-        android:name="com.example.macavity.ui.yourJourneys.YourJourneysFragment_"
+        android:name="com.example.macavity.ui.yourJourneys.UpcomingJourneysFragment_"
         android:label="fragment_your_journeys"
-        tools:layout="@layout/fragment_your_journeys" >
+        tools:layout="@layout/fragment_upcoming_journeys" >
         <action
             android:id="@+id/action_yourJourneysFragment__to_journeyDetailFragment_"
             app:destination="@id/journeyDetailFragment_" />
     </fragment>
+    <fragment
+        android:id="@+id/addJourneyFragment_"
+        android:name="com.example.macavity.ui.addJourney.AddJourneyFragment_"
+        android:label="AddJourneyFragment_" />
 </navigation>

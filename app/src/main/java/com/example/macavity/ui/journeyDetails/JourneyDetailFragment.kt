@@ -1,5 +1,6 @@
 package com.example.macavity.ui.journeyDetails
 
+import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -81,7 +82,7 @@ open class JourneyDetailFragment : HomeFragment() {
                 88,
                 23
             )
-        ), 123123123
+        ), 123123123, "Will have to stop at a gas station"
     )
 
     @AfterViews
@@ -89,8 +90,7 @@ open class JourneyDetailFragment : HomeFragment() {
         vm = ViewModelProviders.of(this).get(JourneyDetailsViewModel::class.java)
         initToolbar()
         initMap()
-        setDriverData(dummyJourney.driver)
-        setJourneyData(dummyJourney)
+        setData(dummyJourney)
         initPassengersRecyclerView()
     }
 
@@ -106,12 +106,6 @@ open class JourneyDetailFragment : HomeFragment() {
         )
         //TODO: user real data
         passengersAdapter.submitList(dummyJourney.passengers)
-    }
-
-    private fun setJourneyData(journey: Journey) {
-        //TODO: format date
-        leaving_at.text = String.format(getString(R.string.leaving_at), journey.timeStamp)
-        seats.text = String.format(getString(R.string.seats), journey.takenSeats, journey.freeSeats)
     }
 
     private fun initToolbar() {
@@ -136,10 +130,16 @@ open class JourneyDetailFragment : HomeFragment() {
         }
     }
 
-    private fun setDriverData(driver: User) {
-        name_driver.text = driver.name
-        stat_driver.text = String.format(getString(R.string.driver_stat), driver.driverStat)
-        setDriverAvatar(driver.avatarUrl)
+    private fun setData(journey: Journey) {
+        name_driver.text = journey.driver.name
+        stat_driver.text = String.format(getString(R.string.journey_details_driver_stat), journey.driver.driverStat)
+        setDriverAvatar(journey.driver.avatarUrl)
+        //TODO: format date
+        leaving_at.text = String.format(getString(R.string.journey_details_leaving_at), journey.timeStamp)
+        seats.text = String.format(getString(R.string.journey_details_seats), journey.takenSeats, journey.freeSeats)
+        car_number_plate.text = String.format(getString(R.string.journey_details_car_number_plate), journey.driver.carNumberPlate)
+        drivers_note.text = journey.note
+        drivers_note_card.visibility = if (journey.note.isNullOrBlank()) View.GONE else View.VISIBLE
     }
 
     private fun setDriverAvatar(url: String) {

@@ -5,4 +5,6 @@
     <dimen name="bottom_app_bar_height">48dp</dimen>
     <dimen name="custom_fab_size">56dp</dimen>
     <dimen name="journey_details_map_height">280dp</dimen>
+    <dimen name="journey_details_map_height_with_margin">288dp</dimen>
+    <dimen name="default_card_view_corner_radius">12dp</dimen>
 </resources>
