@@ -16,8 +16,9 @@ import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.header_drawer.*
+import kotlinx.android.synthetic.main.header_drawer.view.*
 import org.androidannotations.annotations.AfterViews
-import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EActivity
 
 
@@ -37,18 +38,19 @@ open class HomeActivity : BaseActivity() {
         navController = nav_host_fragment.findNavController()
         nav_view.setupWithNavController(navController)
         bottom_nav.setupWithNavController(navController)
-        setDrawerAvatarImg()
+        setDrawerHeaderData()
     }
 
-    private fun setDrawerAvatarImg(){
+    private fun setDrawerHeaderData(){
         //TODO: use real data 
         val header: View = nav_view.getHeaderView(0)
-        val avatarView = header.findViewById<View>(R.id.header_profile_image) as ImageView
+        header.header_user_name.text = "John Smith"
         Glide.with(this)
             .load("https://66.media.tumblr.com/4c69fcb24a6d09010e6f818b31eba7c5/tumblr_po8044mLw21truxr0_540.jpg")
+            .circleCrop()
             .placeholder(R.drawable.ic_person)
             .error(R.drawable.ic_clear)
-            .into(avatarView)
+            .into(header.header_profile_image)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -65,30 +67,8 @@ open class HomeActivity : BaseActivity() {
                 || super.onOptionsItemSelected(item)
     }
 
-//    @Click(resName = ["calendar_button"])
-//    fun goToCalendar(){
-//        navController.navigate(R.id.calendarFragment_)
-//    }
-//
-//    @Click(resName = ["chat_button"])
-//    fun goToChat(){
-//        navController.navigate(R.id.chatFragment_)
-//    }
-    
-//    @Click(resName = ["fab"])
-//    fun onFabClick(){
-//        navController.navigate(R.id.mapFragment_)
-//    }
-
     fun openDrawer(){
         drawer_layout.openDrawer(GravityCompat.START)
-    }
-
-    @SuppressLint("RestrictedApi") //app:behavior_autoHide="false" in XML
-    fun toggleBottomNavigation(show: Boolean){
-        val desiredVisibility = if(show) View.VISIBLE else View.GONE
-//        bottom_app_bar.visibility = desiredVisibility
-//        fab.visibility = desiredVisibility
     }
 
     override fun onBackPressed() {

@@ -38,7 +38,6 @@ open class CalendarFragment : HomeFragment() {
     fun afterViews() {
         vm = ViewModelProviders.of(this).get(CalendarViewModel::class.java)
         initToolbar()
-        toggleBottomNav(true)
         initJourneysRecyclerView()
         initCalendar()
     }

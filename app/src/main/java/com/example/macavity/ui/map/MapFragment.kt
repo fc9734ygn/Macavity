@@ -23,7 +23,6 @@ open class MapFragment : HomeFragment() {
     fun afterViews() {
         vm = ViewModelProviders.of(this).get(MapViewModel::class.java)
         initToolbar()
-        toggleBottomNav(true)
         initMap()
     }
 

@@ -7,8 +7,4 @@ open class HomeFragment : BaseFragment() {
     fun openDrawer() {
         (activity as HomeActivity).openDrawer()
     }
-
-    fun toggleBottomNav(show: Boolean){
-        (activity as HomeActivity).toggleBottomNavigation(show)
-    }
 }

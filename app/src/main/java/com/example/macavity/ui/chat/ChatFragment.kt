@@ -27,7 +27,6 @@ open class ChatFragment : HomeFragment() {
     @AfterViews
     fun afterViews() {
         vm = ViewModelProviders.of(this).get(ChatViewModel::class.java)
-        toggleBottomNav(false)
         initToolbar()
         initChat()
     }
