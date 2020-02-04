@@ -4,6 +4,7 @@
     <string name="drawer_title_profile">Profile</string>
     <string name="drawer_title_group">Group</string>
     <string name="drawer_title_settings">Settings</string>
+    <string name="drawer_title_invite">Invite to group</string>
     <string name="bottom_nav_title_map">Map</string>
     <string name="bottom_nav_title_chat">Chat</string>
     <string name="bottom_nav_title_calendar">Calendar</string>
@@ -66,6 +67,12 @@
     <string name="add_journey_additional_note_title">Additional note</string>
     <string name="add_journey_note_hint">250 characters max</string>
     <string name="add_journey_time">%1$s:%2$s</string>
+    <!--Invite-->
+    <string name="invite_email_subject">Join our Macavity group!</string>
+    <string name="invite_email_body">Click the link below to join our group at Macavity app: \n\n%1$s</string>
+    <string name="invite_copy_success">Link copied to clipboard</string>
+    <string name="invite_toolbar_title">Invite friends</string>
+    <string name="invite_title">Share this link with a friend you wish to add to your group</string>
     <!--Keys-->
     <!--TODO: find a better solution-->
     <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>

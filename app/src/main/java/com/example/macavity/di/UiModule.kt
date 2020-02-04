@@ -9,6 +9,8 @@ import com.example.macavity.ui.editJourney.EditJourneyFragment_
 import com.example.macavity.ui.editProfile.EditProfileFragment_
 import com.example.macavity.ui.group.GroupFragment_
 import com.example.macavity.ui.home.HomeActivity_
+import com.example.macavity.ui.invite.InviteFragment
+import com.example.macavity.ui.invite.InviteFragment_
 import com.example.macavity.ui.journeyDetails.JourneyDetailFragment_
 import com.example.macavity.ui.map.MapFragment_
 import com.example.macavity.ui.profile.ProfileFragment_
@@ -77,6 +79,9 @@ abstract class UiModule {
 
     @ContributesAndroidInjector
     abstract fun contributeYourJourneysFragment(): UpcomingJourneysFragment_
+
+    @ContributesAndroidInjector
+    abstract fun contributeInviteFragment(): InviteFragment_
 
     //endregion
 }

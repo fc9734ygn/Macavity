@@ -12,6 +12,7 @@ import com.example.macavity.ui.createProfile.CreateProfileViewModel
 import com.example.macavity.ui.editJourney.EditJourneyViewModel
 import com.example.macavity.ui.editProfile.EditProfileViewModel
 import com.example.macavity.ui.home.HomeViewModel
+import com.example.macavity.ui.invite.InviteViewModel
 import com.example.macavity.ui.journeyDetails.JourneyDetailsViewModel
 import com.example.macavity.ui.map.MapViewModel
 import com.example.macavity.ui.profile.ProfileViewModel
@@ -120,6 +121,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(UpcomingJourneysViewModel::class)
     internal abstract fun yourJourneysViewModel(viewModel: UpcomingJourneysViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(InviteViewModel::class)
+    internal abstract fun inviteViewModel(viewModel: InviteViewModel): ViewModel
 
     //Add more ViewModels here
     //endregion

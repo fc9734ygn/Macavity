@@ -2,6 +2,8 @@ package com.example.macavity.utils
 
 import android.Manifest
 import android.app.Activity
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -13,6 +15,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
+import kotlinx.android.synthetic.main.fragment_invite.*
 
 
 fun sendEmail(context: Context, emailAddress: String, subject: String?, body: String?) {
@@ -48,4 +51,10 @@ fun callPhoneNumber(activity: Activity, phoneNumber: String) {
                 token?.continuePermissionRequest()
             }
         }).check()
+}
+
+fun copyToClipboard(context: Context, text: String){
+    val myClipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    val myClip: ClipData = ClipData.newPlainText("note", text)
+    myClipboard.setPrimaryClip(myClip)
 }

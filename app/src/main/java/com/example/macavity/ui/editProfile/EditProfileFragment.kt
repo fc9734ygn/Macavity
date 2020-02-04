@@ -102,7 +102,7 @@ open class EditProfileFragment : HomeFragment() {
             onAddressReceived(requestCode, data!!)
         } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
             val status: Status = Autocomplete.getStatusFromIntent(data!!)
-            showError(status.statusMessage)
+            toast(status.statusMessage)
         }
     }
 

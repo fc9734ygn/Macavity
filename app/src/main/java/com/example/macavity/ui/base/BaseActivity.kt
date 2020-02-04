@@ -41,7 +41,7 @@ open class BaseActivity : DaggerAppCompatActivity() {
             .build()
     }
 
-    fun showError(message: String? = getString(R.string.default_error_message)) {
+    fun toast(message: String? = getString(R.string.default_error_message)) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 

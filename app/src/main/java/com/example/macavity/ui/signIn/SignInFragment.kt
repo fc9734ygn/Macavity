@@ -6,7 +6,6 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.example.macavity.R
 import com.example.macavity.ui.base.AuthFragment
-import com.example.macavity.ui.base.BaseActivity
 import com.example.macavity.ui.home.HomeActivity_
 import com.example.macavity.utils.RC_SIGN_IN
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -19,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import org.androidannotations.annotations.Click
-import org.androidannotations.annotations.EActivity
 import org.androidannotations.annotations.EFragment
 
 
@@ -81,7 +79,7 @@ open class SignInFragment : AuthFragment() {
             val account = completedTask.getResult(ApiException::class.java)
             firebaseAuthWithGoogle(account!!)
         } catch (e: ApiException) {
-            showError(e.message)
+            toast(e.message)
         }
     }
 
@@ -93,7 +91,7 @@ open class SignInFragment : AuthFragment() {
                     val user = auth.currentUser
                     HomeActivity_.intent(this).start()
                 } else {
-                    showError(task.exception?.message)
+                    toast(task.exception?.message)
                 }
             }
     }

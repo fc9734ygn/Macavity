@@ -66,4 +66,9 @@
         android:id="@+id/addJourneyFragment_"
         android:name="com.example.macavity.ui.addJourney.AddJourneyFragment_"
         android:label="AddJourneyFragment_" />
+    <fragment
+        android:id="@+id/inviteFragment_"
+        android:name="com.example.macavity.ui.invite.InviteFragment_"
+        android:label="fragment_invite"
+        tools:layout="@layout/fragment_invite" />
 </navigation>

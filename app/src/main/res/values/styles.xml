@@ -1,8 +1,5 @@
 <resources>
-
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/blue_primary</item>
         <item name="colorPrimaryDark">@color/blue_dark</item>
         <item name="colorAccent">@color/amber_primary</item>
@@ -40,16 +37,26 @@
         <item name="android:textColor">@color/secondaryText</item>
         <item name="android:textSize">14sp</item>
     </style>
+
     <style name="calendar_month_header_item">
         <item name="android:textColor">@color/secondaryText</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
     </style>
-    <style name="default_button">
+
+    <style name="default_text_button">
         <item name="android:background">@drawable/background_button_selector</item>
         <item name="android:paddingEnd">8dp</item>
         <item name="android:paddingStart">8dp</item>
+    </style>
+
+    <style name="circle_button">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@drawable/background_button_selector</item>
+        <item name="android:tint">@color/white</item>
     </style>
 
 </resources>

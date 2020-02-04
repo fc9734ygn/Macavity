@@ -65,6 +65,4 @@ open class ProfileFragment : HomeFragment() {
     fun sendEmailToAddress() {
         sendEmail(context!!, email.text.toString(), null, null)
     }
-
-
 }
