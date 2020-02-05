@@ -35,7 +35,11 @@
     <fragment
         android:id="@+id/groupFragment_"
         android:name="com.example.macavity.ui.group.GroupFragment_"
-        android:label="GroupFragment_" />
+        android:label="GroupFragment_" >
+        <action
+            android:id="@+id/action_groupFragment__to_profileFragment_"
+            app:destination="@id/profileFragment_" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment_"
         android:name="com.example.macavity.ui.settings.SettingsFragment_"
