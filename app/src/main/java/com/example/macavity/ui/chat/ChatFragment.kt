@@ -3,8 +3,8 @@ package com.example.macavity.ui.chat
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.macavity.R
-import com.example.macavity.data.models.chat.Author
-import com.example.macavity.data.models.chat.Message
+import com.example.macavity.data.models.Author
+import com.example.macavity.data.models.Message
 import com.example.macavity.ui.base.HomeFragment
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.messages.MessageInput
@@ -44,7 +44,11 @@ open class ChatFragment : HomeFragment() {
             Message(
                 "1",
                 1578767340,
-                Author(dummyAvatarUrl, "John", "123123"),
+                Author(
+                    dummyAvatarUrl,
+                    "John",
+                    "123123"
+                ),
                 "yo"
             ), false
         )
@@ -52,7 +56,11 @@ open class ChatFragment : HomeFragment() {
             Message(
                 "2",
                 1578767440,
-                Author(dummyAvatarUrl, "Alan", "23f34f"),
+                Author(
+                    dummyAvatarUrl,
+                    "Alan",
+                    "23f34f"
+                ),
                 "sup"
             ), false
         )
@@ -60,7 +68,11 @@ open class ChatFragment : HomeFragment() {
             Message(
                 "3",
                 1578767740,
-                Author(dummyAvatarUrl, "Alan", "23f34f"),
+                Author(
+                    dummyAvatarUrl,
+                    "Alan",
+                    "23f34f"
+                ),
                 "need a ride?"
             ), false
         )
@@ -68,7 +80,11 @@ open class ChatFragment : HomeFragment() {
             Message(
                 "4",
                 1578767940,
-                Author(dummyAvatarUrl, "John", "123123"),
+                Author(
+                    dummyAvatarUrl,
+                    "John",
+                    "123123"
+                ),
                 "y bruv"
             ), false
         )
@@ -76,7 +92,11 @@ open class ChatFragment : HomeFragment() {
             Message(
                 "5",
                 1578768340,
-                Author(dummyAvatarUrl, "Alan", "23f34f"),
+                Author(
+                    dummyAvatarUrl,
+                    "Alan",
+                    "23f34f"
+                ),
                 "gimme 5"
             ), false
         )
@@ -84,7 +104,11 @@ open class ChatFragment : HomeFragment() {
             Message(
                 "6",
                 1578769340,
-                Author(dummyAvatarUrl, "John", "123123"),
+                Author(
+                    dummyAvatarUrl,
+                    "John",
+                    "123123"
+                ),
                 "cool"
             ), false
         )
@@ -97,7 +121,11 @@ open class ChatFragment : HomeFragment() {
         val message = Message(
             "1123123",
             System.currentTimeMillis(),
-            Author(dummyAvatarUrl, "Alan", "23f34f"),
+            Author(
+                dummyAvatarUrl,
+                "Alan",
+                "23f34f"
+            ),
             it.toString()
         )
         messageAdapter.addToStart(message, true)

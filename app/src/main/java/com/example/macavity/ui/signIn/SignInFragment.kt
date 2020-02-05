@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.macavity.R
 import com.example.macavity.ui.base.AuthFragment
 import com.example.macavity.ui.home.HomeActivity_
@@ -89,7 +90,7 @@ open class SignInFragment : AuthFragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
-                    HomeActivity_.intent(this).start()
+                    findNavController().navigate(R.id.action_signInFragment__to_tutorialFragment_)
                 } else {
                     toast(task.exception?.message)
                 }

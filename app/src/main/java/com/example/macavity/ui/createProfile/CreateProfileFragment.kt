@@ -4,9 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.ui.base.AuthFragment
+import com.example.macavity.ui.home.HomeActivity_
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
 import com.google.android.gms.common.api.Status
@@ -23,20 +25,20 @@ open class CreateProfileFragment : AuthFragment() {
     private lateinit var vm: CreateProfileViewModel
 
     @AfterViews
-    fun afterViews(){
+    fun afterViews() {
         vm = ViewModelProviders.of(this).get(CreateProfileViewModel::class.java)
         initToolbar()
         setAvatarImage("https://i.ytimg.com/vi/OIZqAOBJNOw/hqdefault.jpg")
     }
 
-    private fun initToolbar(){
+    private fun initToolbar() {
         toolbar.setTitle(getString(R.string.profile_create_toolbar_title))
             .setStartIcon(R.drawable.ic_arrow_back)
             .setEndIcon(R.drawable.ic_save)
 
         toolbar.startIconListener = { requireActivity().onBackPressed() }
-        //todo: finish nav
-        toolbar.endIconListener = {}
+        //todo: send new user data
+        toolbar.endIconListener = { HomeActivity_.intent(this).start()}
     }
 
     private fun setAvatarImage(url: String) {
@@ -69,8 +71,10 @@ open class CreateProfileFragment : AuthFragment() {
 
     private fun onAddressReceived(requestCode: Int, intent: Intent) {
         when (requestCode) {
-            RC_AUTO_COMPLETE_PLACE_LOCATION -> location.text = Autocomplete.getPlaceFromIntent(intent).address
-            RC_AUTO_COMPLETE_PLACE_DESTINATION -> destination.text = Autocomplete.getPlaceFromIntent(intent).address
+            RC_AUTO_COMPLETE_PLACE_LOCATION -> location.text =
+                Autocomplete.getPlaceFromIntent(intent).address
+            RC_AUTO_COMPLETE_PLACE_DESTINATION -> destination.text =
+                Autocomplete.getPlaceFromIntent(intent).address
         }
     }
 
@@ -97,7 +101,8 @@ open class CreateProfileFragment : AuthFragment() {
 
     @TextChange(resName = ["car_seats"])
     fun onCarSeatsTextChange() {
-        car_seats_title.visibility = if (car_seats.text.isNotBlank()) View.VISIBLE else View.INVISIBLE
+        car_seats_title.visibility =
+            if (car_seats.text.isNotBlank()) View.VISIBLE else View.INVISIBLE
     }
 
     @CheckedChange(resName = ["driver_switch"])

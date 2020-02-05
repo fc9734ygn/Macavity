@@ -114,5 +114,11 @@ dependencies {
 
     //Calendar UI
     implementation 'com.github.kizitonwose:CalendarView:0.3.2'
+
+    //Viewpager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    //Circle page indicator
+    implementation 'me.relex:circleindicator:2.1.4'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -1,5 +1,6 @@
-package com.example.macavity.data.models.chat
+package com.example.macavity.data.models
 
+import com.example.macavity.data.models.Author
 import com.example.macavity.utils.timestampToDate
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.commons.models.IUser
