@@ -144,13 +144,13 @@ open class CalendarFragment : HomeFragment() {
         )
         journeysAdapter.submitList(
             mutableListOf(
-                Journey("123", driver, 2, 1, listOf(driver), 42124432,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver, 2, 1, listOf(driver), 42124432,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver, 2, 1, listOf(driver), 42124432,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver, 2, 1, listOf(driver), 42124432,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver, 2, 1, listOf(driver), 42124432,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver, 4, 2, listOf(driver), 42142443,"will have to stop by the gas station, should take additional 10mins")
-            )
+                Journey("123", driver, 2,  listOf(driver), 1581065042000,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver, 2,  listOf(driver), 1581008042000,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver, 2,  listOf(driver), 1581004442000,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver, 2,  listOf(driver), 1581004642000,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver, 2,  listOf(driver), 1581004948000,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver, 4,  listOf(driver), 1581001042000,"will have to stop by the gas station, should take additional 10mins")
+            ).sortedBy { it.timeStamp }
         )
         journeysAdapter.notifyDataSetChanged()
     }

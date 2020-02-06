@@ -1,7 +1,6 @@
 package com.example.macavity.data.models
 
-import com.example.macavity.data.models.Author
-import com.example.macavity.utils.timestampToDate
+import com.example.macavity.utils.millisecondsToDate
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.commons.models.IUser
 import java.util.*
@@ -13,7 +12,7 @@ data class Message(val messageId: String, val timestamp: Long, val user: Author,
     }
 
     override fun getCreatedAt(): Date {
-        return timestampToDate(timestamp)
+        return millisecondsToDate(timestamp)
     }
 
     override fun getUser(): IUser {

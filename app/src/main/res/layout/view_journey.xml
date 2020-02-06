@@ -2,24 +2,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:clipChildren="false"
-    android:clipToPadding="false"
-    android:padding="4dp"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:elevation="10dp"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        app:cardCornerRadius="@dimen/default_card_view_corner_radius"
-        android:clipChildren="false"
-        android:layout_marginEnd="4dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/white"
+        android:clipChildren="false"
         android:clipToPadding="false"
         android:visibility="visible"
+        app:cardCornerRadius="@dimen/default_card_view_corner_radius"
+        app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,19 +28,21 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:clipToPadding="false"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:clipToPadding="false">
 
             <ImageView
                 android:id="@+id/driver_avatar"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/icon"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <ImageView
                 android:id="@+id/icon"
@@ -48,48 +51,40 @@
                 android:layout_marginBottom="8dp"
                 android:src="@drawable/ic_directions_car"
                 android:tint="@color/blue_primary"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/driver_avatar"
                 app:layout_constraintEnd_toEndOf="@+id/driver_avatar"
-                app:layout_constraintStart_toStartOf="@+id/driver_avatar" />
+                app:layout_constraintStart_toStartOf="@+id/driver_avatar"
+                app:layout_constraintTop_toBottomOf="@+id/driver_avatar" />
 
             <TextView
-                android:id="@+id/departure_title"
+                android:id="@+id/departure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Leaving at:"
-                android:textColor="@color/secondaryText"
-                app:layout_constraintBottom_toTopOf="@+id/seats_left_title"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/journey_leaving_in"
+                android:textAllCaps="true"
+                android:textColor="@color/blue_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/seats_left"
                 app:layout_constraintStart_toEndOf="@+id/driver_avatar"
-                app:layout_constraintTop_toTopOf="@+id/driver_avatar" />
-
-            <TextView
-                android:id="@+id/seats_left_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Seats left:"
-                android:textColor="@color/secondaryText"
-                app:layout_constraintStart_toStartOf="@+id/departure_title"
-                app:layout_constraintTop_toBottomOf="@+id/departure_title" />
-
-            <TextView
-                android:id="@+id/depature"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/secondaryText"
-                app:layout_constraintBaseline_toBaselineOf="@+id/departure_title"
-                app:layout_constraintStart_toEndOf="@+id/departure_title" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Leaving at:" />
 
             <TextView
                 android:id="@+id/seats_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/secondaryText"
-                app:layout_constraintBaseline_toBaselineOf="@+id/seats_left_title"
-                app:layout_constraintStart_toEndOf="@+id/seats_left_title" />
+                android:layout_marginBottom="16dp"
+                android:text="@string/journey_seats_left"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_light"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/departure"
+                app:layout_constraintTop_toBottomOf="@+id/departure"
+                tools:text="Seats left:" />
 
             <ImageView
                 android:id="@+id/arrow_icon"
@@ -105,6 +100,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

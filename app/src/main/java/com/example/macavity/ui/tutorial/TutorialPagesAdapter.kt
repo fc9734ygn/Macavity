@@ -5,12 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.macavity.R
-import com.example.macavity.data.models.TutorialPage
 import kotlinx.android.synthetic.main.view_tutorial_page.view.*
 
 
 class TutorialPagesAdapter : RecyclerView.Adapter<TutorialPagesAdapter.TutorialPageViewHolder>() {
-    private var list: List<TutorialPage> = listOf()
+    private var list: List<TutorialFragment.TutorialPage> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TutorialPageViewHolder {
         return TutorialPageViewHolder(parent)
@@ -20,7 +19,7 @@ class TutorialPagesAdapter : RecyclerView.Adapter<TutorialPagesAdapter.TutorialP
         holder.bind(list[position])
     }
 
-    fun setItem(list: List<TutorialPage>) {
+    fun setItem(list: List<TutorialFragment.TutorialPage>) {
         this.list = list
         notifyDataSetChanged()
     }
@@ -31,7 +30,7 @@ class TutorialPagesAdapter : RecyclerView.Adapter<TutorialPagesAdapter.TutorialP
         RecyclerView.ViewHolder(itemView) {
         constructor(parent: ViewGroup) :
                 this(LayoutInflater.from(parent.context).inflate(R.layout.view_tutorial_page, parent, false))
-        fun bind(model: TutorialPage) {
+        fun bind(model: TutorialFragment.TutorialPage) {
             itemView.text.text = itemView.context.getString(model.textResource)
             itemView.image.setImageResource(model.imageResource)
         }

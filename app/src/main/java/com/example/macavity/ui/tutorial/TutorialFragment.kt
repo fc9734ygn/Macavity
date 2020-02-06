@@ -1,17 +1,15 @@
 package com.example.macavity.ui.tutorial
 
+import android.graphics.Color
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.macavity.R
-import com.example.macavity.data.models.TutorialPage
 import com.example.macavity.ui.base.AuthFragment
-import com.example.macavity.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.fragment_tutorial.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click
-import org.androidannotations.annotations.EActivity
 import org.androidannotations.annotations.EFragment
 
 @EFragment(resName = "fragment_tutorial")
@@ -19,13 +17,14 @@ open class TutorialFragment : AuthFragment() {
 
     lateinit var vm: TutorialViewModel
     private val tutorialPagesAdapter = TutorialPagesAdapter()
+    data class TutorialPage(val textResource: Int, val imageResource: Int)
 
     private val tutorialPages = listOf(
-        TutorialPage(R.string.invite_email_subject, R.drawable.cat),
-        TutorialPage(R.string.invite_email_subject, R.drawable.cat),
-        TutorialPage(R.string.invite_email_subject, R.drawable.cat),
-        TutorialPage(R.string.invite_email_subject, R.drawable.cat),
-        TutorialPage(R.string.invite_email_subject, R.drawable.cat)
+        TutorialPage(R.string.tutorial_text_page_1, R.drawable.cat),
+        TutorialPage(R.string.tutorial_text_page_2, R.drawable.cat),
+        TutorialPage(R.string.tutorial_text_page_3, R.drawable.cat),
+        TutorialPage(R.string.tutorial_text_page_4, R.drawable.cat),
+        TutorialPage(R.string.tutorial_text_page_5, R.drawable.cat)
     )
 
     @AfterViews
@@ -60,4 +59,6 @@ open class TutorialFragment : AuthFragment() {
     fun goToCreateProfile(){
         findNavController().navigate(R.id.action_tutorialFragment__to_createProfileFragment_)
     }
+
 }
+

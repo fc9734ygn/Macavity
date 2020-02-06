@@ -6,6 +6,7 @@ import com.example.macavity.R
 import com.example.macavity.data.models.Author
 import com.example.macavity.data.models.Message
 import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.utils.millisecondsToSeconds
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.messages.MessageInput
 import com.stfalcon.chatkit.messages.MessagesListAdapter
@@ -43,7 +44,7 @@ open class ChatFragment : HomeFragment() {
         messageAdapter.addToStart(
             Message(
                 "1",
-                1578767340,
+                millisecondsToSeconds(1581004042000),
                 Author(
                     dummyAvatarUrl,
                     "John",
@@ -55,7 +56,7 @@ open class ChatFragment : HomeFragment() {
         messageAdapter.addToStart(
             Message(
                 "2",
-                1578767440,
+                millisecondsToSeconds(1581004042000),
                 Author(
                     dummyAvatarUrl,
                     "Alan",
@@ -67,7 +68,7 @@ open class ChatFragment : HomeFragment() {
         messageAdapter.addToStart(
             Message(
                 "3",
-                1578767740,
+                millisecondsToSeconds(1581004042000),
                 Author(
                     dummyAvatarUrl,
                     "Alan",
@@ -79,7 +80,7 @@ open class ChatFragment : HomeFragment() {
         messageAdapter.addToStart(
             Message(
                 "4",
-                1578767940,
+                millisecondsToSeconds(1581004042000),
                 Author(
                     dummyAvatarUrl,
                     "John",
@@ -91,7 +92,7 @@ open class ChatFragment : HomeFragment() {
         messageAdapter.addToStart(
             Message(
                 "5",
-                1578768340,
+                millisecondsToSeconds(1581004042000),
                 Author(
                     dummyAvatarUrl,
                     "Alan",
@@ -103,7 +104,7 @@ open class ChatFragment : HomeFragment() {
         messageAdapter.addToStart(
             Message(
                 "6",
-                1578769340,
+                millisecondsToSeconds(1581004042000),
                 Author(
                     dummyAvatarUrl,
                     "John",
@@ -120,7 +121,7 @@ open class ChatFragment : HomeFragment() {
         //TODO: send message to server and delete this placeholder
         val message = Message(
             "1123123",
-            System.currentTimeMillis(),
+            millisecondsToSeconds(System.currentTimeMillis()),
             Author(
                 dummyAvatarUrl,
                 "Alan",

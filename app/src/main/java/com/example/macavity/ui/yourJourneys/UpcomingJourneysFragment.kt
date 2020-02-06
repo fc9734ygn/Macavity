@@ -60,54 +60,48 @@ open class UpcomingJourneysFragment : HomeFragment() {
                     "123",
                     driver,
                     2,
-                    1,
                     listOf(driver),
-                    42124432,
+                    1581004042000,
+                    "will have to stop by the gas station, should take additional 10mins"
+                ),
+                Journey(
+                    "123",
+                    driver,
+                    5,
+                    listOf(driver),
+                    1581004542000,
+                    "will have to stop by the gas station, should take additional 10mins"
+                ), Journey(
+                    "123",
+                    driver,
+                    4,
+                    listOf(driver),
+                    1583004042000,
+                    "will have to stop by the gas station, should take additional 10mins"
+                ), Journey(
+                    "123",
+                    driver,
+                    2,
+                    listOf(driver),
+                    1581022042000,
+                    "will have to stop by the gas station, should take additional 10mins"
+                ), Journey(
+                    "123",
+                    driver,
+                    3,
+                    listOf(driver),
+                    1581004062000,
                     "will have to stop by the gas station, should take additional 10mins"
                 ),
                 Journey(
                     "123",
                     driver,
                     2,
-                    1,
                     listOf(driver),
-                    42124432,
-                    "will have to stop by the gas station, should take additional 10mins"
-                ), Journey(
-                    "123",
-                    driver,
-                    2,
-                    1,
-                    listOf(driver),
-                    42124432,
-                    "will have to stop by the gas station, should take additional 10mins"
-                ), Journey(
-                    "123",
-                    driver,
-                    2,
-                    1,
-                    listOf(driver),
-                    42124432,
-                    "will have to stop by the gas station, should take additional 10mins"
-                ), Journey(
-                    "123",
-                    driver,
-                    2,
-                    1,
-                    listOf(driver),
-                    42124432,
-                    "will have to stop by the gas station, should take additional 10mins"
-                ),
-                Journey(
-                    "123",
-                    driver,
-                    2,
-                    1,
-                    listOf(driver),
-                    42124432,
+                    1581004042200,
                     "will have to stop by the gas station, should take additional 10mins"
                 )
-            )
+            ).sortedBy { it.timeStamp }
         )
     }
 }

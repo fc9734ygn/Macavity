@@ -14,7 +14,7 @@
     <string name="toolbar_title_chat">Chat</string>
     <!--Calendar-->
     <string name="toolbar_title_calendar">Calendar</string>
-    <string name="item_journey_seats_left">%1$d / %2$d</string>
+    <string name="item_journey_seats_left">Seats left: %1$d</string>
     <string name="calendar_header_item_monday">M</string>
     <string name="calendar_header_item_tuesday">T</string>
     <string name="calendar_header_item_wednesday">W</string>
@@ -75,6 +75,11 @@
     <string name="invite_title">Share this link with a friend you wish to add to your group</string>
     <!--Tutorial-->
     <string name="tutorial_toolbar_title">Tutorial</string>
+    <string name="tutorial_text_page_1">Here you learn something</string>
+    <string name="tutorial_text_page_2">Something else here</string>
+    <string name="tutorial_text_page_3">Some tips over here</string>
+    <string name="tutorial_text_page_4">You\'re almost done with learning</string>
+    <string name="tutorial_text_page_5">You\'re basically a pro now</string>
     <!--Keys-->
     <!--TODO: find a better solution-->
     <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>
@@ -82,4 +87,7 @@
     <!--Global-->
     <string name="app_name">Macavity</string>
     <string name="default_error_message">Oops, something went wrong</string>
+    <string name="journey_leaving_in">Leaving %1$s</string>
+    <string name="journey_seats_left">Seats left:</string>
+    <string name="sign_in_toolbar_title">Sign in</string>
 </resources>

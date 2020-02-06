@@ -49,7 +49,7 @@ open class JourneyDetailFragment : HomeFragment() {
             4,
             41,
             23
-        ), 4, 2, listOf(
+        ), 4,  listOf(
             User(
                 "123",
                 "Rachel",
@@ -126,7 +126,7 @@ open class JourneyDetailFragment : HomeFragment() {
             map.uiSettings.isScrollGesturesEnabled = false
             map.uiSettings.isRotateGesturesEnabled = false
             map.addMarker(MarkerOptions().position(london).title("Marker"))
-            map.moveCamera(CameraUpdateFactory.newLatLng(london))
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(london, 10f))
         }
     }
 
@@ -136,7 +136,7 @@ open class JourneyDetailFragment : HomeFragment() {
         setDriverAvatar(journey.driver.avatarUrl)
         //TODO: format date
         leaving_at.text = String.format(getString(R.string.journey_details_leaving_at), journey.timeStamp)
-        seats.text = String.format(getString(R.string.journey_details_seats), journey.takenSeats, journey.freeSeats)
+        seats.text = String.format(getString(R.string.journey_details_seats), journey.passengers.size, journey.freeSeats)
         car_number_plate.text = String.format(getString(R.string.journey_details_car_number_plate), journey.driver.carNumberPlate)
         drivers_note.text = journey.note
         drivers_note_card.visibility = if (journey.note.isNullOrBlank()) View.GONE else View.VISIBLE

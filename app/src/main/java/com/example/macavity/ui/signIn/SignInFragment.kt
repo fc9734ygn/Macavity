@@ -13,11 +13,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.fragment_sign_in.*
+import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EFragment
 
@@ -29,13 +31,13 @@ open class SignInFragment : AuthFragment() {
     private lateinit var vm: SignInViewModel
     private lateinit var auth: FirebaseAuth
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    @AfterViews
+    fun afterViews(){
         buildGoogleSignInClient()
         vm = ViewModelProviders.of(this).get(SignInViewModel::class.java)
         auth = FirebaseAuth.getInstance()
         auth.uid
+        initToolbar()
     }
 
     override fun onStart() {
@@ -43,10 +45,15 @@ open class SignInFragment : AuthFragment() {
         checkAccountStatus()
     }
 
+    private fun initToolbar(){
+        toolbar.setTitle(getString(R.string.sign_in_toolbar_title))
+    }
+
     private fun checkAccountStatus() {
         val currentUser = auth.currentUser
         if (currentUser == null) {
             sign_in_button.visibility = View.VISIBLE
+            sign_in_button.setSize(SignInButton.SIZE_WIDE)
         } else {
             HomeActivity_.intent(this).start()
         }
