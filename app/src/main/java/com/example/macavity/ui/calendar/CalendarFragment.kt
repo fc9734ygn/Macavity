@@ -134,7 +134,37 @@ open class CalendarFragment : HomeFragment() {
             "University of Kent",
             Pair(123.00, 123.00),
             Pair(23.2, 12.2),
-            "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc=",
+            "https://ak8.picdn.net/shutterstock/videos/17741938/thumb/1.jpg",
+            "asd",
+            "asd",
+            true,
+            "asd",
+            5
+            , 2, 2
+        )
+        val driver2 = User(
+            "123",
+            "Eddie",
+            "Kings Ave 22",
+            "University of Kent",
+            Pair(123.00, 123.00),
+            Pair(23.2, 12.2),
+            "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "asd",
+            "asd",
+            true,
+            "asd",
+            5
+            , 2, 2
+        )
+        val driver3 = User(
+            "123",
+            "Eddie",
+            "Kings Ave 22",
+            "University of Kent",
+            Pair(123.00, 123.00),
+            Pair(23.2, 12.2),
+            "https://media.istockphoto.com/photos/happiness-translates-into-beauty-picture-id610678842?k=6&m=610678842&s=612x612&w=0&h=QA3ZVcH2VzYlrUKjtjMHwBJ6YzQRYDHCztYrjuOPb8w=",
             "asd",
             "asd",
             true,
@@ -144,12 +174,9 @@ open class CalendarFragment : HomeFragment() {
         )
         journeysAdapter.submitList(
             mutableListOf(
-                Journey("123", driver, 2,  listOf(driver), 1581065042000,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver, 2,  listOf(driver), 1581008042000,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver, 2,  listOf(driver), 1581004442000,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver, 2,  listOf(driver), 1581004642000,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver, 2,  listOf(driver), 1581004948000,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver, 4,  listOf(driver), 1581001042000,"will have to stop by the gas station, should take additional 10mins")
+                Journey("123", driver, 2,  listOf(driver), 1581459108000,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver2, 2,  listOf(driver), 1581479108000,"will have to stop by the gas station, should take additional 10mins"),
+                Journey("123", driver3, 4,  listOf(driver), 1581499108000,"will have to stop by the gas station, should take additional 10mins")
             ).sortedBy { it.timeStamp }
         )
         journeysAdapter.notifyDataSetChanged()

@@ -23,7 +23,7 @@ open class ChatFragment : HomeFragment() {
     private lateinit var messageAdapter: MessagesListAdapter<Message>
     //TODO: remove dummy data
     private val dummyAvatarUrl =
-        "https://66.media.tumblr.com/4c69fcb24a6d09010e6f818b31eba7c5/tumblr_po8044mLw21truxr0_540.jpg"
+        "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc="
 
     @AfterViews
     fun afterViews() {
@@ -37,7 +37,7 @@ open class ChatFragment : HomeFragment() {
         //TODO: use real data
         val dummySenderId = "23f34f"
         val imageLoader =
-            ImageLoader { imageView, url, _ -> Glide.with(requireActivity()).load(url).centerCrop().into(imageView) }
+            ImageLoader { imageView, url, _ -> Glide.with(requireActivity()).load(url).circleCrop().into(imageView) }
 
         messageAdapter = MessagesListAdapter(dummySenderId, imageLoader)
         messages_list.setAdapter(messageAdapter)
@@ -50,19 +50,7 @@ open class ChatFragment : HomeFragment() {
                     "John",
                     "123123"
                 ),
-                "yo"
-            ), false
-        )
-        messageAdapter.addToStart(
-            Message(
-                "2",
-                millisecondsToSeconds(1581004042000),
-                Author(
-                    dummyAvatarUrl,
-                    "Alan",
-                    "23f34f"
-                ),
-                "sup"
+                "I need to stop by the post office tomorrow in the morning"
             ), false
         )
         messageAdapter.addToStart(
@@ -74,7 +62,7 @@ open class ChatFragment : HomeFragment() {
                     "Alan",
                     "23f34f"
                 ),
-                "need a ride?"
+                "How long should it take?"
             ), false
         )
         messageAdapter.addToStart(
@@ -86,7 +74,7 @@ open class ChatFragment : HomeFragment() {
                     "John",
                     "123123"
                 ),
-                "y bruv"
+                "Just a few minutes"
             ), false
         )
         messageAdapter.addToStart(
@@ -98,7 +86,7 @@ open class ChatFragment : HomeFragment() {
                     "Alan",
                     "23f34f"
                 ),
-                "gimme 5"
+                "Alright, maybe we can leave 5 minutes earlier then?"
             ), false
         )
         messageAdapter.addToStart(
@@ -110,7 +98,7 @@ open class ChatFragment : HomeFragment() {
                     "John",
                     "123123"
                 ),
-                "cool"
+                "Yeah, sure. See you tomorrow"
             ), false
         )
 

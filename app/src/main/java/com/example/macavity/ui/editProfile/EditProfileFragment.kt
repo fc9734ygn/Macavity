@@ -34,7 +34,7 @@ open class EditProfileFragment : HomeFragment() {
         initToolbar()
 
         //TODO: use real data
-        val avatar = "https://i.ytimg.com/vi/OIZqAOBJNOw/hqdefault.jpg"
+        val avatar = "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc="
         user = User(
             "123",
             "Alan",

@@ -34,7 +34,7 @@ open class MapFragment : HomeFragment() {
             map = googleMap
             val london = LatLng(52.0, 0.0)
             map.addMarker(MarkerOptions().position(london).title("Marker"))
-            map.moveCamera(CameraUpdateFactory.newLatLng(london))
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(london, 10f))
         }
     }
 
@@ -44,5 +44,4 @@ open class MapFragment : HomeFragment() {
 
         toolbar.startIconListener = { openDrawer() }
     }
-
 }

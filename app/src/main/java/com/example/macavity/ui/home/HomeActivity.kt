@@ -46,7 +46,7 @@ open class HomeActivity : BaseActivity() {
         val header: View = nav_view.getHeaderView(0)
         header.header_user_name.text = "John Smith"
         Glide.with(this)
-            .load("https://66.media.tumblr.com/4c69fcb24a6d09010e6f818b31eba7c5/tumblr_po8044mLw21truxr0_540.jpg")
+            .load("https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc=")
             .circleCrop()
             .placeholder(R.drawable.ic_person)
             .error(R.drawable.ic_clear)

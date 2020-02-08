@@ -54,14 +54,44 @@ open class UpcomingJourneysFragment : HomeFragment() {
             5
             , 2, 2
         )
+        val driver1 = User(
+            "123",
+            "John",
+            "Kings Ave 22",
+            "University of Kent",
+            Pair(123.00, 123.00),
+            Pair(23.2, 12.2),
+            "https://media.istockphoto.com/photos/happiness-translates-into-beauty-picture-id610678842?k=6&m=610678842&s=612x612&w=0&h=QA3ZVcH2VzYlrUKjtjMHwBJ6YzQRYDHCztYrjuOPb8w=",
+            "asd",
+            "asd",
+            true,
+            "asd",
+            5
+            , 2, 2
+        )
+        val driver2 = User(
+            "123",
+            "John",
+            "Kings Ave 22",
+            "University of Kent",
+            Pair(123.00, 123.00),
+            Pair(23.2, 12.2),
+            "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "asd",
+            "asd",
+            true,
+            "asd",
+            5
+            , 2, 2
+        )
         journeysAdapter.submitList(
             mutableListOf(
                 Journey(
                     "123",
-                    driver,
+                    driver1,
                     2,
                     listOf(driver),
-                    1581004042000,
+                    1581459108000,
                     "will have to stop by the gas station, should take additional 10mins"
                 ),
                 Journey(
@@ -69,36 +99,28 @@ open class UpcomingJourneysFragment : HomeFragment() {
                     driver,
                     5,
                     listOf(driver),
-                    1581004542000,
+                    1581499108000,
                     "will have to stop by the gas station, should take additional 10mins"
                 ), Journey(
                     "123",
-                    driver,
+                    driver1,
                     4,
                     listOf(driver),
-                    1583004042000,
+                    1581559108000,
                     "will have to stop by the gas station, should take additional 10mins"
                 ), Journey(
                     "123",
-                    driver,
+                    driver2,
                     2,
                     listOf(driver),
-                    1581022042000,
+                    1581659108000,
                     "will have to stop by the gas station, should take additional 10mins"
                 ), Journey(
                     "123",
                     driver,
                     3,
                     listOf(driver),
-                    1581004062000,
-                    "will have to stop by the gas station, should take additional 10mins"
-                ),
-                Journey(
-                    "123",
-                    driver,
-                    2,
-                    listOf(driver),
-                    1581004042200,
+                    1581759108000,
                     "will have to stop by the gas station, should take additional 10mins"
                 )
             ).sortedBy { it.timeStamp }

@@ -20,6 +20,11 @@ import kotlinx.android.synthetic.main.fragment_journey_detail.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EFragment
+import org.threeten.bp.Instant
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.ZoneId
+import org.threeten.bp.format.DateTimeFormatter
+
 
 @EFragment(resName = "fragment_journey_detail")
 open class JourneyDetailFragment : HomeFragment() {
@@ -133,13 +138,24 @@ open class JourneyDetailFragment : HomeFragment() {
     private fun setData(journey: Journey) {
         name_driver.text = journey.driver.name
         stat_driver.text = String.format(getString(R.string.journey_details_driver_stat), journey.driver.driverStat)
-        setDriverAvatar(journey.driver.avatarUrl)
-        //TODO: format date
-        leaving_at.text = String.format(getString(R.string.journey_details_leaving_at), journey.timeStamp)
+
+        setDate(journey.timeStamp)
+
         seats.text = String.format(getString(R.string.journey_details_seats), journey.passengers.size, journey.freeSeats)
         car_number_plate.text = String.format(getString(R.string.journey_details_car_number_plate), journey.driver.carNumberPlate)
         drivers_note.text = journey.note
         drivers_note_card.visibility = if (journey.note.isNullOrBlank()) View.GONE else View.VISIBLE
+        setDriverAvatar(journey.driver.avatarUrl)
+    }
+
+    private fun setDate(timeStamp: Long){
+        val dateFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM HH:mm ")
+        val date = LocalDateTime.ofInstant(
+            Instant.ofEpochMilli(timeStamp),
+            ZoneId.systemDefault()
+        )
+
+        leaving_at.text = String.format(getString(R.string.journey_details_leaving_at), dateFormatter.format(date))
     }
 
     private fun setDriverAvatar(url: String) {
