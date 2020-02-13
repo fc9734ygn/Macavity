@@ -4,6 +4,8 @@ import com.example.macavity.ui.addJourney.AddJourneyFragment_
 import com.example.macavity.ui.auth.AuthActivity_
 import com.example.macavity.ui.calendar.CalendarFragment_
 import com.example.macavity.ui.chat.ChatFragment_
+import com.example.macavity.ui.createGroup.CreateGroupFragment
+import com.example.macavity.ui.createGroup.CreateGroupFragment_
 import com.example.macavity.ui.createProfile.CreateProfileFragment_
 import com.example.macavity.ui.editJourney.EditJourneyFragment_
 import com.example.macavity.ui.editProfile.EditProfileFragment_
@@ -82,6 +84,9 @@ abstract class UiModule {
 
     @ContributesAndroidInjector
     abstract fun contributeInviteFragment(): InviteFragment_
+
+    @ContributesAndroidInjector
+    abstract fun contributeCreateGroupFragment(): CreateGroupFragment_
 
     //endregion
 }

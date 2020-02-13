@@ -38,7 +38,7 @@ open class CreateProfileFragment : AuthFragment() {
 
         toolbar.startIconListener = { requireActivity().onBackPressed() }
         //todo: send new user data
-        toolbar.endIconListener = { HomeActivity_.intent(this).start()}
+        toolbar.endIconListener = { findNavController().navigate(R.id.action_createProfileFragment__to_createGroupFragment_)}
     }
 
     private fun setAvatarImage(url: String) {

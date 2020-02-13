@@ -8,6 +8,7 @@ import com.example.macavity.ui.auth.AuthViewModel
 import com.example.macavity.ui.base.BaseViewModel
 import com.example.macavity.ui.calendar.CalendarViewModel
 import com.example.macavity.ui.chat.ChatViewModel
+import com.example.macavity.ui.createGroup.CreateGroupViewModel
 import com.example.macavity.ui.createProfile.CreateProfileViewModel
 import com.example.macavity.ui.editJourney.EditJourneyViewModel
 import com.example.macavity.ui.editProfile.EditProfileViewModel
@@ -126,6 +127,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(InviteViewModel::class)
     internal abstract fun inviteViewModel(viewModel: InviteViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CreateGroupViewModel::class)
+    internal abstract fun createGroupViewModel(viewModel: CreateGroupViewModel): ViewModel
 
     //Add more ViewModels here
     //endregion

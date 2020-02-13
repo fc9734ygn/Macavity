@@ -59,8 +59,10 @@
     <string name="journey_details_title_journey">Journey</string>
     <string name="journey_details_title_passengers">Passengers</string>
     <string name="journey_details_title_drivers_note">Note from the driver</string>
-    <!--Your Journeys-->
+    <!--Upcoming Journeys-->
     <string name="toolbar_title_your_journeys">Upcoming journeys</string>
+    <string name="journey_leaving_in">Leaving %1$s</string>
+    <string name="journey_seats_left">Seats left:</string>
     <!--Add Journey-->
     <string name="add_journey_departure_time_title">Departure time</string>
     <string name="add_journey_available_seats_title">Available seats</string>
@@ -80,6 +82,13 @@
     <string name="tutorial_text_page_3">Some tips over here</string>
     <string name="tutorial_text_page_4">You\'re almost done with learning</string>
     <string name="tutorial_text_page_5">You\'re basically a pro now</string>
+    <!--Create Group-->
+    <string name="create_group_toolbar_title">Welcome</string>
+    <string name="create_group_description">To use the application you must be a part of a group. To join an existing group please ask a member of a group for an invitation link. Otherwise create a new group.</string>
+    <string name="create_group_button">Create Group</string>
+    <!--Sign In-->
+    <string name="sign_in_toolbar_title">Sign in</string>
+    <string name="sign_in_description">We take your privacy and security seriously, that\'s why we only allow trusted and secure sign in method.</string>
     <!--Keys-->
     <!--TODO: find a better solution-->
     <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>
@@ -87,7 +96,4 @@
     <!--Global-->
     <string name="app_name">Macavity</string>
     <string name="default_error_message">Oops, something went wrong</string>
-    <string name="journey_leaving_in">Leaving %1$s</string>
-    <string name="journey_seats_left">Seats left:</string>
-    <string name="sign_in_toolbar_title">Sign in</string>
 </resources>
