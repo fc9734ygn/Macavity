@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.macavity.R
+import com.example.macavity.data.models.Location
 import com.example.macavity.data.models.User
 import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
@@ -34,14 +35,13 @@ open class EditProfileFragment : HomeFragment() {
         initToolbar()
 
         //TODO: use real data
+        val loc1 = Location("Kings Ave 22", Pair(2.0, 2.1))
         val avatar = "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc="
         user = User(
             "123",
             "Alan",
-            "45 Knight Avenue",
-            "55 Wolf street",
-            Pair(1.2, 0.2),
-            Pair(2.0, 3.1),
+            loc1,
+            loc1,
             avatar,
             "johndoe@gmail.com",
             "+442131233212",
@@ -58,8 +58,8 @@ open class EditProfileFragment : HomeFragment() {
         name.setText(user.name)
         phone.setText(user.phoneNumber)
         email.setText(user.email)
-        location.text = user.locationAddress
-        destination.text = user.destinationAddress
+        location.text = user.home.address
+        destination.text = user.destination.address
         setAvatarImage(user.avatarUrl)
         driver_switch.isChecked = user.isDriver
         car_number_plate.setText(user.carNumberPlate)

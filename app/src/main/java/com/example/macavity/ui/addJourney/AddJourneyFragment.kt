@@ -2,6 +2,7 @@ package com.example.macavity.ui.addJourney
 
 import androidx.lifecycle.ViewModelProviders
 import com.example.macavity.R
+import com.example.macavity.data.models.Location
 import com.example.macavity.data.models.User
 
 import com.example.macavity.ui.base.HomeFragment
@@ -22,13 +23,12 @@ open class AddJourneyFragment : HomeFragment() {
         vm = ViewModelProviders.of(this).get(AddJourneyViewModel::class.java)
         initToolbar()
         //todo: use real data
+        val loc1 = Location("Kings Ave 22", Pair(2.0, 2.1))
         val user = User(
             "123",
             "John",
-            "Kings Ave 22",
-            "University of Kent",
-            Pair(123.00, 123.00),
-            Pair(23.2, 12.2),
+            loc1,
+            loc1,
             "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc=",
             "asd",
             "asd",

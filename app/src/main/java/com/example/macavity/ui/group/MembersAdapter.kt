@@ -27,10 +27,8 @@ class MembersAdapter(private val itemClickListener: (User) -> Unit = {}) :
                     && oldItem.phoneNumber == newItem.phoneNumber
                     && oldItem.isDriver == newItem.isDriver
                     && oldItem.name == newItem.name
-                    && oldItem.locationAddress == newItem.locationAddress
-                    && oldItem.destinationAddress == newItem.destinationAddress
-                    && oldItem.locationCoordinate == newItem.locationCoordinate
-                    && oldItem.destinationCoordinate == newItem.destinationCoordinate
+                    && oldItem.home == newItem.home
+                    && oldItem.destination == newItem.destination
                     && oldItem.carNumberPlate == newItem.carNumberPlate
                     && oldItem.carFreeSeats == newItem.carFreeSeats
         }

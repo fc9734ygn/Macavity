@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.macavity.R
 import com.example.macavity.data.models.Journey
+import com.example.macavity.data.models.Location
 import com.example.macavity.data.models.User
 
 import com.example.macavity.ui.base.HomeFragment
@@ -127,13 +128,12 @@ open class CalendarFragment : HomeFragment() {
 
     private fun updateAdapterForDate(date: LocalDate) {
         //todo: use real data
+        val loc1 = Location("Kings Ave 22", Pair(2.0, 2.1))
         val driver = User(
             "123",
             "John",
-            "Kings Ave 22",
-            "University of Kent",
-            Pair(123.00, 123.00),
-            Pair(23.2, 12.2),
+            loc1,
+            loc1,
             "https://ak8.picdn.net/shutterstock/videos/17741938/thumb/1.jpg",
             "asd",
             "asd",
@@ -145,10 +145,8 @@ open class CalendarFragment : HomeFragment() {
         val driver2 = User(
             "123",
             "Eddie",
-            "Kings Ave 22",
-            "University of Kent",
-            Pair(123.00, 123.00),
-            Pair(23.2, 12.2),
+            loc1,
+            loc1,
             "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             "asd",
             "asd",
@@ -160,10 +158,8 @@ open class CalendarFragment : HomeFragment() {
         val driver3 = User(
             "123",
             "Eddie",
-            "Kings Ave 22",
-            "University of Kent",
-            Pair(123.00, 123.00),
-            Pair(23.2, 12.2),
+            loc1,
+            loc1,
             "https://media.istockphoto.com/photos/happiness-translates-into-beauty-picture-id610678842?k=6&m=610678842&s=612x612&w=0&h=QA3ZVcH2VzYlrUKjtjMHwBJ6YzQRYDHCztYrjuOPb8w=",
             "asd",
             "asd",
