@@ -11,6 +11,8 @@ import com.example.macavity.data.models.User
 import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
+import com.example.macavity.utils.isValidEmail
+import com.example.macavity.utils.isValidPhoneNumber
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
@@ -73,7 +75,48 @@ open class EditProfileFragment : HomeFragment() {
 
         toolbar.startIconListener = { requireActivity().onBackPressed() }
         //TODO: save changes
-        toolbar.endIconListener = {}
+        toolbar.endIconListener = { verifyUserInput() }
+    }
+
+    private fun verifyUserInput() {
+        var isDataCorrect = true
+        if (name.text.isNullOrBlank()) {
+            showRedBorder(name)
+            isDataCorrect = false
+        }
+        if (phone.text.isNullOrBlank() || !isValidPhoneNumber(phone.text)) {
+            showRedBorder(phone)
+            isDataCorrect = false
+        }
+        if (email.text.isNullOrBlank() || !isValidEmail(email.text)) {
+            showRedBorder(email)
+            isDataCorrect = false
+        }
+        if (location.text.isNullOrBlank()) {
+            showRedBorder(location)
+            isDataCorrect = false
+        }
+        if (destination.text.isNullOrBlank()) {
+            showRedBorder(destination)
+            isDataCorrect = false
+        }
+        if (driver_switch.isChecked && car_number_plate.text.isNullOrBlank()) {
+            showRedBorder(car_number_plate)
+            isDataCorrect = false
+        }
+        if (driver_switch.isChecked && car_seats.text.isNullOrBlank()) {
+            showRedBorder(car_seats)
+            isDataCorrect = false
+        }
+        if (isDataCorrect){
+            //todo: save changes instead of onbackpressed
+            requireActivity().onBackPressed()
+        }
+    }
+
+
+    private fun showRedBorder(view: View) {
+        view.background = resources.getDrawable(R.drawable.background_grey_rounded_red_border, null)
     }
 
     private fun setAvatarImage(url: String) {

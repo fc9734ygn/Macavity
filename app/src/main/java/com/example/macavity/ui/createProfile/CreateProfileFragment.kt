@@ -8,9 +8,10 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.ui.base.AuthFragment
-import com.example.macavity.ui.home.HomeActivity_
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
+import com.example.macavity.utils.isValidPhoneNumber
+import com.example.macavity.utils.isValidEmail
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
@@ -38,7 +39,47 @@ open class CreateProfileFragment : AuthFragment() {
 
         toolbar.startIconListener = { requireActivity().onBackPressed() }
         //todo: send new user data
-        toolbar.endIconListener = { findNavController().navigate(R.id.action_createProfileFragment__to_createGroupFragment_)}
+        toolbar.endIconListener = { verifyUserInput() }
+    }
+
+    private fun verifyUserInput() {
+        var isDataCorrect = true
+        if (name.text.isNullOrBlank()) {
+            showRedBorder(name)
+            isDataCorrect = false
+        }
+        if (phone.text.isNullOrBlank() || !isValidPhoneNumber(phone.text)) {
+            showRedBorder(phone)
+            isDataCorrect = false
+        }
+        if (email.text.isNullOrBlank() || !isValidEmail(email.text)) {
+            showRedBorder(email)
+            isDataCorrect = false
+        }
+        if (location.text.isNullOrBlank()) {
+            showRedBorder(location)
+            isDataCorrect = false
+        }
+        if (destination.text.isNullOrBlank()) {
+            showRedBorder(destination)
+            isDataCorrect = false
+        }
+        if (driver_switch.isChecked && car_number_plate.text.isNullOrBlank()) {
+            showRedBorder(car_number_plate)
+            isDataCorrect = false
+        }
+        if (driver_switch.isChecked && car_seats.text.isNullOrBlank()) {
+            showRedBorder(car_seats)
+            isDataCorrect = false
+        }
+        if (isDataCorrect){
+            //todo: create profile
+            findNavController().navigate(R.id.action_createProfileFragment__to_createGroupFragment_)
+        }
+    }
+
+    private fun showRedBorder(view: View) {
+        view.background = resources.getDrawable(R.drawable.background_grey_rounded_red_border, null)
     }
 
     private fun setAvatarImage(url: String) {
@@ -81,28 +122,34 @@ open class CreateProfileFragment : AuthFragment() {
     @TextChange(resName = ["name"])
     fun onNameTextChange() {
         name_title.visibility = if (name.text.isNotBlank()) View.VISIBLE else View.INVISIBLE
+        name.background = resources.getDrawable(R.drawable.background_grey_rounded, null)
     }
 
     @TextChange(resName = ["phone"])
     fun onPhoneTextChange() {
         phone_title.visibility = if (phone.text.isNotBlank()) View.VISIBLE else View.INVISIBLE
+        phone.background = resources.getDrawable(R.drawable.background_grey_rounded, null)
     }
 
     @TextChange(resName = ["email"])
     fun onEmailTextChange() {
         email_title.visibility = if (email.text.isNotBlank()) View.VISIBLE else View.INVISIBLE
+        email.background = resources.getDrawable(R.drawable.background_grey_rounded, null)
     }
 
     @TextChange(resName = ["car_number_plate"])
     fun onCarNumberTextChange() {
         car_number_plate_title.visibility =
             if (car_number_plate.text.isNotBlank()) View.VISIBLE else View.INVISIBLE
+        car_number_plate.background =
+            resources.getDrawable(R.drawable.background_grey_rounded, null)
     }
 
     @TextChange(resName = ["car_seats"])
     fun onCarSeatsTextChange() {
         car_seats_title.visibility =
             if (car_seats.text.isNotBlank()) View.VISIBLE else View.INVISIBLE
+        car_seats.background = resources.getDrawable(R.drawable.background_grey_rounded, null)
     }
 
     @CheckedChange(resName = ["driver_switch"])
