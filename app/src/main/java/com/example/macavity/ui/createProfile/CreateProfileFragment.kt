@@ -3,10 +3,13 @@ package com.example.macavity.ui.createProfile
 import android.app.Activity
 import android.content.Intent
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.macavity.R
+import com.example.macavity.data.models.Location
+import com.example.macavity.di.ViewModelFactory
 import com.example.macavity.ui.base.AuthFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
@@ -19,17 +22,32 @@ import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import kotlinx.android.synthetic.main.fragment_create_profile.*
 import org.androidannotations.annotations.*
+import javax.inject.Inject
 
 @EFragment(resName = "fragment_create_profile")
 open class CreateProfileFragment : AuthFragment() {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
     private lateinit var vm: CreateProfileViewModel
+
+    private val profileCreationObserver = Observer<Boolean> {
+        if (it){
+            findNavController().navigate(R.id.action_createProfileFragment__to_createGroupFragment_)
+        }
+    }
+
+    //use real img
+    val profileImg =
+        "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc="
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(CreateProfileViewModel::class.java)
+        vm = ViewModelProviders.of(this, this.viewModelFactory).get(CreateProfileViewModel::class.java)
+        vm.profileCreatedSuccess.observe(this, profileCreationObserver)
         initToolbar()
-        setAvatarImage("https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc=")
+        setAvatarImage(profileImg)
     }
 
     private fun initToolbar() {
@@ -38,7 +56,6 @@ open class CreateProfileFragment : AuthFragment() {
             .setEndIcon(R.drawable.ic_save)
 
         toolbar.startIconListener = { requireActivity().onBackPressed() }
-        //todo: send new user data
         toolbar.endIconListener = { verifyUserInput() }
     }
 
@@ -72,9 +89,16 @@ open class CreateProfileFragment : AuthFragment() {
             showRedBorder(car_seats)
             isDataCorrect = false
         }
-        if (isDataCorrect){
-            //todo: create profile
-            findNavController().navigate(R.id.action_createProfileFragment__to_createGroupFragment_)
+        if (isDataCorrect) {
+            vm.createProfile(
+                name.text.toString(),
+                profileImg,
+                email.text.toString(),
+                phone.text.toString(),
+                driver_switch.isChecked,
+                car_number_plate.text.toString(),
+                car_seats.text.toString().toInt()
+            )
         }
     }
 
@@ -93,7 +117,7 @@ open class CreateProfileFragment : AuthFragment() {
 
     private fun autoCompleteRequest(requestCode: Int) {
         val intent = Autocomplete.IntentBuilder(
-            AutocompleteActivityMode.FULLSCREEN, listOf(Place.Field.ADDRESS)
+            AutocompleteActivityMode.FULLSCREEN, listOf(Place.Field.ADDRESS, Place.Field.LAT_LNG)
         )
             .build(context!!)
         startActivityForResult(intent, requestCode)
@@ -111,11 +135,28 @@ open class CreateProfileFragment : AuthFragment() {
     }
 
     private fun onAddressReceived(requestCode: Int, intent: Intent) {
+
+        val address = Autocomplete.getPlaceFromIntent(intent).address
+        val latLng = Autocomplete.getPlaceFromIntent(intent).latLng
+
+        if (address.isNullOrBlank() || latLng == null){
+            toast(getString(R.string.error_incorrect_address))
+            return
+        }
+
         when (requestCode) {
-            RC_AUTO_COMPLETE_PLACE_LOCATION -> location.text =
-                Autocomplete.getPlaceFromIntent(intent).address
-            RC_AUTO_COMPLETE_PLACE_DESTINATION -> destination.text =
-                Autocomplete.getPlaceFromIntent(intent).address
+            RC_AUTO_COMPLETE_PLACE_LOCATION -> {
+                location.text = address
+                location.background =
+                    resources.getDrawable(R.drawable.background_grey_rounded, null)
+                vm.home = Location(address, Pair(latLng.latitude, latLng.longitude))
+            }
+            RC_AUTO_COMPLETE_PLACE_DESTINATION -> {
+                destination.text = address
+                destination.background =
+                    resources.getDrawable(R.drawable.background_grey_rounded, null)
+                vm.destination = Location(address, Pair(latLng.latitude, latLng.longitude))
+            }
         }
     }
 

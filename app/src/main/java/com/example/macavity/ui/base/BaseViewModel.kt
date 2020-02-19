@@ -7,10 +7,10 @@ import javax.inject.Inject
 
 open class BaseViewModel @Inject constructor( ) : ViewModel() {
 
-    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+    val disposable: CompositeDisposable = CompositeDisposable()
 
     override fun onCleared() {
-        compositeDisposable.dispose()
+        disposable.dispose()
         super.onCleared()
     }
 }

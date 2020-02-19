@@ -63,7 +63,7 @@ dependencies {
 
     //TODO: check what's wrong with this one
     // Rx2Firebase
-    //  implementation 'com.github.FrangSierra:RxFirebase:1.5.6'
+    implementation 'com.github.FrangSierra:RxFirebase:1.5.6'
 
     // Firebase
     implementation "com.google.firebase:firebase-core:17.2.1"
