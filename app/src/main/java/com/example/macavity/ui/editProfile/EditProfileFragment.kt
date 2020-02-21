@@ -33,11 +33,11 @@ open class EditProfileFragment : HomeFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(EditProfileViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(EditProfileViewModel::class.java)
         initToolbar()
 
         //TODO: use real data
-        val loc1 = Location("Kings Ave 22", Pair(2.0, 2.1))
+        val loc1 = Location("A","Kings Ave 22", Pair(2.0, 2.1))
         val avatar = "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc="
         user = User(
             "123",
@@ -51,7 +51,8 @@ open class EditProfileFragment : HomeFragment() {
             "GH7G HGC",
             3,
             5,
-            23
+            23,"A"
+
         )
         setInitialUserData()
     }

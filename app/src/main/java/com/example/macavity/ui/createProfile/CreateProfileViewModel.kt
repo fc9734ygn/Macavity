@@ -17,17 +17,19 @@ class CreateProfileViewModel @Inject constructor(private val userRepo: UserRepos
     val profileCreatedSuccess = MutableLiveData<Boolean>(false)
 
     fun createProfile(
+        userId: String,
         name: String,
         avatarUrl: String,
         email: String,
         phoneNumber: String,
         isDriver: Boolean,
-        carNumberPlate: String,
-        carFreeSeats: Int
+        carNumberPlate: String?,
+        carFreeSeats: Int?
     ) {
 
         disposable.add(
             userRepo.createUser(
+                userId,
                 name,
                 home,
                 destination,

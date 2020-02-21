@@ -9,8 +9,9 @@ data class User(
     val email: String,
     val phoneNumber: String,
     val isDriver: Boolean,
-    val carNumberPlate: String,
-    val carFreeSeats: Int,
+    val carNumberPlate: String?,
+    val carFreeSeats: Int?,
     val passengerStat: Int,
-    val driverStat: Int
+    val driverStat: Int,
+    val groupId: String?
 )

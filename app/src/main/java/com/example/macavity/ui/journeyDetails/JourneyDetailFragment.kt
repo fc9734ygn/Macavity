@@ -38,7 +38,7 @@ open class JourneyDetailFragment : HomeFragment() {
         PassengersAdapter { findNavController().navigate(R.id.action_journeyDetailFragment__to_profileFragment_) }
 
     //TODO: use real data
-    val loc1 = Location("Kings Ave 22", Pair(2.0, 2.1))
+    val loc1 = Location("A","Kings Ave 22", Pair(2.0, 2.1))
     private val dummyJourney = Journey(
         "123",
         User(
@@ -53,7 +53,8 @@ open class JourneyDetailFragment : HomeFragment() {
             "AH3K24",
             4,
             41,
-            23
+            23,"A"
+
         ), 4,  listOf(
             User(
                 "123",
@@ -67,7 +68,8 @@ open class JourneyDetailFragment : HomeFragment() {
                 "AH3K24",
                 4,
                 2,
-                23
+                23,"A"
+
             ),
             User(
                 "123",
@@ -81,14 +83,15 @@ open class JourneyDetailFragment : HomeFragment() {
                 "AH3K24",
                 4,
                 88,
-                23
+                23,"A"
+
             )
         ), 123123123, "Will have to stop at a gas station"
     )
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(JourneyDetailsViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(JourneyDetailsViewModel::class.java)
         initToolbar()
         initMap()
         setData(dummyJourney)

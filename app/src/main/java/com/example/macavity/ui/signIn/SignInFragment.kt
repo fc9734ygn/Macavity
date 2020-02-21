@@ -1,8 +1,8 @@
 package com.example.macavity.ui.signIn
 
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.macavity.R
@@ -31,12 +31,27 @@ open class SignInFragment : AuthFragment() {
     private lateinit var vm: SignInViewModel
     private lateinit var auth: FirebaseAuth
 
+    private val userExistObserver = Observer<Boolean?> {
+        when {
+            it == null -> {
+                //do nothing
+            }
+            it -> {
+                HomeActivity_.intent(this).start()
+            }
+            else -> {
+                val action =
+                    SignInFragment_Directions.actionSignInFragmentToCreateProfileFragment(auth.uid!!)
+                findNavController().navigate(action)
+            }
+        }
+    }
+
     @AfterViews
-    fun afterViews(){
+    fun afterViews() {
         buildGoogleSignInClient()
-        vm = ViewModelProviders.of(this).get(SignInViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(SignInViewModel::class.java)
         auth = FirebaseAuth.getInstance()
-        auth.uid
         initToolbar()
     }
 
@@ -45,7 +60,7 @@ open class SignInFragment : AuthFragment() {
         checkAccountStatus()
     }
 
-    private fun initToolbar(){
+    private fun initToolbar() {
         toolbar.setTitle(getString(R.string.sign_in_toolbar_title))
     }
 
@@ -59,7 +74,7 @@ open class SignInFragment : AuthFragment() {
         }
     }
 
-    private fun buildGoogleSignInClient(){
+    private fun buildGoogleSignInClient() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.web_client))
             .requestProfile()
@@ -96,8 +111,8 @@ open class SignInFragment : AuthFragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    findNavController().navigate(R.id.action_signInFragment__to_tutorialFragment_)
+                    vm.checkIfUserProfileExists(auth.uid!!)
+                    vm.userExist.observe(this, userExistObserver)
                 } else {
                     toast(task.exception?.message)
                 }

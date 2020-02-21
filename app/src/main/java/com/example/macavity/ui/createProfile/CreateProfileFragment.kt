@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.Location
@@ -27,14 +28,12 @@ import javax.inject.Inject
 @EFragment(resName = "fragment_create_profile")
 open class CreateProfileFragment : AuthFragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
     private lateinit var vm: CreateProfileViewModel
+    val args: CreateProfileFragment_Args by navArgs()
 
     private val profileCreationObserver = Observer<Boolean> {
-        if (it){
-            findNavController().navigate(R.id.action_createProfileFragment__to_createGroupFragment_)
+        if (it) {
+            findNavController().navigate(R.id.action_createProfileFragment__to_tutorialFragment_)
         }
     }
 
@@ -44,7 +43,8 @@ open class CreateProfileFragment : AuthFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this, this.viewModelFactory).get(CreateProfileViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory)
+            .get(CreateProfileViewModel::class.java)
         vm.profileCreatedSuccess.observe(this, profileCreationObserver)
         initToolbar()
         setAvatarImage(profileImg)
@@ -91,13 +91,15 @@ open class CreateProfileFragment : AuthFragment() {
         }
         if (isDataCorrect) {
             vm.createProfile(
+                args.userId,
                 name.text.toString(),
                 profileImg,
                 email.text.toString(),
                 phone.text.toString(),
                 driver_switch.isChecked,
                 car_number_plate.text.toString(),
-                car_seats.text.toString().toInt()
+                if (car_seats.text.toString().isNotBlank())
+                car_seats.text.toString().toInt() else null
             )
         }
     }
@@ -117,7 +119,7 @@ open class CreateProfileFragment : AuthFragment() {
 
     private fun autoCompleteRequest(requestCode: Int) {
         val intent = Autocomplete.IntentBuilder(
-            AutocompleteActivityMode.FULLSCREEN, listOf(Place.Field.ADDRESS, Place.Field.LAT_LNG)
+            AutocompleteActivityMode.FULLSCREEN, listOf(Place.Field.ADDRESS, Place.Field.LAT_LNG, Place.Field.ID)
         )
             .build(context!!)
         startActivityForResult(intent, requestCode)
@@ -137,9 +139,10 @@ open class CreateProfileFragment : AuthFragment() {
     private fun onAddressReceived(requestCode: Int, intent: Intent) {
 
         val address = Autocomplete.getPlaceFromIntent(intent).address
+        val placeId = Autocomplete.getPlaceFromIntent(intent).id
         val latLng = Autocomplete.getPlaceFromIntent(intent).latLng
 
-        if (address.isNullOrBlank() || latLng == null){
+        if (address.isNullOrBlank() || placeId == null || latLng == null) {
             toast(getString(R.string.error_incorrect_address))
             return
         }
@@ -149,13 +152,13 @@ open class CreateProfileFragment : AuthFragment() {
                 location.text = address
                 location.background =
                     resources.getDrawable(R.drawable.background_grey_rounded, null)
-                vm.home = Location(address, Pair(latLng.latitude, latLng.longitude))
+                vm.home = Location(placeId, address, Pair(latLng.latitude, latLng.longitude))
             }
             RC_AUTO_COMPLETE_PLACE_DESTINATION -> {
                 destination.text = address
                 destination.background =
                     resources.getDrawable(R.drawable.background_grey_rounded, null)
-                vm.destination = Location(address, Pair(latLng.latitude, latLng.longitude))
+                vm.destination = Location(placeId, address, Pair(latLng.latitude, latLng.longitude))
             }
         }
     }

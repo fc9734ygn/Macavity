@@ -18,24 +18,27 @@
         android:name="com.example.macavity.ui.signIn.SignInFragment_"
         android:label="SignInFragment_" >
         <action
-            android:id="@+id/action_signInFragment__to_tutorialFragment_"
-            app:destination="@id/tutorialFragment_" />
+            android:id="@+id/action_signInFragment__to_createProfileFragment_"
+            app:destination="@id/createProfileFragment_" />
     </fragment>
     <fragment
         android:id="@+id/tutorialFragment_"
         android:name="com.example.macavity.ui.tutorial.TutorialFragment_"
         android:label="TutorialFragment_" >
         <action
-            android:id="@+id/action_tutorialFragment__to_createProfileFragment_"
-            app:destination="@id/createProfileFragment_" />
+            android:id="@+id/action_tutorialFragment__to_createGroupFragment_"
+            app:destination="@id/createGroupFragment_" />
     </fragment>
     <fragment
         android:id="@+id/createProfileFragment_"
         android:name="com.example.macavity.ui.createProfile.CreateProfileFragment_"
         android:label="CreateProfileFragment_" >
         <action
-            android:id="@+id/action_createProfileFragment__to_createGroupFragment_"
-            app:destination="@id/createGroupFragment_" />
+            android:id="@+id/action_createProfileFragment__to_tutorialFragment_"
+            app:destination="@id/tutorialFragment_" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/createGroupFragment_"

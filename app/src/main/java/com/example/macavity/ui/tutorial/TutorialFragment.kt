@@ -1,6 +1,5 @@
 package com.example.macavity.ui.tutorial
 
-import android.graphics.Color
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -29,7 +28,7 @@ open class TutorialFragment : AuthFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(TutorialViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(TutorialViewModel::class.java)
         initToolbar()
         initViewPager()
     }
@@ -57,8 +56,7 @@ open class TutorialFragment : AuthFragment() {
 
     @Click(resName = ["button"])
     fun goToCreateProfile(){
-        findNavController().navigate(R.id.action_tutorialFragment__to_createProfileFragment_)
+        findNavController().navigate(R.id.action_tutorialFragment__to_createGroupFragment_)
     }
-
 }
 

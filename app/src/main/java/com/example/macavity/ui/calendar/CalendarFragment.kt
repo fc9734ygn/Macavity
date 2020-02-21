@@ -37,7 +37,7 @@ open class CalendarFragment : HomeFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(CalendarViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(CalendarViewModel::class.java)
         initToolbar()
         initJourneysRecyclerView()
         initCalendar()
@@ -128,7 +128,7 @@ open class CalendarFragment : HomeFragment() {
 
     private fun updateAdapterForDate(date: LocalDate) {
         //todo: use real data
-        val loc1 = Location("Kings Ave 22", Pair(2.0, 2.1))
+        val loc1 = Location("A","Kings Ave 22", Pair(2.0, 2.1))
         val driver = User(
             "123",
             "John",
@@ -140,7 +140,7 @@ open class CalendarFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2
+            , 2, 2,"A"
         )
         val driver2 = User(
             "123",
@@ -153,7 +153,7 @@ open class CalendarFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2
+            , 2, 2,"A"
         )
         val driver3 = User(
             "123",
@@ -166,7 +166,7 @@ open class CalendarFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2
+            , 2, 2,"A"
         )
         journeysAdapter.submitList(
             mutableListOf(

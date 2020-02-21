@@ -5,7 +5,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.macavity.R
-import com.example.macavity.data.models.Journey
 import com.example.macavity.data.models.Location
 import com.example.macavity.data.models.User
 
@@ -24,7 +23,7 @@ open class GroupFragment : HomeFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(GroupViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(GroupViewModel::class.java)
         initToolbar()
         initRecyclerView()
         //todo: use real data
@@ -50,7 +49,7 @@ open class GroupFragment : HomeFragment() {
     }
 
     //TODO: use real data
-    val loc1 = Location("Kings Ave 22", Pair(2.0, 2.1))
+    val loc1 = Location("A","Kings Ave 22", Pair(2.0, 2.1))
     private val dummyData = listOf(
         User(
             "123",
@@ -64,7 +63,8 @@ open class GroupFragment : HomeFragment() {
             "AH3K24",
             4,
             41,
-            23
+            23,"A"
+
         ), User(
             "123",
             "Veronica",
@@ -77,7 +77,8 @@ open class GroupFragment : HomeFragment() {
             "AH3K24",
             4,
             7,
-            3
+            3,"A"
+
         ), User(
             "123",
             "Erick",
@@ -90,7 +91,8 @@ open class GroupFragment : HomeFragment() {
             "AH3K24",
             4,
             88,
-            23
+            23,"A"
+
         ), User(
             "123",
             "Rachel",
@@ -103,7 +105,8 @@ open class GroupFragment : HomeFragment() {
             "AH3K24",
             4,
             2,
-            73
+            73,"A"
+
         ),
         User(
             "123",
@@ -117,7 +120,8 @@ open class GroupFragment : HomeFragment() {
             "AH3K24",
             4,
             20,
-            0
+            0,"A"
+
         )
     )
 }

@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.fragment_add_journey.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EFragment
-import kotlin.math.min
 
 @EFragment(resName = "fragment_add_journey")
 open class AddJourneyFragment : HomeFragment() {
@@ -20,10 +19,10 @@ open class AddJourneyFragment : HomeFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(AddJourneyViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(AddJourneyViewModel::class.java)
         initToolbar()
         //todo: use real data
-        val loc1 = Location("Kings Ave 22", Pair(2.0, 2.1))
+        val loc1 = Location("A","Kings Ave 22", Pair(2.0, 2.1))
         val user = User(
             "123",
             "John",
@@ -35,7 +34,7 @@ open class AddJourneyFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2
+            , 2, 2,"A"
         )
         setInitialData(user)
     }

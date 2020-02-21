@@ -18,7 +18,7 @@ open class InviteFragment : HomeFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(InviteViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(InviteViewModel::class.java)
         initToolbar()
         //todo: use real data
         link.text = "https://www.youtube.com/watch?v=F2_pg8xd1To"

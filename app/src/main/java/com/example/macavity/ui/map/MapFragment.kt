@@ -21,7 +21,7 @@ open class MapFragment : HomeFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(MapViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(MapViewModel::class.java)
         initToolbar()
         initMap()
     }

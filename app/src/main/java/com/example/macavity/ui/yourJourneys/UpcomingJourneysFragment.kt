@@ -24,7 +24,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(UpcomingJourneysViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(UpcomingJourneysViewModel::class.java)
         initToolbar()
         initRecyclerView()
     }
@@ -40,7 +40,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
         rc_view.adapter = journeysAdapter
 
         //todo: use real data
-        val loc1 = Location("Kings Ave 22", Pair(2.0, 2.1))
+        val loc1 = Location("A","Kings Ave 22", Pair(2.0, 2.1))
         val driver = User(
             "123",
             "Alex",
@@ -52,7 +52,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2
+            , 2, 2,"A"
         )
         val driver1 = User(
             "123",
@@ -65,7 +65,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2
+            , 2, 2,"A"
         )
         val driver2 = User(
             "123",
@@ -78,7 +78,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2
+            , 2, 2,"A"
         )
         journeysAdapter.submitList(
             mutableListOf(

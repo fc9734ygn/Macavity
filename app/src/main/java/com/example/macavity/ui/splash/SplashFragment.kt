@@ -15,7 +15,7 @@ open class SplashFragment : AuthFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(SplashViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(SplashViewModel::class.java)
         //todo:remove this
         findNavController().navigate(R.id.action_splashFragment__to_signInFragment_)
     }

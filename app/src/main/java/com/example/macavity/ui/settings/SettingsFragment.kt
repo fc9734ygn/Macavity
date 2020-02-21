@@ -18,7 +18,7 @@ open class SettingsFragment : HomeFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(SettingsViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(SettingsViewModel::class.java)
         initToolbar()
     }
 

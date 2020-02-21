@@ -13,7 +13,7 @@ open class EditJourneyFragment : HomeFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        vm = ViewModelProviders.of(this).get(EditJourneyViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(EditJourneyViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

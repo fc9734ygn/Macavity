@@ -21,7 +21,7 @@ open class ProfileFragment : HomeFragment() {
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
+        vm = ViewModelProviders.of(this, viewModelFactory).get(ProfileViewModel::class.java)
         initToolbar()
         setAvatarImage("https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc=")
 
