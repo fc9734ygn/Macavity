@@ -77,11 +77,11 @@
     <string name="invite_title">Share this link with a friend you wish to add to your group</string>
     <!--Tutorial-->
     <string name="tutorial_toolbar_title">Tutorial</string>
-    <string name="tutorial_text_page_1">Here you learn something</string>
-    <string name="tutorial_text_page_2">Something else here</string>
-    <string name="tutorial_text_page_3">Some tips over here</string>
-    <string name="tutorial_text_page_4">You\'re almost done with learning</string>
-    <string name="tutorial_text_page_5">You\'re basically a pro now</string>
+    <string name="tutorial_text_page_1">Create a profile which will only be revealed to people you trust</string>
+    <string name="tutorial_text_page_2">Join a group of people you\'re going to commute with or create a new one and invite others</string>
+    <string name="tutorial_text_page_3">Schedule journeys and book seats using the calendar screen</string>
+    <string name="tutorial_text_page_4">Use built in chat to communicate with your group members</string>
+    <string name="tutorial_text_page_5">Built in map indicates the home locations and commute destinations of your group members for easier navigation</string>
     <!--Create Group-->
     <string name="create_group_toolbar_title">Welcome</string>
     <string name="create_group_description">To use the application you must be a part of a group. To join an existing group please ask a member of a group for an invitation link. Otherwise create a new group.</string>
