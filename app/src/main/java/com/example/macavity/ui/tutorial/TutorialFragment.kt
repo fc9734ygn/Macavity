@@ -16,6 +16,7 @@ open class TutorialFragment : AuthFragment() {
 
     lateinit var vm: TutorialViewModel
     private val tutorialPagesAdapter = TutorialPagesAdapter()
+
     data class TutorialPage(val textResource: Int, val imageResource: Int)
 
     private val tutorialPages = listOf(

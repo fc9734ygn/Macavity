@@ -29,6 +29,7 @@ import javax.inject.Inject
 open class CreateProfileFragment : AuthFragment() {
 
     private lateinit var vm: CreateProfileViewModel
+
     val args: CreateProfileFragment_Args by navArgs()
 
     private val profileCreationObserver = Observer<Boolean> {

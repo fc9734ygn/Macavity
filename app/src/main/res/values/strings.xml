@@ -78,8 +78,8 @@
     <!--Tutorial-->
     <string name="tutorial_toolbar_title">Tutorial</string>
     <string name="tutorial_text_page_1">Create a profile which will only be revealed to people you trust</string>
-    <string name="tutorial_text_page_2">Join a group of people you\'re going to commute with or create a new one and invite others</string>
-    <string name="tutorial_text_page_3">Schedule journeys and book seats using the calendar screen</string>
+    <string name="tutorial_text_page_2">Join a group of people you\'re going to commute with or create a new group and invite others</string>
+    <string name="tutorial_text_page_3">Schedule journeys and book seats using the calendar</string>
     <string name="tutorial_text_page_4">Use built in chat to communicate with your group members</string>
     <string name="tutorial_text_page_5">Built in map indicates the home locations and commute destinations of your group members for easier navigation</string>
     <!--Create Group-->

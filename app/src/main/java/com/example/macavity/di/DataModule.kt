@@ -2,6 +2,8 @@ package com.example.macavity.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.macavity.data.repositories.group.GroupRepository
+import com.example.macavity.data.repositories.group.GroupRepositoryImpl
 import com.example.macavity.data.repositories.user.UserRepository
 import com.example.macavity.data.repositories.user.UserRepositoryImpl
 import com.google.firebase.database.DatabaseReference
@@ -16,15 +18,6 @@ import javax.inject.Singleton
 class DataModule {
 
     @Provides
-    @Singleton
-    fun provideSharedPreferences(context: Context): SharedPreferences {
-        return context.getSharedPreferences(
-            context.packageName,
-            Context.MODE_PRIVATE
-        )
-    }
-
-    @Provides
     fun providesRootDatabase(): DatabaseReference {
         val root = FirebaseDatabase.getInstance().reference
         root.keepSynced(false)
@@ -36,6 +29,11 @@ class DataModule {
     @Provides
     fun providesUserRepository(databaseReference: DatabaseReference): UserRepository {
         return UserRepositoryImpl(databaseReference)
+    }
+
+    @Provides
+    fun providesGroupRepository(databaseReference: DatabaseReference): GroupRepository {
+        return GroupRepositoryImpl(databaseReference)
     }
 
     //endregion

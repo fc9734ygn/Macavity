@@ -2,7 +2,7 @@ package com.example.macavity.data.models
 
 import com.stfalcon.chatkit.commons.models.IUser
 
-data class Author(val avatarUrl: String, val username: String, val userId: String) : IUser {
+data class MessageAuthor(val avatarUrl: String, val username: String, val userId: String) : IUser {
 
     override fun getAvatar(): String {
         return avatarUrl

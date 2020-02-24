@@ -9,4 +9,9 @@ const val RC_AUTO_COMPLETE_PLACE_DESTINATION = 893
 
 //region Firebase References
 const val FIREBASE_USERS = "users"
+const val FIREBASE_GROUPS = "groups"
+//endregion
+
+//region Shared Preferences keys
+const val SP_USER_ID = "userId"
 //endregion

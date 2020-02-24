@@ -1,5 +1,8 @@
 package com.example.macavity.ui.createGroup
 
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.macavity.R
 import com.example.macavity.ui.base.AuthFragment
 import com.example.macavity.ui.home.HomeActivity_
@@ -11,8 +14,18 @@ import org.androidannotations.annotations.EFragment
 @EFragment(resName = "fragment_create_group")
 open class CreateGroupFragment : AuthFragment() {
 
+    lateinit var vm: CreateGroupViewModel
+
+    private val groupCreationObserver = Observer<Boolean> {
+        if (it) {
+            HomeActivity_.intent(requireContext()).start()
+        }
+    }
+
     @AfterViews
     fun afterViews(){
+        vm = ViewModelProviders.of(this, viewModelFactory).get(CreateGroupViewModel::class.java)
+        vm.groupCreatedSuccess.observe(this,groupCreationObserver)
         initToolbar()
     }
 
@@ -22,7 +35,6 @@ open class CreateGroupFragment : AuthFragment() {
 
     @Click(resName = ["create_group_button"])
     fun createGroup(){
-        //todo: create group
-        HomeActivity_.intent(requireContext()).start()
+        vm.getCurrentUserId()
     }
 }
