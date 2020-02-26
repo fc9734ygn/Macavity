@@ -5,8 +5,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.macavity.R
-import com.example.macavity.data.models.Location
-import com.example.macavity.data.models.User
+import com.example.macavity.data.models.local.Location
+import com.example.macavity.data.models.local.User
 
 import com.example.macavity.ui.base.HomeFragment
 import kotlinx.android.synthetic.main.fragment_group.*
@@ -49,7 +49,12 @@ open class GroupFragment : HomeFragment() {
     }
 
     //TODO: use real data
-    val loc1 = Location("A","Kings Ave 22", Pair(2.0, 2.1))
+    val loc1 = Location(
+        "A",
+        "Kings Ave 22",
+        2.0,
+        2.1
+    )
     private val dummyData = listOf(
         User(
             "123",
@@ -63,7 +68,7 @@ open class GroupFragment : HomeFragment() {
             "AH3K24",
             4,
             41,
-            23,"A"
+            23, "A"
 
         ), User(
             "123",
@@ -77,7 +82,7 @@ open class GroupFragment : HomeFragment() {
             "AH3K24",
             4,
             7,
-            3,"A"
+            3, "A"
 
         ), User(
             "123",
@@ -91,7 +96,7 @@ open class GroupFragment : HomeFragment() {
             "AH3K24",
             4,
             88,
-            23,"A"
+            23, "A"
 
         ), User(
             "123",
@@ -105,7 +110,7 @@ open class GroupFragment : HomeFragment() {
             "AH3K24",
             4,
             2,
-            73,"A"
+            73, "A"
 
         ),
         User(
@@ -120,7 +125,7 @@ open class GroupFragment : HomeFragment() {
             "AH3K24",
             4,
             20,
-            0,"A"
+            0, "A"
 
         )
     )

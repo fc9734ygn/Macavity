@@ -9,8 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.macavity.R
-import com.example.macavity.data.models.Location
-import com.example.macavity.di.ViewModelFactory
+import com.example.macavity.data.models.local.Location
 import com.example.macavity.ui.base.AuthFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
@@ -23,7 +22,6 @@ import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import kotlinx.android.synthetic.main.fragment_create_profile.*
 import org.androidannotations.annotations.*
-import javax.inject.Inject
 
 @EFragment(resName = "fragment_create_profile")
 open class CreateProfileFragment : AuthFragment() {
@@ -153,13 +151,23 @@ open class CreateProfileFragment : AuthFragment() {
                 location.text = address
                 location.background =
                     resources.getDrawable(R.drawable.background_grey_rounded, null)
-                vm.home = Location(placeId, address, Pair(latLng.latitude, latLng.longitude))
+                vm.home = Location(
+                    placeId,
+                    address,
+                    latLng.latitude,
+                    latLng.longitude
+                )
             }
             RC_AUTO_COMPLETE_PLACE_DESTINATION -> {
                 destination.text = address
                 destination.background =
                     resources.getDrawable(R.drawable.background_grey_rounded, null)
-                vm.destination = Location(placeId, address, Pair(latLng.latitude, latLng.longitude))
+                vm.destination = Location(
+                    placeId,
+                    address,
+                    latLng.latitude,
+                    latLng.longitude
+                )
             }
         }
     }
@@ -211,10 +219,12 @@ open class CreateProfileFragment : AuthFragment() {
     @Click(resName = ["location"])
     fun onLocationClick() {
         autoCompleteRequest(RC_AUTO_COMPLETE_PLACE_LOCATION)
+        location.background = resources.getDrawable(R.drawable.background_grey_rounded, null)
     }
 
     @Click(resName = ["destination"])
     fun onDestinationClick() {
         autoCompleteRequest(RC_AUTO_COMPLETE_PLACE_DESTINATION)
+        destination.background = resources.getDrawable(R.drawable.background_grey_rounded, null)
     }
 }

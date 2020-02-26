@@ -97,4 +97,9 @@
     <string name="app_name">Macavity</string>
     <string name="default_error_message">Oops, something went wrong</string>
     <string name="error_incorrect_address">Incorrect address</string>
+    <string name="create_profile_home_title">Home address</string>
+    <string name="create_profile_destination_title">Destination address (workplace,school etc.)</string>
+    <string name="add_journey_toolbar_title">Create journey</string>
+    <string name="add_journey_from_address_title">Travel from:</string>
+    <string name="add_journey_to_address_title">Travel to:</string>
 </resources>

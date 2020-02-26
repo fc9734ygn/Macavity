@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.macavity.R
-import com.example.macavity.data.models.Journey
-import com.example.macavity.data.models.Location
-import com.example.macavity.data.models.User
+import com.example.macavity.data.models.local.Journey
+import com.example.macavity.data.models.local.Location
+import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.HomeFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -38,7 +38,12 @@ open class JourneyDetailFragment : HomeFragment() {
         PassengersAdapter { findNavController().navigate(R.id.action_journeyDetailFragment__to_profileFragment_) }
 
     //TODO: use real data
-    val loc1 = Location("A","Kings Ave 22", Pair(2.0, 2.1))
+    val loc1 = Location(
+        "A",
+        "Kings Ave 22",
+        2.0,
+        2.1
+    )
     private val dummyJourney = Journey(
         "123",
         User(
@@ -53,9 +58,9 @@ open class JourneyDetailFragment : HomeFragment() {
             "AH3K24",
             4,
             41,
-            23,"A"
+            23, "A"
 
-        ), 4,  listOf(
+        ), 4, listOf(
             User(
                 "123",
                 "Rachel",
@@ -68,7 +73,7 @@ open class JourneyDetailFragment : HomeFragment() {
                 "AH3K24",
                 4,
                 2,
-                23,"A"
+                23, "A"
 
             ),
             User(
@@ -83,10 +88,10 @@ open class JourneyDetailFragment : HomeFragment() {
                 "AH3K24",
                 4,
                 88,
-                23,"A"
+                23, "A"
 
             )
-        ), 123123123, "Will have to stop at a gas station"
+        ), 123123123, "Will have to stop at a gas station", loc1, loc1
     )
 
     @AfterViews
@@ -136,25 +141,38 @@ open class JourneyDetailFragment : HomeFragment() {
 
     private fun setData(journey: Journey) {
         name_driver.text = journey.driver.name
-        stat_driver.text = String.format(getString(R.string.journey_details_driver_stat), journey.driver.driverStat)
+        stat_driver.text = String.format(
+            getString(R.string.journey_details_driver_stat),
+            journey.driver.driverStat
+        )
 
         setDate(journey.timeStamp)
 
-        seats.text = String.format(getString(R.string.journey_details_seats), journey.passengers.size, journey.freeSeats)
-        car_number_plate.text = String.format(getString(R.string.journey_details_car_number_plate), journey.driver.carNumberPlate)
+        seats.text = String.format(
+            getString(R.string.journey_details_seats),
+            journey.passengers.size,
+            journey.freeSeats
+        )
+        car_number_plate.text = String.format(
+            getString(R.string.journey_details_car_number_plate),
+            journey.driver.carNumberPlate
+        )
         drivers_note.text = journey.note
         drivers_note_card.visibility = if (journey.note.isNullOrBlank()) View.GONE else View.VISIBLE
         setDriverAvatar(journey.driver.avatarUrl)
     }
 
-    private fun setDate(timeStamp: Long){
+    private fun setDate(timeStamp: Long) {
         val dateFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM HH:mm ")
         val date = LocalDateTime.ofInstant(
             Instant.ofEpochMilli(timeStamp),
             ZoneId.systemDefault()
         )
 
-        leaving_at.text = String.format(getString(R.string.journey_details_leaving_at), dateFormatter.format(date))
+        leaving_at.text = String.format(
+            getString(R.string.journey_details_leaving_at),
+            dateFormatter.format(date)
+        )
     }
 
     private fun setDriverAvatar(url: String) {

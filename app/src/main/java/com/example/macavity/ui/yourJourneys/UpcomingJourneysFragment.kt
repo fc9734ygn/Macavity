@@ -5,9 +5,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.macavity.R
-import com.example.macavity.data.models.Journey
-import com.example.macavity.data.models.Location
-import com.example.macavity.data.models.User
+import com.example.macavity.data.models.local.Journey
+import com.example.macavity.data.models.local.Location
+import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.ui.calendar.JourneysAdapter
 import kotlinx.android.synthetic.main.fragment_upcoming_journeys.*
@@ -40,7 +40,12 @@ open class UpcomingJourneysFragment : HomeFragment() {
         rc_view.adapter = journeysAdapter
 
         //todo: use real data
-        val loc1 = Location("A","Kings Ave 22", Pair(2.0, 2.1))
+        val loc1 = Location(
+            "A",
+            "Kings Ave 22",
+            2.0,
+            2.1
+        )
         val driver = User(
             "123",
             "Alex",
@@ -52,7 +57,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2,"A"
+            , 2, 2, "A"
         )
         val driver1 = User(
             "123",
@@ -65,7 +70,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2,"A"
+            , 2, 2, "A"
         )
         val driver2 = User(
             "123",
@@ -78,7 +83,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2,"A"
+            , 2, 2, "A"
         )
         journeysAdapter.submitList(
             mutableListOf(
@@ -88,7 +93,9 @@ open class UpcomingJourneysFragment : HomeFragment() {
                     2,
                     listOf(driver),
                     1581459108000,
-                    "will have to stop by the gas station, should take additional 10mins"
+                    "will have to stop by the gas station, should take additional 10mins",
+                    loc1, loc1
+
                 ),
                 Journey(
                     "123",
@@ -96,28 +103,35 @@ open class UpcomingJourneysFragment : HomeFragment() {
                     5,
                     listOf(driver),
                     1581499108000,
-                    "will have to stop by the gas station, should take additional 10mins"
+                    "will have to stop by the gas station, should take additional 10mins",
+                    loc1, loc1
+
                 ), Journey(
                     "123",
                     driver1,
                     4,
                     listOf(driver),
                     1581559108000,
-                    "will have to stop by the gas station, should take additional 10mins"
+                    "will have to stop by the gas station, should take additional 10mins",
+                    loc1, loc1
+
                 ), Journey(
                     "123",
                     driver2,
                     2,
                     listOf(driver),
                     1581659108000,
-                    "will have to stop by the gas station, should take additional 10mins"
+                    "will have to stop by the gas station, should take additional 10mins",
+                    loc1, loc1
+
                 ), Journey(
                     "123",
                     driver,
                     3,
                     listOf(driver),
                     1581759108000,
-                    "will have to stop by the gas station, should take additional 10mins"
+                    "will have to stop by the gas station, should take additional 10mins",
+                    loc1, loc1
                 )
             ).sortedBy { it.timeStamp }
         )

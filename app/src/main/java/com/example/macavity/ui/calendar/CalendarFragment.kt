@@ -6,9 +6,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.macavity.R
-import com.example.macavity.data.models.Journey
-import com.example.macavity.data.models.Location
-import com.example.macavity.data.models.User
+import com.example.macavity.data.models.local.Journey
+import com.example.macavity.data.models.local.Location
+import com.example.macavity.data.models.local.User
 
 import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.utils.getRandomBoolean
@@ -128,7 +128,12 @@ open class CalendarFragment : HomeFragment() {
 
     private fun updateAdapterForDate(date: LocalDate) {
         //todo: use real data
-        val loc1 = Location("A","Kings Ave 22", Pair(2.0, 2.1))
+        val loc1 = Location(
+            "A",
+            "Kings Ave 22",
+            2.0,
+            2.1
+        )
         val driver = User(
             "123",
             "John",
@@ -140,7 +145,7 @@ open class CalendarFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2,"A"
+            , 2, 2, "A"
         )
         val driver2 = User(
             "123",
@@ -153,7 +158,7 @@ open class CalendarFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2,"A"
+            , 2, 2, "A"
         )
         val driver3 = User(
             "123",
@@ -166,21 +171,52 @@ open class CalendarFragment : HomeFragment() {
             true,
             "asd",
             5
-            , 2, 2,"A"
+            , 2, 2, "A"
         )
         journeysAdapter.submitList(
             mutableListOf(
-                Journey("123", driver, 2,  listOf(driver), 1581459108000,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver2, 2,  listOf(driver), 1581479108000,"will have to stop by the gas station, should take additional 10mins"),
-                Journey("123", driver3, 4,  listOf(driver), 1581499108000,"will have to stop by the gas station, should take additional 10mins")
+                Journey(
+                    "123",
+                    driver,
+                    2,
+                    listOf(driver),
+                    1581459108000,
+                    "will have to stop by the gas station, should take additional 10mins",
+                    loc1, loc1
+                ),
+                Journey(
+                    "123",
+                    driver2,
+                    2,
+                    listOf(driver),
+                    1581479108000,
+                    "will have to stop by the gas station, should take additional 10mins",
+                    loc1, loc1
+                ),
+                Journey(
+                    "123",
+                    driver3,
+                    4,
+                    listOf(driver),
+                    1581499108000,
+                    "will have to stop by the gas station, should take additional 10mins",
+                    loc1, loc1
+                )
             ).sortedBy { it.timeStamp }
         )
         journeysAdapter.notifyDataSetChanged()
     }
 
     @Click(resName = ["fab"])
-    fun goToAddJourney(){
+    fun goToAddJourney() {
         //TODO: hide this fab if user is not a driver
-        findNavController().navigate(R.id.action_calendarFragment__to_addJourneyFragment_)
+
+        if (selectedDate == null) {
+            toast("Please select a date")
+        } else {
+            val action =
+                CalendarFragment_Directions.actionCalendarFragmentToAddJourneyFragment(selectedDate!!)
+            findNavController().navigate(action)
+        }
     }
 }

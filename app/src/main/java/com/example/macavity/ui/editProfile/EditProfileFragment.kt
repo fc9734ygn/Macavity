@@ -6,8 +6,8 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.macavity.R
-import com.example.macavity.data.models.Location
-import com.example.macavity.data.models.User
+import com.example.macavity.data.models.local.Location
+import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
@@ -37,7 +37,12 @@ open class EditProfileFragment : HomeFragment() {
         initToolbar()
 
         //TODO: use real data
-        val loc1 = Location("A","Kings Ave 22", Pair(2.0, 2.1))
+        val loc1 = Location(
+            "A",
+            "Kings Ave 22",
+            2.0,
+            2.1
+        )
         val avatar = "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc="
         user = User(
             "123",
@@ -51,7 +56,7 @@ open class EditProfileFragment : HomeFragment() {
             "GH7G HGC",
             3,
             5,
-            23,"A"
+            23, "A"
 
         )
         setInitialUserData()

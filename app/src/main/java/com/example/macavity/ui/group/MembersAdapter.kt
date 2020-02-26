@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.macavity.R
-import com.example.macavity.data.models.User
+import com.example.macavity.data.models.local.User
 import kotlinx.android.synthetic.main.view_member.view.*
 
 class MembersAdapter(private val itemClickListener: (User) -> Unit = {}) :

@@ -10,3 +10,7 @@ fun millisecondsToDate(millis: Long): Date {
 fun millisecondsToSeconds(milliseconds: Long): Long {
     return TimeUnit.MILLISECONDS.toSeconds(milliseconds)
 }
+
+fun secondsToMillis(seconds: Long): Long{
+    return seconds * 1000
+}

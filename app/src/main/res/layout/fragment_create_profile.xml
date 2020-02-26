@@ -114,11 +114,12 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/email_title"
                 tools:visibility="visible" />
+
             <TextView
                 android:id="@+id/location_title"
                 style="@style/edit_text_title"
                 android:layout_marginTop="8dp"
-                android:text="location address"
+                android:text="@string/create_profile_home_title"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/location"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -138,7 +139,7 @@
                 android:id="@+id/destination_title"
                 style="@style/edit_text_title"
                 android:layout_marginTop="8dp"
-                android:text="Destination address"
+                android:text="@string/create_profile_destination_title"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/destination"
                 app:layout_constraintHorizontal_bias="0.0"

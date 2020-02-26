@@ -3,8 +3,8 @@ package com.example.macavity.ui.chat
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.macavity.R
-import com.example.macavity.data.models.MessageAuthor
-import com.example.macavity.data.models.MessageUI
+import com.example.macavity.data.models.local.MessageAuthor
+import com.example.macavity.data.models.local.MessageUI
 import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.utils.millisecondsToSeconds
 import com.stfalcon.chatkit.commons.ImageLoader

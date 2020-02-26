@@ -1,5 +1,8 @@
 package com.example.macavity.data.models
 
+import com.google.firebase.database.IgnoreExtraProperties
+import java.io.Serializable
+
 data class User(
     val id: String,
     val name: String,

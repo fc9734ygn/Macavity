@@ -1,7 +1,8 @@
 package com.example.macavity.data.repositories.user
 
-import com.example.macavity.data.models.Location
-import com.example.macavity.data.models.User
+import com.example.macavity.data.models.firebase.UserFirebase
+import com.example.macavity.data.models.local.Location
+import com.example.macavity.data.models.local.User
 import com.example.macavity.utils.FIREBASE_USERS
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
@@ -20,8 +21,18 @@ class UserRepositoryImpl @Inject constructor(databaseReference: DatabaseReferenc
 
     private val usersReference: DatabaseReference = databaseReference.child(FIREBASE_USERS)
 
-    override fun getUser(id: String): Flowable<User> {
-        return RxFirebaseDatabase.observeValueEvent(usersReference.child(id), DataSnapshotMapper.of(User::class.java))
+    override fun getUserFlowable(id: String): Flowable<User> {
+        return RxFirebaseDatabase.observeValueEvent(
+            usersReference.child(id),
+            DataSnapshotMapper.of(UserFirebase::class.java)
+        ).map { it.toUser() }
+    }
+
+    override fun getUserMaybe(id: String): Single<User> {
+        return RxFirebaseDatabase.observeSingleValueEvent(
+            usersReference.child(id),
+            DataSnapshotMapper.of(UserFirebase::class.java)
+        ).map { it.toUser() }.toSingle()
     }
 
     override fun createUser(
@@ -48,7 +59,7 @@ class UserRepositoryImpl @Inject constructor(databaseReference: DatabaseReferenc
             isDriver,
             carNumberPlate,
             carFreeSeats,
-            0, 0, null
+            0, 0, ""
         )
 
         return RxFirebaseDatabase
@@ -58,6 +69,9 @@ class UserRepositoryImpl @Inject constructor(databaseReference: DatabaseReferenc
     }
 
     override fun checkIfUserExists(id: String): Maybe<Boolean> {
-        return RxFirebaseDatabase.observeSingleValueEvent(usersReference.child(id), DataSnapshot:: exists).defaultIfEmpty(false)
+        return RxFirebaseDatabase.observeSingleValueEvent(
+            usersReference.child(id),
+            DataSnapshot::exists
+        ).defaultIfEmpty(false)
     }
 }

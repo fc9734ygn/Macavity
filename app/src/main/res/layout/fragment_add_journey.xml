@@ -67,6 +67,44 @@
         app:layout_constraintTop_toBottomOf="@id/free_seats_title" />
 
     <TextView
+        android:id="@+id/location_title"
+        style="@style/edit_text_title"
+        android:layout_marginTop="8dp"
+        android:text="@string/add_journey_from_address_title"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/free_seats" />
+
+    <TextView
+        android:id="@+id/location"
+        style="@style/edit_text"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/location_title"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/destination_title"
+        style="@style/edit_text_title"
+        android:layout_marginTop="8dp"
+        android:text="@string/add_journey_to_address_title"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/location" />
+
+    <TextView
+        android:id="@+id/destination"
+        style="@style/edit_text"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/destination_title"
+        tools:visibility="visible" />
+
+    <TextView
         android:id="@+id/note_title"
         style="@style/edit_text_title"
         android:layout_marginTop="8dp"
@@ -74,7 +112,7 @@
         android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@id/free_seats" />
+        app:layout_constraintTop_toBottomOf="@id/destination" />
 
     <EditText
         android:id="@+id/note"
