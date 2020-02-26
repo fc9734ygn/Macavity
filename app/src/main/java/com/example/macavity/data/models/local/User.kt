@@ -1,7 +1,6 @@
-package com.example.macavity.data.models
+package com.example.macavity.data.models.local
 
-import com.google.firebase.database.IgnoreExtraProperties
-import java.io.Serializable
+import com.example.macavity.data.models.local.Location
 
 data class User(
     val id: String,

@@ -1,4 +1,4 @@
-package com.example.macavity.data.models
+package com.example.macavity.data.models.local
 
 import com.stfalcon.chatkit.commons.models.IUser
 

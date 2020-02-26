@@ -1,15 +1,17 @@
-package com.example.macavity.data.models
+package com.example.macavity.data.models.firebase
 
 import androidx.annotation.Keep
+import com.example.macavity.data.models.local.Location
+import com.example.macavity.data.models.local.User
 import com.google.firebase.database.IgnoreExtraProperties
 
 @Keep
 @IgnoreExtraProperties
-class FirebaseUser(
+class UserFirebase(
     var id: String = "",
     var name: String = "",
-    var home: Location = Location("", "", 0.0, 0.0),
-    var destination: Location = Location("", "", 0.0, 0.0),
+    var home: LocationFirebase = LocationFirebase(),
+    var destination: LocationFirebase = LocationFirebase(),
     var avatarUrl: String = "",
     var email: String = "",
     var phoneNumber: String = "",
@@ -24,8 +26,8 @@ class FirebaseUser(
         return User(
             id,
             name,
-            home,
-            destination,
+            home.toLocation(),
+            destination.toLocation(),
             avatarUrl,
             email,
             phoneNumber,

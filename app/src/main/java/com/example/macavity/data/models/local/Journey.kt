@@ -1,4 +1,4 @@
-package com.example.macavity.data.models
+package com.example.macavity.data.models.local
 
 data class Journey(
     val id: String,
