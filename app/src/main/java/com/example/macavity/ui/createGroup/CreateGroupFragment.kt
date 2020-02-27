@@ -2,7 +2,6 @@ package com.example.macavity.ui.createGroup
 
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import com.example.macavity.R
 import com.example.macavity.ui.base.AuthFragment
 import com.example.macavity.ui.home.HomeActivity_
@@ -23,18 +22,33 @@ open class CreateGroupFragment : AuthFragment() {
     }
 
     @AfterViews
-    fun afterViews(){
+    fun afterViews() {
         vm = ViewModelProviders.of(this, viewModelFactory).get(CreateGroupViewModel::class.java)
-        vm.groupCreatedSuccess.observe(this,groupCreationObserver)
+        vm.userIsInGroup.observe(this, groupCreationObserver)
         initToolbar()
     }
 
-    private fun initToolbar(){
+    private fun initToolbar() {
         toolbar.setTitle(getString(R.string.create_group_toolbar_title))
     }
 
     @Click(resName = ["create_group_button"])
-    fun createGroup(){
-        vm.getCurrentUserId()
+    fun createGroup() {
+        vm.createGroup()
+    }
+
+    @Click(resName = ["join_button"])
+    fun joinGroup() {
+        if (invitation_code.text.isNullOrBlank()) {
+            invitation_code.background =
+                resources.getDrawable(R.drawable.background_grey_rounded_red_border, null)
+        } else {
+            vm.joinGroup(invitation_code.text.toString())
+        }
+    }
+
+    @Click(resName = ["invitation_code"])
+    fun onInvitationCodeEnter(){
+        invitation_code.background = resources.getDrawable(R.drawable.background_grey_rounded, null)
     }
 }

@@ -3,7 +3,6 @@ package com.example.macavity.ui.createGroup
 import androidx.lifecycle.MutableLiveData
 import com.example.macavity.data.SharedPreferencesManager
 import com.example.macavity.data.repositories.group.GroupRepository
-import com.example.macavity.data.repositories.user.UserRepository
 import com.example.macavity.ui.base.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -14,24 +13,31 @@ class CreateGroupViewModel @Inject constructor(
     private val sharedPreferencesManager: SharedPreferencesManager
 ) : BaseViewModel() {
 
-    val groupCreatedSuccess = MutableLiveData<Boolean>(false)
+    val userIsInGroup = MutableLiveData<Boolean>(false)
 
-    fun getCurrentUserId() {
+    fun createGroup() {
         disposable.add(sharedPreferencesManager
             .getCurrentUserId()
+            .flatMapCompletable { userId ->
+                groupRepository
+                    .createGroup(userId)
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { userId -> createGroup(userId) }
+            .subscribe { userIsInGroup.value = true }
         )
     }
 
-    private fun createGroup(userId: String) {
-        disposable.add(
-            groupRepository
-                .createGroup(userId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { groupCreatedSuccess.value = true }
+    fun joinGroup(groupId: String) {
+        disposable.add(sharedPreferencesManager
+            .getCurrentUserId()
+            .flatMapCompletable { userId ->
+                groupRepository
+                    .joinGroup(groupId, userId)
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { userIsInGroup.value = true }
         )
     }
 }

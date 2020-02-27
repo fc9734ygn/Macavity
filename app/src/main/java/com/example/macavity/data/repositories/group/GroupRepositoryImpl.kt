@@ -1,8 +1,10 @@
 package com.example.macavity.data.repositories.group
 
+import com.example.macavity.data.models.firebase.GroupFirebase
 import com.example.macavity.data.models.local.Group
 import com.example.macavity.utils.FIREBASE_GROUPS
 import com.example.macavity.utils.FIREBASE_GROUP_ID
+import com.example.macavity.utils.FIREBASE_GROUP_MEMBERS
 import com.example.macavity.utils.FIREBASE_USERS
 import com.google.firebase.database.DatabaseReference
 import durdinapps.rxfirebase2.RxFirebaseDatabase
@@ -20,24 +22,29 @@ class GroupRepositoryImpl @Inject constructor(databaseReference: DatabaseReferen
     override fun createGroup(creatorUserId: String): Completable {
 
         val key = groupsReference.push().key
+        val membersMap = hashMapOf(creatorUserId to true)
 
-        val group = Group(
+        val group = GroupFirebase(
             key!!,
             creatorUserId,
-            listOf(creatorUserId),
-            emptyList(),
-            emptyList()
+            membersMap,
+            emptyMap(),
+            emptyMap()
         )
 
         return RxFirebaseDatabase
             .setValue(groupsReference.child(key), group)
             .andThen(addGroupIdToUser(key, creatorUserId))
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
     }
 
     override fun joinGroup(groupId: String, userId: String): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return RxFirebaseDatabase.setValue(
+            groupsReference
+                .child(groupId)
+                .child(FIREBASE_GROUP_MEMBERS)
+                .child(userId),
+            true
+        ).andThen(addGroupIdToUser(groupId, userId))
     }
 
     private fun addGroupIdToUser(groupId: String, userId: String): Completable {

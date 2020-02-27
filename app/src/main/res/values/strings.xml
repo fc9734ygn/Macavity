@@ -84,7 +84,7 @@
     <string name="tutorial_text_page_5">Built in map indicates the home locations and commute destinations of your group members for easier navigation</string>
     <!--Create Group-->
     <string name="create_group_toolbar_title">Welcome</string>
-    <string name="create_group_description">To use the application you must be a part of a group. To join an existing group please ask a member of a group for an invitation link. Otherwise create a new group.</string>
+    <string name="create_group_description">To use the application you must be a part of a group. To join an existing group please ask a member of a group for an invitation code. Otherwise create a new group.</string>
     <string name="create_group_button">Create Group</string>
     <!--Sign In-->
     <string name="sign_in_toolbar_title">Sign in</string>
