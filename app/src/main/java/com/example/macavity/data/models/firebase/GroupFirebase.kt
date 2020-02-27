@@ -11,7 +11,7 @@ import com.google.firebase.database.IgnoreExtraProperties
 data class GroupFirebase(
     var id: String = "",
     var creatorId: String = "",
-    var memberIds: Map<String, Boolean> = HashMap(),
+    var members: Map<String, Boolean> = HashMap(),
     var chat: Map<Message, Boolean> = HashMap(),
     var journeys: Map<Journey, Boolean> = HashMap()
 ) {
@@ -19,7 +19,7 @@ data class GroupFirebase(
         return Group(
             id,
             creatorId,
-            memberIds.keys.toList(),
+            members.keys.toList(),
             chat.keys.toList(),
             journeys.keys.toList()
         )

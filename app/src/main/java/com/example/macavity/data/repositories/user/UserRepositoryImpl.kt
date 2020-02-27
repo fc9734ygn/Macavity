@@ -3,6 +3,7 @@ package com.example.macavity.data.repositories.user
 import com.example.macavity.data.models.firebase.UserFirebase
 import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.User
+import com.example.macavity.utils.FIREBASE_GROUP_ID
 import com.example.macavity.utils.FIREBASE_USERS
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
@@ -21,14 +22,14 @@ class UserRepositoryImpl @Inject constructor(databaseReference: DatabaseReferenc
 
     private val usersReference: DatabaseReference = databaseReference.child(FIREBASE_USERS)
 
-    override fun getUserFlowable(id: String): Flowable<User> {
+    override fun fetchUserFlowable(id: String): Flowable<User> {
         return RxFirebaseDatabase.observeValueEvent(
             usersReference.child(id),
             DataSnapshotMapper.of(UserFirebase::class.java)
         ).map { it.toUser() }
     }
 
-    override fun getUserMaybe(id: String): Single<User> {
+    override fun fetchUserMaybe(id: String): Single<User> {
         return RxFirebaseDatabase.observeSingleValueEvent(
             usersReference.child(id),
             DataSnapshotMapper.of(UserFirebase::class.java)
@@ -73,5 +74,13 @@ class UserRepositoryImpl @Inject constructor(databaseReference: DatabaseReferenc
             usersReference.child(id),
             DataSnapshot::exists
         ).defaultIfEmpty(false)
+    }
+
+    override fun fetchUserGroupId(userId: String): Single<String?> {
+        return RxFirebaseDatabase.observeSingleValueEvent(
+            usersReference.child(userId).child(
+                FIREBASE_GROUP_ID
+            ), DataSnapshotMapper.of(String::class.java)
+        ).toSingle()
     }
 }

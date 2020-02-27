@@ -71,10 +71,10 @@
     <string name="add_journey_time">%1$s:%2$s</string>
     <!--Invite-->
     <string name="invite_email_subject">Join our Macavity group!</string>
-    <string name="invite_email_body">Click the link below to join our group at Macavity app: \n\n%1$s</string>
+    <string name="invite_email_body">Use the code below to join our group at Macavity app: \n\n%1$s</string>
     <string name="invite_copy_success">Link copied to clipboard</string>
     <string name="invite_toolbar_title">Invite friends</string>
-    <string name="invite_title">Share this link with a friend you wish to add to your group</string>
+    <string name="invite_title">Share this code with a friend you wish to add to your group</string>
     <!--Tutorial-->
     <string name="tutorial_toolbar_title">Tutorial</string>
     <string name="tutorial_text_page_1">Create a profile which will only be revealed to people you trust</string>

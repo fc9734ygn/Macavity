@@ -8,8 +8,8 @@ import io.reactivex.Maybe
 import io.reactivex.Single
 
 interface UserRepository {
-    fun getUserFlowable(id: String): Flowable<User>
-    fun getUserMaybe(id: String): Single<User>
+    fun fetchUserFlowable(id: String): Flowable<User>
+    fun fetchUserMaybe(id: String): Single<User>
     fun createUser(
         id: String,
         name: String,
@@ -23,4 +23,5 @@ interface UserRepository {
         carFreeSeats: Int?
     ): Completable
     fun checkIfUserExists(id: String): Maybe<Boolean>
+    fun fetchUserGroupId(userId: String): Single<String?>
 }

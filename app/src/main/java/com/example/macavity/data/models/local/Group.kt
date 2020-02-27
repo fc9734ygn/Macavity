@@ -1,3 +1,9 @@
 package com.example.macavity.data.models.local
 
-data class Group(val id: String, val creatorId: String, val memberIds: List<String>, val chat: List<Message>, val journeys: List<Journey>)
+data class Group(
+    val id: String,
+    val creatorId: String,
+    val members: List<String>,
+    val chat: List<Message>,
+    val journeys: List<Journey>
+)

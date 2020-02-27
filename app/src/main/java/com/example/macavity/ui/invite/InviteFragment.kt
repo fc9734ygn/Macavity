@@ -1,5 +1,6 @@
 package com.example.macavity.ui.invite
 
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.macavity.R
 import com.example.macavity.ui.base.HomeFragment
@@ -16,16 +17,21 @@ open class InviteFragment : HomeFragment() {
 
     private lateinit var vm: InviteViewModel
 
+    private val invitationCodeObserver = Observer<String> {
+        link.text = it
+    }
+
     @AfterViews
     fun afterViews() {
         vm = ViewModelProviders.of(this, viewModelFactory).get(InviteViewModel::class.java)
+        vm.invitationCode.observe(this, invitationCodeObserver)
+        vm.getInvitationCode()
         initToolbar()
-        //todo: use real data
-        link.text = "https://www.youtube.com/watch?v=F2_pg8xd1To"
     }
 
     private fun initToolbar() {
-        toolbar.setStartIcon(R.drawable.ic_arrow_back).setTitle(getString(R.string.invite_toolbar_title))
+        toolbar.setStartIcon(R.drawable.ic_arrow_back)
+            .setTitle(getString(R.string.invite_toolbar_title))
         toolbar.startIconListener = { requireActivity().onBackPressed() }
     }
 
