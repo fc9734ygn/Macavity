@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -14,6 +15,7 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.macavity.R
+import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.header_drawer.*
@@ -28,25 +30,28 @@ open class HomeActivity : BaseActivity() {
     lateinit var vm: HomeViewModel
     private lateinit var navController: NavController
 
+    private val userObserver = Observer<User> {
+        setDrawerHeaderData(it.name, it.avatarUrl)
+    }
+
     @AfterViews
     fun afterViews() {
         vm = ViewModelProviders.of(this, viewModelFactory)[HomeViewModel::class.java]
+        vm.userLiveData.observe(this, userObserver)
         initDrawerNavigation()
     }
 
-    private fun initDrawerNavigation(){
+    private fun initDrawerNavigation() {
         navController = nav_host_fragment.findNavController()
         nav_view.setupWithNavController(navController)
         bottom_nav.setupWithNavController(navController)
-        setDrawerHeaderData()
     }
 
-    private fun setDrawerHeaderData(){
-        //TODO: use real data 
+    private fun setDrawerHeaderData(username: String, avatarUrl: String) {
         val header: View = nav_view.getHeaderView(0)
-        header.header_user_name.text = "John Smith"
+        header.header_user_name.text = username
         Glide.with(this)
-            .load("https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc=")
+            .load(avatarUrl)
             .circleCrop()
             .placeholder(R.drawable.ic_person)
             .error(R.drawable.ic_clear)
@@ -67,7 +72,7 @@ open class HomeActivity : BaseActivity() {
                 || super.onOptionsItemSelected(item)
     }
 
-    fun openDrawer(){
+    fun openDrawer() {
         drawer_layout.openDrawer(GravityCompat.START)
     }
 
