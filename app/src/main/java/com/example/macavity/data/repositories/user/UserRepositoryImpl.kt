@@ -29,7 +29,7 @@ class UserRepositoryImpl @Inject constructor(databaseReference: DatabaseReferenc
         ).map { it.toUser() }
     }
 
-    override fun fetchUserMaybe(id: String): Single<User> {
+    override fun fetchUserSingle(id: String): Single<User> {
         return RxFirebaseDatabase.observeSingleValueEvent(
             usersReference.child(id),
             DataSnapshotMapper.of(UserFirebase::class.java)

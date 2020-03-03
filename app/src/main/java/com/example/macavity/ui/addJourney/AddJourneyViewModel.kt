@@ -55,7 +55,7 @@ class AddJourneyViewModel @Inject constructor(
             .getCurrentUserId()
             .flatMap { userId ->
                 currentUserId = userId
-                userRepository.fetchUserMaybe(userId)
+                userRepository.fetchUserSingle(userId)
             }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { user ->

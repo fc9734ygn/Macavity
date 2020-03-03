@@ -56,7 +56,7 @@ open class HomeActivity : BaseActivity() {
             .load(currentUser.avatarUrl)
             .circleCrop()
             .placeholder(R.drawable.ic_person)
-            .error(R.drawable.ic_clear)
+            .error(R.drawable.ic_person)
             .into(header.header_profile_image)
     }
 

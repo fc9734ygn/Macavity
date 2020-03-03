@@ -9,7 +9,7 @@ import io.reactivex.Single
 
 interface UserRepository {
     fun fetchUserFlowable(id: String): Flowable<User>
-    fun fetchUserMaybe(id: String): Single<User>
+    fun fetchUserSingle(id: String): Single<User>
     fun createUser(
         id: String,
         name: String,

@@ -3,6 +3,7 @@ package com.example.macavity.ui.editProfile
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.macavity.R
@@ -29,49 +30,39 @@ import org.androidannotations.annotations.EFragment
 open class EditProfileFragment : HomeFragment() {
 
     private lateinit var vm: EditProfileViewModel
-    private lateinit var user: User
+    private lateinit var currentUser: User
+
+    private val userObserver = Observer<User?> {
+        if (it != null) {
+            currentUser = it
+            setInitialUserData()
+        }
+    }
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this, viewModelFactory).get(EditProfileViewModel::class.java)
+        initViewModel()
         initToolbar()
+    }
 
-        //TODO: use real data
-        val loc1 = Location(
-            "A",
-            "Kings Ave 22",
-            2.0,
-            2.1
-        )
-        val avatar = "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc="
-        user = User(
-            "123",
-            "Alan",
-            loc1,
-            loc1,
-            avatar,
-            "johndoe@gmail.com",
-            "+442131233212",
-            true,
-            "GH7G HGC",
-            3,
-            5,
-            23, "A"
-
-        )
-        setInitialUserData()
+    private fun initViewModel() {
+        vm = ViewModelProviders.of(this, viewModelFactory).get(EditProfileViewModel::class.java)
+        vm.currentUser.observe(this, userObserver)
+        vm.fetchUser()
     }
 
     private fun setInitialUserData() {
-        name.setText(user.name)
-        phone.setText(user.phoneNumber)
-        email.setText(user.email)
-        location.text = user.home.address
-        destination.text = user.destination.address
-        setAvatarImage(user.avatarUrl)
-        driver_switch.isChecked = user.isDriver
-        car_number_plate.setText(user.carNumberPlate)
-        car_seats.setText(user.carFreeSeats.toString())
+        name.setText(currentUser.name)
+        phone.setText(currentUser.phoneNumber)
+        email.setText(currentUser.email)
+        location.text = currentUser.home.address
+        destination.text = currentUser.destination.address
+        setAvatarImage(currentUser.avatarUrl)
+        driver_switch.isChecked = currentUser.isDriver
+        if (currentUser.isDriver){
+            car_number_plate.setText(currentUser.carNumberPlate)
+            car_seats.setText(currentUser.carFreeSeats.toString())
+        }
     }
 
     private fun initToolbar() {
@@ -114,7 +105,7 @@ open class EditProfileFragment : HomeFragment() {
             showRedBorder(car_seats)
             isDataCorrect = false
         }
-        if (isDataCorrect){
+        if (isDataCorrect) {
             //todo: save changes instead of onbackpressed
             requireActivity().onBackPressed()
         }
@@ -156,8 +147,10 @@ open class EditProfileFragment : HomeFragment() {
 
     private fun onAddressReceived(requestCode: Int, intent: Intent) {
         when (requestCode) {
-            RC_AUTO_COMPLETE_PLACE_LOCATION -> location.text = Autocomplete.getPlaceFromIntent(intent).address
-            RC_AUTO_COMPLETE_PLACE_DESTINATION -> destination.text = Autocomplete.getPlaceFromIntent(intent).address
+            RC_AUTO_COMPLETE_PLACE_LOCATION -> location.text =
+                Autocomplete.getPlaceFromIntent(intent).address
+            RC_AUTO_COMPLETE_PLACE_DESTINATION -> destination.text =
+                Autocomplete.getPlaceFromIntent(intent).address
         }
     }
 

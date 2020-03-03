@@ -1,9 +1,12 @@
 package com.example.macavity.ui.profile
 
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.macavity.R
+import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.utils.callPhoneNumber
 import com.example.macavity.utils.sendEmail
@@ -18,19 +21,37 @@ import org.androidannotations.annotations.EFragment
 open class ProfileFragment : HomeFragment() {
 
     private lateinit var vm: ProfileViewModel
+    val args: ProfileFragment_Args by navArgs()
+    
+    private val userObserver = Observer<User> {
+        setUserData(it)
+    }
 
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this, viewModelFactory).get(ProfileViewModel::class.java)
+        initViewModel()
         initToolbar()
-        setAvatarImage("https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc=")
+    }
 
-        //TODO: use real data
-        name.text = "John"
-        phone.text = "+44983489798342"
-        email.text = "John.doe@gmail.com"
-        driver_stat.text = "5"
-        passenger_stat.text = "23"
+    private fun initViewModel() {
+        vm = ViewModelProviders.of(this, viewModelFactory).get(ProfileViewModel::class.java)
+        vm.user.observe(this, userObserver)
+
+        //If no userId is passed when creating the fragment - fetching current user
+        if (args.userId == null) {
+            vm.fetchSelfUser()
+        } else {
+            vm.fetchUser(args.userId!!)
+        }
+    }
+
+    private fun setUserData(user: User) {
+        setAvatarImage(user.avatarUrl)
+        name.text = user.name
+        phone.text = user.phoneNumber
+        email.text = user.email
+        driver_stat.text = user.driverStat.toString()
+        passenger_stat.text = user.passengerStat.toString()
     }
 
     private fun initToolbar() {

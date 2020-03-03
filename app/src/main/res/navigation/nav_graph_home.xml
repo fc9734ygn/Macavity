@@ -31,6 +31,11 @@
         <action
             android:id="@+id/action_profileFragment__to_editProfileFragment_"
             app:destination="@id/editProfileFragment_" />
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/groupFragment_"
