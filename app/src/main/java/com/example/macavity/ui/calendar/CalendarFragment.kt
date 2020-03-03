@@ -1,6 +1,7 @@
 package com.example.macavity.ui.calendar
 
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,12 +36,25 @@ open class CalendarFragment : HomeFragment() {
     private val journeysAdapter =
         JourneysAdapter { findNavController().navigate(R.id.action_calendarFragment__to_journeyDetailFragment_) }
 
+    private val userObserver = Observer<User> {
+        if (it.isDriver) {
+            fab.show()
+        } else {
+            fab.hide()
+        }
+    }
+
     @AfterViews
     fun afterViews() {
-        vm = ViewModelProviders.of(this, viewModelFactory).get(CalendarViewModel::class.java)
+        initViewModel()
         initToolbar()
         initJourneysRecyclerView()
         initCalendar()
+    }
+
+    private fun initViewModel(){
+        vm = ViewModelProviders.of(this, viewModelFactory).get(CalendarViewModel::class.java)
+        vm.userLiveData.observe(this, userObserver)
     }
 
     private fun initToolbar() {
