@@ -31,15 +31,18 @@ open class SignInFragment : AuthFragment() {
     private lateinit var vm: SignInViewModel
     private lateinit var auth: FirebaseAuth
 
-    private val userExistObserver = Observer<Boolean?> {
-        when {
-            it == null -> {
+    private val userProfileStateObserver = Observer<SignInViewModel.UserProfileState?> {
+        when (it) {
+            null -> {
                 //do nothing
             }
-            it -> {
+            SignInViewModel.UserProfileState.COMPLETE -> {
                 HomeActivity_.intent(this).start()
             }
-            else -> {
+            SignInViewModel.UserProfileState.NOT_IN_GROUP -> {
+                findNavController().navigate(R.id.action_signInFragment__to_createGroupFragment_)
+            }
+            SignInViewModel.UserProfileState.NOT_EXISTENT -> {
                 val action =
                     SignInFragment_Directions.actionSignInFragmentToCreateProfileFragment(auth.uid!!)
                 findNavController().navigate(action)
@@ -112,7 +115,7 @@ open class SignInFragment : AuthFragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     vm.checkIfUserProfileExists(auth.uid!!)
-                    vm.userExist.observe(this, userExistObserver)
+                    vm.userProfileState.observe(this, userProfileStateObserver)
                 } else {
                     toast(task.exception?.message)
                 }

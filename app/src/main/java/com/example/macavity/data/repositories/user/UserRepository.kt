@@ -24,4 +24,5 @@ interface UserRepository {
     ): Completable
     fun checkIfUserExists(id: String): Maybe<Boolean>
     fun fetchUserGroupId(userId: String): Single<String?>
+    fun checkIfUserIsInGroup(userId: String): Maybe<Boolean>
 }

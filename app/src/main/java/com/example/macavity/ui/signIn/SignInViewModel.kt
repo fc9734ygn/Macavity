@@ -10,7 +10,11 @@ import javax.inject.Inject
 open class SignInViewModel @Inject constructor(private val userRepository: UserRepository) :
     BaseViewModel() {
 
-    val userExist = MutableLiveData<Boolean?>(null)
+    enum class UserProfileState {
+        NOT_EXISTENT, NOT_IN_GROUP, COMPLETE
+    }
+
+    val userProfileState = MutableLiveData<UserProfileState?>(null)
 
     fun checkIfUserProfileExists(userId: String) {
         disposable.add(
@@ -18,7 +22,28 @@ open class SignInViewModel @Inject constructor(private val userRepository: UserR
                 .checkIfUserExists(userId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe{ result -> userExist.value = result}
+                .subscribe { userProfileExists ->
+                    if (!userProfileExists) {
+                        userProfileState.value = UserProfileState.NOT_EXISTENT
+                    } else {
+                        checkIfUserIsInGroup(userId)
+                    }
+                }
+        )
+    }
+
+    fun checkIfUserIsInGroup(userId: String) {
+        disposable.add(userRepository
+            .checkIfUserIsInGroup(userId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { userIsInGroup ->
+                if (userIsInGroup) {
+                    userProfileState.value = UserProfileState.COMPLETE
+                } else {
+                    userProfileState.value = UserProfileState.NOT_IN_GROUP
+                }
+            }
         )
     }
 }

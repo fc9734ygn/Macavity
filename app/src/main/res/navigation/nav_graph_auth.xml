@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_signInFragment__to_createProfileFragment_"
             app:destination="@id/createProfileFragment_" />
+        <action
+            android:id="@+id/action_signInFragment__to_createGroupFragment_"
+            app:destination="@id/createGroupFragment_" />
     </fragment>
     <fragment
         android:id="@+id/tutorialFragment_"

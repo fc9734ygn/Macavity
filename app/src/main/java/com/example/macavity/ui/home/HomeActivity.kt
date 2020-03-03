@@ -29,9 +29,11 @@ open class HomeActivity : BaseActivity() {
 
     lateinit var vm: HomeViewModel
     private lateinit var navController: NavController
+    lateinit var currentUser: User
 
     private val userObserver = Observer<User> {
-        setDrawerHeaderData(it.name, it.avatarUrl)
+        currentUser = it
+        setDrawerHeaderData()
     }
 
     @AfterViews
@@ -47,11 +49,11 @@ open class HomeActivity : BaseActivity() {
         bottom_nav.setupWithNavController(navController)
     }
 
-    private fun setDrawerHeaderData(username: String, avatarUrl: String) {
+    private fun setDrawerHeaderData() {
         val header: View = nav_view.getHeaderView(0)
-        header.header_user_name.text = username
+        header.header_user_name.text = currentUser.name
         Glide.with(this)
-            .load(avatarUrl)
+            .load(currentUser.avatarUrl)
             .circleCrop()
             .placeholder(R.drawable.ic_person)
             .error(R.drawable.ic_clear)

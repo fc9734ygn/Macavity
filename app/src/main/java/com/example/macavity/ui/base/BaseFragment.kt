@@ -15,7 +15,7 @@ open class BaseFragment : dagger.android.support.DaggerFragment() {
         navController = Navigation.findNavController(view)
     }
 
-    fun toast(message:String?){
+    fun toast(message:String? = null){
         (activity as BaseActivity).toast(message)
     }
 }

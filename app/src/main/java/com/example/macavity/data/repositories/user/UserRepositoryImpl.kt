@@ -83,4 +83,12 @@ class UserRepositoryImpl @Inject constructor(databaseReference: DatabaseReferenc
             ), DataSnapshotMapper.of(String::class.java)
         ).toSingle()
     }
+
+    override fun checkIfUserIsInGroup(userId: String): Maybe<Boolean> {
+        return RxFirebaseDatabase.observeSingleValueEvent(
+            usersReference.child(userId)
+                .child(FIREBASE_GROUP_ID),
+            DataSnapshot::exists
+        ).defaultIfEmpty(false)
+    }
 }
