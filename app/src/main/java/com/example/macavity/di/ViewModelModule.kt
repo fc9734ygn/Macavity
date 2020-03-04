@@ -2,7 +2,6 @@ package com.example.macavity.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.macavity.ui.tutorial.TutorialViewModel
 import com.example.macavity.ui.addJourney.AddJourneyViewModel
 import com.example.macavity.ui.auth.AuthViewModel
 import com.example.macavity.ui.base.BaseViewModel
@@ -21,6 +20,7 @@ import com.example.macavity.ui.profile.ProfileViewModel
 import com.example.macavity.ui.settings.SettingsViewModel
 import com.example.macavity.ui.signIn.SignInViewModel
 import com.example.macavity.ui.splash.SplashViewModel
+import com.example.macavity.ui.tutorial.TutorialViewModel
 import com.example.macavity.ui.yourJourneys.UpcomingJourneysViewModel
 import dagger.Binds
 import dagger.MapKey

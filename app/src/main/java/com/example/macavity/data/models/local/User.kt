@@ -1,7 +1,5 @@
 package com.example.macavity.data.models.local
 
-import com.example.macavity.data.models.local.Location
-
 data class User(
     val id: String,
     val name: String,

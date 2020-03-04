@@ -194,7 +194,7 @@ open class CalendarFragment : HomeFragment() {
                     driver,
                     2,
                     listOf(driver),
-                    1581459108000,
+                    System.currentTimeMillis() + 9000000,
                     "will have to stop by the gas station, should take additional 10mins",
                     loc1, loc1
                 ),
@@ -203,7 +203,7 @@ open class CalendarFragment : HomeFragment() {
                     driver2,
                     2,
                     listOf(driver),
-                    1581479108000,
+                    System.currentTimeMillis() + 12000000,
                     "will have to stop by the gas station, should take additional 10mins",
                     loc1, loc1
                 ),
@@ -212,7 +212,7 @@ open class CalendarFragment : HomeFragment() {
                     driver3,
                     4,
                     listOf(driver),
-                    1581499108000,
+                    System.currentTimeMillis() + 15000000,
                     "will have to stop by the gas station, should take additional 10mins",
                     loc1, loc1
                 )

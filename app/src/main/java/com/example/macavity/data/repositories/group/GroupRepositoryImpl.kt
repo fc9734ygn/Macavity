@@ -1,7 +1,6 @@
 package com.example.macavity.data.repositories.group
 
 import com.example.macavity.data.models.firebase.GroupFirebase
-import com.example.macavity.data.models.local.Group
 import com.example.macavity.utils.FIREBASE_GROUPS
 import com.example.macavity.utils.FIREBASE_GROUP_ID
 import com.example.macavity.utils.FIREBASE_GROUP_MEMBERS
@@ -9,8 +8,6 @@ import com.example.macavity.utils.FIREBASE_USERS
 import com.google.firebase.database.DatabaseReference
 import durdinapps.rxfirebase2.RxFirebaseDatabase
 import io.reactivex.Completable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class GroupRepositoryImpl @Inject constructor(databaseReference: DatabaseReference) :

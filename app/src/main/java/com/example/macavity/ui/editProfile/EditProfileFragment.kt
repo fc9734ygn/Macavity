@@ -7,7 +7,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.macavity.R
-import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION

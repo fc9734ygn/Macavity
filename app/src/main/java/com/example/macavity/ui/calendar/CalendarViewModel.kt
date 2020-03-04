@@ -1,7 +1,6 @@
 package com.example.macavity.ui.calendar
 
 import androidx.lifecycle.LiveDataReactiveStreams
-import androidx.lifecycle.ViewModel
 import com.example.macavity.data.SharedPreferencesManager
 import com.example.macavity.data.repositories.user.UserRepository
 import com.example.macavity.ui.base.BaseViewModel

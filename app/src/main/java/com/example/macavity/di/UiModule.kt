@@ -4,14 +4,12 @@ import com.example.macavity.ui.addJourney.AddJourneyFragment_
 import com.example.macavity.ui.auth.AuthActivity_
 import com.example.macavity.ui.calendar.CalendarFragment_
 import com.example.macavity.ui.chat.ChatFragment_
-import com.example.macavity.ui.createGroup.CreateGroupFragment
 import com.example.macavity.ui.createGroup.CreateGroupFragment_
 import com.example.macavity.ui.createProfile.CreateProfileFragment_
 import com.example.macavity.ui.editJourney.EditJourneyFragment_
 import com.example.macavity.ui.editProfile.EditProfileFragment_
 import com.example.macavity.ui.group.GroupFragment_
 import com.example.macavity.ui.home.HomeActivity_
-import com.example.macavity.ui.invite.InviteFragment
 import com.example.macavity.ui.invite.InviteFragment_
 import com.example.macavity.ui.journeyDetails.JourneyDetailFragment_
 import com.example.macavity.ui.map.MapFragment_

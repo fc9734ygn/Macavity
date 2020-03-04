@@ -1,8 +1,7 @@
 package com.example.macavity.ui.editJourney
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-
+import androidx.lifecycle.ViewModelProviders
 import com.example.macavity.ui.base.HomeFragment
 import org.androidannotations.annotations.EFragment
 

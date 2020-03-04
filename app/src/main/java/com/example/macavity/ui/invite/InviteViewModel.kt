@@ -2,8 +2,6 @@ package com.example.macavity.ui.invite
 
 import androidx.lifecycle.MutableLiveData
 import com.example.macavity.data.SharedPreferencesManager
-import com.example.macavity.data.models.local.User
-import com.example.macavity.data.repositories.group.GroupRepository
 import com.example.macavity.data.repositories.user.UserRepository
 import com.example.macavity.ui.base.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers

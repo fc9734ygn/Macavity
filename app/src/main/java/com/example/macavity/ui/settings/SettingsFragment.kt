@@ -1,12 +1,8 @@
 package com.example.macavity.ui.settings
 
 import androidx.lifecycle.ViewModelProviders
-import android.os.Bundle
 import com.example.macavity.R
-
-import com.example.macavity.ui.base.BaseFragment
 import com.example.macavity.ui.base.HomeFragment
-import com.example.macavity.ui.profile.ProfileViewModel
 import kotlinx.android.synthetic.main.fragment_map.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.EFragment

@@ -2,14 +2,11 @@ package com.example.macavity.data.repositories.journey
 
 import com.example.macavity.data.models.firebase.JourneyFirebase
 import com.example.macavity.data.models.firebase.LocationFirebase
-import com.example.macavity.data.models.firebase.UserFirebase
 import com.example.macavity.data.models.local.Location
 import com.example.macavity.utils.FIREBASE_GROUPS
 import com.example.macavity.utils.FIREBASE_JOURNEYS
-import com.example.macavity.utils.FIREBASE_USERS
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
-import durdinapps.rxfirebase2.DataSnapshotMapper
 import durdinapps.rxfirebase2.RxFirebaseDatabase
 import io.reactivex.Completable
 import io.reactivex.Single

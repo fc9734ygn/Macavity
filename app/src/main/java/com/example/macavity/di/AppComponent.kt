@@ -1,6 +1,5 @@
 package com.example.macavity.di
 
-import android.app.Application
 import com.example.macavity.App
 import dagger.BindsInstance
 import dagger.Component

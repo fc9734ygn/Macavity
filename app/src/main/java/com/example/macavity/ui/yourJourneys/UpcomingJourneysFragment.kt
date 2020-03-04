@@ -92,7 +92,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
                     driver1,
                     2,
                     listOf(driver),
-                    1581459108000,
+                    System.currentTimeMillis() + 200000,
                     "will have to stop by the gas station, should take additional 10mins",
                     loc1, loc1
 
@@ -102,7 +102,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
                     driver,
                     5,
                     listOf(driver),
-                    1581499108000,
+                    System.currentTimeMillis() + 9000000,
                     "will have to stop by the gas station, should take additional 10mins",
                     loc1, loc1
 
@@ -111,7 +111,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
                     driver1,
                     4,
                     listOf(driver),
-                    1581559108000,
+                    System.currentTimeMillis() + 80000000,
                     "will have to stop by the gas station, should take additional 10mins",
                     loc1, loc1
 
@@ -120,7 +120,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
                     driver2,
                     2,
                     listOf(driver),
-                    1581659108000,
+                    System.currentTimeMillis() + 40000000,
                     "will have to stop by the gas station, should take additional 10mins",
                     loc1, loc1
 
@@ -129,7 +129,7 @@ open class UpcomingJourneysFragment : HomeFragment() {
                     driver,
                     3,
                     listOf(driver),
-                    1581759108000,
+                    System.currentTimeMillis() + 800000000,
                     "will have to stop by the gas station, should take additional 10mins",
                     loc1, loc1
                 )

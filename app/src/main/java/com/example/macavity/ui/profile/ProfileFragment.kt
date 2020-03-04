@@ -22,7 +22,7 @@ open class ProfileFragment : HomeFragment() {
 
     private lateinit var vm: ProfileViewModel
     val args: ProfileFragment_Args by navArgs()
-    
+
     private val userObserver = Observer<User> {
         setUserData(it)
     }

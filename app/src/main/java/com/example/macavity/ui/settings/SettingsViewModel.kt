@@ -1,6 +1,5 @@
 package com.example.macavity.ui.settings
 
-import androidx.lifecycle.ViewModel
 import com.example.macavity.ui.base.BaseViewModel
 import javax.inject.Inject
 

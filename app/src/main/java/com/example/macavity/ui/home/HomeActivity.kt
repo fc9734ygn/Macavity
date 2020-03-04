@@ -1,10 +1,8 @@
 package com.example.macavity.ui.home
 
-import android.annotation.SuppressLint
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -18,7 +16,6 @@ import com.example.macavity.R
 import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.header_drawer.*
 import kotlinx.android.synthetic.main.header_drawer.view.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.EActivity

@@ -1,6 +1,5 @@
 package com.example.macavity.di
 
-import android.content.Context
 import android.content.SharedPreferences
 import com.example.macavity.data.SharedPreferencesManager
 import com.example.macavity.data.repositories.group.GroupRepository
@@ -13,8 +12,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
-import javax.inject.Named
-import javax.inject.Singleton
 
 
 @Module

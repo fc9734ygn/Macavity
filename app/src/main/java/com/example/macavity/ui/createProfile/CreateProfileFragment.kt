@@ -13,8 +13,8 @@ import com.example.macavity.data.models.local.Location
 import com.example.macavity.ui.base.AuthFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
-import com.example.macavity.utils.isValidPhoneNumber
 import com.example.macavity.utils.isValidEmail
+import com.example.macavity.utils.isValidPhoneNumber
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
