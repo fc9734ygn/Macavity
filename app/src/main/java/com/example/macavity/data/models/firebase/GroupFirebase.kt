@@ -12,16 +12,16 @@ data class GroupFirebase(
     var id: String = "",
     var creatorId: String = "",
     var members: Map<String, Boolean> = HashMap(),
-    var chat: Map<Message, Boolean> = HashMap(),
-    var journeys: Map<Journey, Boolean> = HashMap()
+    var chat: Map<String, Message> = HashMap(),
+    var journeys: Map<String, JourneyFirebase> = HashMap()
 ) {
     fun toGroup(): Group {
         return Group(
             id,
             creatorId,
             members.keys.toList(),
-            chat.keys.toList(),
-            journeys.keys.toList()
+            chat.values.toList(),
+            journeys.size
         )
     }
 }

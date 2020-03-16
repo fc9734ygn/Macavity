@@ -5,5 +5,5 @@ data class Group(
     val creatorId: String,
     val members: List<String>,
     val chat: List<Message>,
-    val journeys: List<Journey>
+    val journeysCompleted: Int
 )

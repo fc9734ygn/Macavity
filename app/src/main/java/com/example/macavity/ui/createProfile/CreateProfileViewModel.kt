@@ -15,7 +15,7 @@ class CreateProfileViewModel @Inject constructor(
 ) :
     BaseViewModel() {
 
-    val profileCreatedSuccess = MutableLiveData<Boolean>(false)
+    val profileCreatedSuccess = MutableLiveData(false)
     lateinit var home: Location
     lateinit var destination: Location
 

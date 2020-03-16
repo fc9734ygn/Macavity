@@ -1,6 +1,7 @@
 package com.example.macavity.data.models.firebase
 
 import androidx.annotation.Keep
+import com.example.macavity.data.models.local.Journey
 import com.google.firebase.database.IgnoreExtraProperties
 
 @Keep
