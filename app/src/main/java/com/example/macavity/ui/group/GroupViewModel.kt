@@ -9,6 +9,8 @@ import com.example.macavity.data.repositories.group.GroupRepository
 import com.example.macavity.data.repositories.user.UserRepository
 import com.example.macavity.ui.base.BaseViewModel
 import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class GroupViewModel @Inject constructor(
@@ -26,13 +28,15 @@ class GroupViewModel @Inject constructor(
 
     private val memberIdsFlowable = groupFlowable
         .map { it.members }
-    
+
     val members: MutableLiveData<MutableList<User>> by lazy {
-        MutableLiveData<MutableList<User>>(mutableListOf<User>())
+        MutableLiveData<MutableList<User>>(mutableListOf())
     }
 
     fun fetchMembers() {
         disposable.add(memberIdsFlowable
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe { getMembers(it) }
         )
     }
@@ -41,6 +45,8 @@ class GroupViewModel @Inject constructor(
         memberIds.forEach {
             disposable.add(userRepository.fetchUserFlowable(it)
                 .distinctUntilChanged()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe{ user ->
                     members.value!!.add(user)
                     members.postValue(members.value)

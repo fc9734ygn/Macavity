@@ -3,12 +3,15 @@ package com.example.macavity.data.repositories.journey
 import com.example.macavity.data.models.firebase.JourneyFirebase
 import com.example.macavity.data.models.firebase.LocationFirebase
 import com.example.macavity.data.models.local.Location
+import com.example.macavity.data.models.local.UpcomingJourney
 import com.example.macavity.utils.FIREBASE_GROUPS
 import com.example.macavity.utils.FIREBASE_JOURNEYS
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
+import durdinapps.rxfirebase2.DataSnapshotMapper
 import durdinapps.rxfirebase2.RxFirebaseDatabase
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -22,7 +25,8 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
         timeStamp: Long,
         note: String?,
         startingLocation: Location,
-        destination: Location
+        destination: Location,
+        driverAvatarUrl: String
     ): Completable {
 
         val startingLocationFirebase = LocationFirebase(
@@ -49,7 +53,8 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
                         note,
                         startingLocationFirebase,
                         destinationFirebase,
-                        groupId
+                        groupId,
+                        driverAvatarUrl
                     )
                 } else {
                     createJourneysNode(groupId)
@@ -61,11 +66,24 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
                                 note,
                                 startingLocationFirebase,
                                 destinationFirebase,
-                                groupId
+                                groupId,
+                                driverAvatarUrl
                             )
                         )
                 }
             }
+    }
+
+    override fun fetchUpcomingJourneys(groupId: String): Flowable<MutableList<UpcomingJourney>> {
+        return RxFirebaseDatabase.observeValueEvent(
+            databaseReference.child(FIREBASE_GROUPS).child(groupId).child(
+                FIREBASE_JOURNEYS
+            ), DataSnapshotMapper.listOf(JourneyFirebase::class.java)
+        ).map { firebaseModels ->
+            val localModels: MutableList<UpcomingJourney> = mutableListOf()
+            firebaseModels.forEach { localModels.add(it.toUpcomingJourney()) }
+            localModels
+        }
     }
 
     private fun addJourney(
@@ -75,7 +93,8 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
         note: String?,
         startingLocationFirebase: LocationFirebase,
         destinationFirebase: LocationFirebase,
-        groupId: String
+        groupId: String,
+        driverAvatarUrl: String
     ): Completable {
 
         val key =
@@ -89,7 +108,8 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
             timeStamp,
             note,
             startingLocationFirebase,
-            destinationFirebase
+            destinationFirebase,
+            driverAvatarUrl
         )
 
         return RxFirebaseDatabase.setValue(

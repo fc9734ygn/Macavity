@@ -7,6 +7,7 @@ import com.example.macavity.data.models.local.User
 import com.example.macavity.data.repositories.journey.JourneyRepository
 import com.example.macavity.data.repositories.user.UserRepository
 import com.example.macavity.ui.base.BaseViewModel
+import com.example.macavity.utils.secondsToMillis
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.threeten.bp.LocalDateTime
@@ -33,18 +34,19 @@ class AddJourneyViewModel @Inject constructor(
         note: String?
     ) {
 
-        val timeStamp = dateTime.atZone(ZoneId.systemDefault()).toEpochSecond()
+        val timeStamp = secondsToMillis(dateTime.atZone(ZoneId.systemDefault()).toEpochSecond())
 
         disposable.add(
             journeysRepository.createJourney(
-                currentUser.value!!.groupId!!,
-                currentUserId ,
-                freeSeats,
-                timeStamp,
-                note,
-                startingLocation,
-                destination
-            ).subscribeOn(Schedulers.io())
+                    currentUser.value!!.groupId!!,
+                    currentUserId,
+                    freeSeats,
+                    timeStamp,
+                    note,
+                    startingLocation,
+                    destination,
+                    currentUser.value!!.avatarUrl
+                ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { journeyCreatedSuccess.value = true }
         )

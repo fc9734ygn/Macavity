@@ -146,7 +146,7 @@ open class JourneyDetailFragment : HomeFragment() {
             journey.driver.driverStat
         )
 
-        setDate(journey.timeStamp)
+        setDate(journey.timestamp)
 
         seats.text = String.format(
             getString(R.string.journey_details_seats),

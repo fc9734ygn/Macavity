@@ -10,21 +10,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.local.Journey
+import com.example.macavity.data.models.local.UpcomingJourney
 import kotlinx.android.synthetic.main.view_journey.view.*
 
-class JourneysAdapter(private val itemClickListener: (Journey) -> Unit = {}) :
-    ListAdapter<Journey, RecyclerView.ViewHolder>(ListItemCallback()) {
+class JourneysAdapter(private val itemClickListener: (UpcomingJourney) -> Unit = {}) :
+    ListAdapter<UpcomingJourney, RecyclerView.ViewHolder>(ListItemCallback()) {
 
-    class ListItemCallback : DiffUtil.ItemCallback<Journey>() {
-        override fun areItemsTheSame(oldItem: Journey, newItem: Journey): Boolean {
+    class ListItemCallback : DiffUtil.ItemCallback<UpcomingJourney>() {
+        override fun areItemsTheSame(oldItem: UpcomingJourney, newItem: UpcomingJourney): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Journey, newItem: Journey): Boolean {
+        override fun areContentsTheSame(oldItem: UpcomingJourney, newItem: UpcomingJourney): Boolean {
             return oldItem.freeSeats == newItem.freeSeats
-                    && oldItem.passengers == newItem.passengers
-                    && oldItem.timeStamp == newItem.timeStamp
-                    && oldItem.driver == newItem.driver
+                    && oldItem.passengerIds == newItem.passengerIds
+                    && oldItem.timestamp == newItem.timestamp
+                    && oldItem.driverAvatarUrl == newItem.driverAvatarUrl
         }
     }
 
@@ -40,11 +41,11 @@ class JourneysAdapter(private val itemClickListener: (Journey) -> Unit = {}) :
     }
 
     inner class JourneyItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(model: Journey, position: Int) {
-            val relativeTimeString = getRelativeTimeSpanString(model.timeStamp,System.currentTimeMillis(),0).toString().toLowerCase()
+        fun bind(model: UpcomingJourney, position: Int) {
+            val relativeTimeString = getRelativeTimeSpanString(model.timestamp,System.currentTimeMillis(),0).toString().toLowerCase()
             itemView.departure.text = String.format(itemView.context.getString(R.string.journey_leaving_in),relativeTimeString)
-            itemView.seats_left.text = String.format(itemView.context.getString(R.string.item_journey_seats_left), model.freeSeats - model.passengers.size)
-            setAvatarImage(model.driver.avatarUrl)
+            itemView.seats_left.text = String.format(itemView.context.getString(R.string.item_journey_seats_left), model.freeSeats - model.passengerIds.size)
+            setAvatarImage(model.driverAvatarUrl)
 
             itemView.setOnClickListener {
                 itemClickListener.invoke(model)

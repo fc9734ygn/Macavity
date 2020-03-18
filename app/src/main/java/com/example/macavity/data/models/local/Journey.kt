@@ -5,7 +5,7 @@ data class Journey(
     val driver: User,
     val freeSeats: Int,
     val passengers: List<User>,
-    val timeStamp: Long,
+    val timestamp: Long,
     val note: String?,
     val startingLocation: Location,
     val destination: Location
