@@ -66,4 +66,8 @@ class MembersAdapter(private val itemClickListener: (User) -> Unit = {}) :
                 .into(itemView.member_avatar)
         }
     }
+
+    override fun submitList(list: List<User>?) {
+        super.submitList(list?.let { ArrayList(it) })
+    }
 }
