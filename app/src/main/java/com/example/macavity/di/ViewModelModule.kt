@@ -21,7 +21,7 @@ import com.example.macavity.ui.settings.SettingsViewModel
 import com.example.macavity.ui.signIn.SignInViewModel
 import com.example.macavity.ui.splash.SplashViewModel
 import com.example.macavity.ui.tutorial.TutorialViewModel
-import com.example.macavity.ui.yourJourneys.UpcomingJourneysViewModel
+import com.example.macavity.ui.upcomingJourneys.UpcomingJourneysViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module

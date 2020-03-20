@@ -1,4 +1,4 @@
-package com.example.macavity.ui.yourJourneys
+package com.example.macavity.ui.upcomingJourneys
 
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -6,10 +6,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.macavity.R
-import com.example.macavity.data.models.local.Journey
-import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.UpcomingJourney
-import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.ui.calendar.JourneysAdapter
 import kotlinx.android.synthetic.main.fragment_upcoming_journeys.*
@@ -30,7 +27,11 @@ open class UpcomingJourneysFragment : HomeFragment() {
     }
 
     private val journeysAdapter =
-        JourneysAdapter { findNavController().navigate(R.id.action_yourJourneysFragment__to_journeyDetailFragment_) }
+        JourneysAdapter {
+            val action =
+                UpcomingJourneysFragment_Directions.actionYourJourneysFragmentToJourneyDetailFragment(it.id)
+            findNavController().navigate(action)
+        }
 
     @AfterViews
     fun afterViews() {

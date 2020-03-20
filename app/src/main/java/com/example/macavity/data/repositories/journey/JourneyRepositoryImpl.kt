@@ -2,10 +2,12 @@ package com.example.macavity.data.repositories.journey
 
 import com.example.macavity.data.models.firebase.JourneyFirebase
 import com.example.macavity.data.models.firebase.LocationFirebase
+import com.example.macavity.data.models.local.JourneyDetails
 import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.UpcomingJourney
 import com.example.macavity.utils.FIREBASE_GROUPS
 import com.example.macavity.utils.FIREBASE_JOURNEYS
+import com.example.macavity.utils.FIREBASE_PASSENGER_IDS
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import durdinapps.rxfirebase2.DataSnapshotMapper
@@ -86,6 +88,24 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
         }
     }
 
+    override fun fetchJourneyDetails(groupId: String, journeyId: String): Flowable<JourneyDetails> {
+        return RxFirebaseDatabase.observeValueEvent(
+            databaseReference.child(FIREBASE_GROUPS).child(groupId).child(FIREBASE_JOURNEYS)
+                .child(journeyId), DataSnapshotMapper.of(JourneyFirebase::class.java)
+        ).map { it.toJourneyDetails() }
+    }
+
+    override fun bookSeat(groupId: String, journeyId: String, userId: String): Completable {
+        return doesPassengersNodeExist(groupId, journeyId)
+            .flatMapCompletable { exists ->
+                if (exists) {
+                    addPassenger(groupId,journeyId, userId)
+                } else {
+                    addFirstPassenger(groupId,journeyId, userId)
+                }
+            }
+    }
+
     private fun addJourney(
         driverId: String,
         freeSeats: Int,
@@ -104,7 +124,7 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
             key!!,
             driverId,
             freeSeats,
-            emptyList(),
+            emptyMap(),
             timeStamp,
             note,
             startingLocationFirebase,
@@ -139,5 +159,51 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
                 .child(FIREBASE_JOURNEYS),
             DataSnapshot::exists
         ).defaultIfEmpty(false).toSingle()
+    }
+
+    private fun doesPassengersNodeExist(groupId: String, journeyId: String): Single<Boolean> {
+        return RxFirebaseDatabase.observeSingleValueEvent(
+            databaseReference
+                .child(FIREBASE_GROUPS)
+                .child(groupId)
+                .child(FIREBASE_JOURNEYS)
+                .child(journeyId)
+                .child(FIREBASE_PASSENGER_IDS),
+            DataSnapshot::exists
+        ).defaultIfEmpty(false).toSingle()
+    }
+
+    private fun addPassenger(
+        groupId: String,
+        journeyId: String,
+        userId: String
+    ): Completable {
+        return RxFirebaseDatabase.setValue(
+            databaseReference
+                .child(FIREBASE_GROUPS)
+                .child(groupId)
+                .child(FIREBASE_JOURNEYS)
+                .child(journeyId)
+                .child(FIREBASE_PASSENGER_IDS)
+                .child(userId),
+            true
+        )
+    }
+
+    private fun addFirstPassenger(
+        groupId: String,
+        journeyId: String,
+        userId: String
+    ): Completable {
+        return RxFirebaseDatabase.setValue(
+            databaseReference
+                .child(FIREBASE_GROUPS)
+                .child(groupId)
+                .child(FIREBASE_JOURNEYS)
+                .child(journeyId)
+                .child(FIREBASE_PASSENGER_IDS)
+                .child(userId),
+            true
+        )
     }
 }

@@ -44,7 +44,8 @@ class JourneysAdapter(private val itemClickListener: (UpcomingJourney) -> Unit =
         fun bind(model: UpcomingJourney, position: Int) {
             val relativeTimeString = getRelativeTimeSpanString(model.timestamp,System.currentTimeMillis(),0).toString().toLowerCase()
             itemView.departure.text = String.format(itemView.context.getString(R.string.journey_leaving_in),relativeTimeString)
-            itemView.seats_left.text = String.format(itemView.context.getString(R.string.item_journey_seats_left), model.freeSeats - model.passengerIds.size)
+            val seatsTaken = if (model.passengerIds.isNullOrEmpty()) 0 else model.passengerIds.size
+            itemView.seats_left.text = String.format(itemView.context.getString(R.string.item_journey_seats_left), model.freeSeats - seatsTaken)
             setAvatarImage(model.driverAvatarUrl)
 
             itemView.setOnClickListener {

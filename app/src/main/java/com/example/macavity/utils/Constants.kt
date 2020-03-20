@@ -12,6 +12,7 @@ const val FIREBASE_USERS = "users"
 const val FIREBASE_GROUPS = "groups"
 const val FIREBASE_GROUP_ID = "groupId"
 const val FIREBASE_JOURNEYS = "journeys"
+const val FIREBASE_PASSENGER_IDS = "passengerIds"
 const val FIREBASE_GROUP_MEMBERS = "members"
 //endregion
 

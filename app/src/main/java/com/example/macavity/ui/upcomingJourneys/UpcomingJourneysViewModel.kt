@@ -1,4 +1,4 @@
-package com.example.macavity.ui.yourJourneys
+package com.example.macavity.ui.upcomingJourneys
 
 import androidx.lifecycle.LiveDataReactiveStreams
 import com.example.macavity.data.SharedPreferencesManager
@@ -26,7 +26,11 @@ class UpcomingJourneysViewModel @Inject constructor(
             val futureJourneys = allJourneys.filter { it.timestamp > System.currentTimeMillis() }
             val currentUserJourneys = futureJourneys.filter { journey ->
                 //filtering the ones where current user is not the driver or passenger
-                journey.driverId == currentUserId || journey.passengerIds.any { it == currentUserId }
+                if (journey.passengerIds.isNullOrEmpty()) {
+                    journey.driverId == currentUserId
+                } else {
+                    journey.driverId == currentUserId || journey.passengerIds.any { it == currentUserId }
+                }
             }
             val sortedJourneys = currentUserJourneys.sortedBy { it.timestamp }
             sortedJourneys

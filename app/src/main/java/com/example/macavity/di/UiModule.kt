@@ -18,7 +18,7 @@ import com.example.macavity.ui.settings.SettingsFragment_
 import com.example.macavity.ui.signIn.SignInFragment_
 import com.example.macavity.ui.splash.SplashFragment_
 import com.example.macavity.ui.tutorial.TutorialFragment_
-import com.example.macavity.ui.yourJourneys.UpcomingJourneysFragment_
+import com.example.macavity.ui.upcomingJourneys.UpcomingJourneysFragment_
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

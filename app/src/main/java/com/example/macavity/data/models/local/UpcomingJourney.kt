@@ -11,5 +11,5 @@ data class UpcomingJourney(
     val timestamp: Long,
     val driverAvatarUrl: String,
     val freeSeats: Int,
-    val passengerIds: List<String>
+    val passengerIds: List<String>?
 )

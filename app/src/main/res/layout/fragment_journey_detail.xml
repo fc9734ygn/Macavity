@@ -355,6 +355,46 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/passengers_card" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cancel_journey_button"
+                style="@style/default_text_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="72dp"
+                android:background="@drawable/background_button_selector_amber"
+                android:elevation="16dp"
+                android:translationZ="1dp"
+                android:text="@string/journey_details_cancel_journey"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passengers_card" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cancel_booking_button"
+                style="@style/default_text_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="72dp"
+                android:background="@drawable/background_button_selector_amber"
+                android:elevation="16dp"
+                android:translationZ="1dp"
+                android:text="@string/journey_details_cancel_booking"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passengers_card" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
