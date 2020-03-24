@@ -5,7 +5,12 @@ import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.commons.models.IUser
 import java.util.*
 
-data class MessageUI(val messageId: String, val timestamp: Long, val user: MessageAuthor, val messageText: String) : IMessage {
+data class MessageUI(
+    val messageId: String,
+    val timestamp: Long,
+    val user: MessageAuthor,
+    val messageText: String
+) : IMessage {
 
     override fun getId(): String {
         return messageId

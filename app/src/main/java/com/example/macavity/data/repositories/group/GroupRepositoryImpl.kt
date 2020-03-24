@@ -1,12 +1,9 @@
 package com.example.macavity.data.repositories.group
 
 import com.example.macavity.data.models.firebase.GroupFirebase
-import com.example.macavity.data.models.firebase.UserFirebase
+import com.example.macavity.data.models.firebase.MessageFirebase
 import com.example.macavity.data.models.local.Group
-import com.example.macavity.utils.FIREBASE_GROUPS
-import com.example.macavity.utils.FIREBASE_GROUP_ID
-import com.example.macavity.utils.FIREBASE_GROUP_MEMBERS
-import com.example.macavity.utils.FIREBASE_USERS
+import com.example.macavity.utils.*
 import com.google.firebase.database.DatabaseReference
 import durdinapps.rxfirebase2.DataSnapshotMapper
 import durdinapps.rxfirebase2.RxFirebaseDatabase
@@ -23,11 +20,11 @@ class GroupRepositoryImpl @Inject constructor(databaseReference: DatabaseReferen
 
     override fun createGroup(creatorUserId: String): Completable {
 
-        val key = groupsReference.push().key
+        val groupId = groupsReference.push().key
         val membersMap = hashMapOf(creatorUserId to true)
 
         val group = GroupFirebase(
-            key!!,
+            groupId!!,
             creatorUserId,
             membersMap,
             emptyMap(),
@@ -35,8 +32,28 @@ class GroupRepositoryImpl @Inject constructor(databaseReference: DatabaseReferen
         )
 
         return RxFirebaseDatabase
-            .setValue(groupsReference.child(key), group)
-            .andThen(addGroupIdToUser(key, creatorUserId))
+            .setValue(groupsReference.child(groupId), group)
+            .andThen(addGroupIdToUser(groupId, creatorUserId))
+            .andThen(createChat(groupId))
+    }
+
+    private fun createChat(groupId: String): Completable {
+        val key = groupsReference.child(FIREBASE_CHAT).push().key
+
+        //todo: use logo image
+        val firstMessage = MessageFirebase(
+            "dummyId",
+            "Hi there, here you can chat with your group members! \uD83D\uDE09 ",
+            System.currentTimeMillis(),
+            "dummyUserId",
+            "Friendly Cat",
+            "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        )
+
+        return RxFirebaseDatabase.setValue(
+            groupsReference.child(groupId).child(FIREBASE_CHAT).child(key!!),
+            firstMessage
+        )
     }
 
     override fun joinGroup(groupId: String, userId: String): Completable {

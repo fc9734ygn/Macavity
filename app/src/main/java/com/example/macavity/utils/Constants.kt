@@ -10,6 +10,7 @@ const val RC_AUTO_COMPLETE_PLACE_DESTINATION = 893
 //region Firebase References
 const val FIREBASE_USERS = "users"
 const val FIREBASE_GROUPS = "groups"
+const val FIREBASE_CHAT = "chat"
 const val FIREBASE_GROUP_ID = "groupId"
 const val FIREBASE_JOURNEYS = "journeys"
 const val FIREBASE_PASSENGER_IDS = "passengerIds"

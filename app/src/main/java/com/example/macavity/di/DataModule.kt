@@ -2,6 +2,8 @@ package com.example.macavity.di
 
 import android.content.SharedPreferences
 import com.example.macavity.data.SharedPreferencesManager
+import com.example.macavity.data.repositories.chat.ChatRepository
+import com.example.macavity.data.repositories.chat.ChatRepositoryImpl
 import com.example.macavity.data.repositories.group.GroupRepository
 import com.example.macavity.data.repositories.group.GroupRepositoryImpl
 import com.example.macavity.data.repositories.journey.JourneyRepository
@@ -46,5 +48,9 @@ class DataModule {
         return JourneyRepositoryImpl(databaseReference)
     }
 
+    @Provides
+    fun providesChatRepository(databaseReference: DatabaseReference): ChatRepository {
+        return ChatRepositoryImpl(databaseReference)
+    }
     //endregion
 }
