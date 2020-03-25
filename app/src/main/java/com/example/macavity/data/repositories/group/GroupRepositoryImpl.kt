@@ -27,7 +27,6 @@ class GroupRepositoryImpl @Inject constructor(databaseReference: DatabaseReferen
             groupId!!,
             creatorUserId,
             membersMap,
-            emptyMap(),
             emptyMap()
         )
 

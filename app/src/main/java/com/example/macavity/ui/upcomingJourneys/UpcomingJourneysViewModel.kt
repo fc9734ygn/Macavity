@@ -15,7 +15,7 @@ class UpcomingJourneysViewModel @Inject constructor(
 
     lateinit var currentUserId: String
 
-    private val groupFlowable = sharedPreferencesManager
+    private val upcomingJourneysFlowable = sharedPreferencesManager
         .getCurrentUserId()
         .flatMapPublisher {
             currentUserId = it
@@ -36,5 +36,5 @@ class UpcomingJourneysViewModel @Inject constructor(
             sortedJourneys
         }
 
-    val upcomingJourneys = LiveDataReactiveStreams.fromPublisher(groupFlowable)
+    val upcomingJourneys = LiveDataReactiveStreams.fromPublisher(upcomingJourneysFlowable)
 }

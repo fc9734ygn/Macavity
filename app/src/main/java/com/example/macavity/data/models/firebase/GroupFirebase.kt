@@ -12,7 +12,6 @@ data class GroupFirebase(
     var id: String = "",
     var creatorId: String = "",
     var members: Map<String, Boolean> = HashMap(),
-    var chat: Map<String, Message> = HashMap(),
     var journeys: Map<String, JourneyFirebase> = HashMap()
 ) {
     fun toGroup(): Group {
@@ -20,7 +19,6 @@ data class GroupFirebase(
             id,
             creatorId,
             members.keys.toList(),
-            chat.values.toList(),
             journeys.size
         )
     }

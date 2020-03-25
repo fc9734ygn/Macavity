@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.local.Journey
 import com.example.macavity.data.models.local.UpcomingJourney
+import com.example.macavity.data.models.local.User
 import kotlinx.android.synthetic.main.view_journey.view.*
 
 class JourneysAdapter(private val itemClickListener: (UpcomingJourney) -> Unit = {}) :
@@ -61,5 +62,9 @@ class JourneysAdapter(private val itemClickListener: (UpcomingJourney) -> Unit =
                 .error(R.drawable.ic_person)
                 .into(itemView.driver_avatar)
         }
+    }
+
+    override fun submitList(list: List<UpcomingJourney>?) {
+        super.submitList(list?.let { ArrayList(it) })
     }
 }

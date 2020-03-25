@@ -14,3 +14,7 @@ fun millisecondsToSeconds(milliseconds: Long): Long {
 fun secondsToMillis(seconds: Long): Long{
     return seconds * 1000
 }
+
+fun daysToMillis(days: Long) : Long{
+    return days * 86400000
+}

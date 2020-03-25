@@ -7,11 +7,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.macavity.R
-import com.example.macavity.data.models.local.Journey
-import com.example.macavity.data.models.local.Location
+import com.example.macavity.data.models.local.UpcomingJourney
 import com.example.macavity.data.models.local.User
-
 import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.utils.daysToMillis
 import com.example.macavity.utils.getRandomBoolean
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.DayOwner
@@ -34,7 +33,11 @@ open class CalendarFragment : HomeFragment() {
     private lateinit var vm: CalendarViewModel
     private var selectedDate: LocalDate? = null
     private val journeysAdapter =
-        JourneysAdapter { findNavController().navigate(R.id.action_calendarFragment__to_journeyDetailFragment_) }
+        JourneysAdapter {
+            val action =
+                CalendarFragment_Directions.actionCalendarFragmentToJourneyDetailFragment(it.id)
+            findNavController().navigate(action)
+        }
 
     private val userObserver = Observer<User> {
         if (it.isDriver) {
@@ -44,17 +47,32 @@ open class CalendarFragment : HomeFragment() {
         }
     }
 
+    private val selectedDayJourneysObserver = Observer<List<UpcomingJourney>> {
+        showLoading(false)
+        if (it.isEmpty()) {
+            //todo: show "no journeys for this date" view
+        } else {
+            journeysAdapter.submitList(it)
+            journeysAdapter.notifyDataSetChanged()
+        }
+    }
+
+    private val allJourneysObserver = Observer<List<UpcomingJourney>> {
+        initCalendar(it)
+    }
+
     @AfterViews
     fun afterViews() {
         initViewModel()
         initToolbar()
         initJourneysRecyclerView()
-        initCalendar()
     }
 
-    private fun initViewModel(){
+    private fun initViewModel() {
         vm = ViewModelProviders.of(this, viewModelFactory).get(CalendarViewModel::class.java)
         vm.userLiveData.observe(this, userObserver)
+        vm.journeysForSelectedDay.observe(this, selectedDayJourneysObserver)
+        vm.allJourneys.observe(this, allJourneysObserver)
     }
 
     private fun initToolbar() {
@@ -68,7 +86,7 @@ open class CalendarFragment : HomeFragment() {
         journeys_recycler_view.adapter = journeysAdapter
     }
 
-    private fun initCalendar() {
+    private fun initCalendar(journeys: List<UpcomingJourney>) {
         val currentMonth: YearMonth = YearMonth.now()
         val firstMonth: YearMonth = currentMonth
         val lastMonth: YearMonth = currentMonth.plusMonths(2)
@@ -110,8 +128,13 @@ open class CalendarFragment : HomeFragment() {
                                 )
                             )
                             //todo: change according if there are any journeys happening that day
+
+                            val dayStartInMillis = daysToMillis(day.date.toEpochDay())
+                            val dayEndInMillis = dayStartInMillis + daysToMillis(1)
+                            val dayContainsJourneys =
+                                journeys.any { it.timestamp in (dayStartInMillis) until dayEndInMillis }
                             journeyIcon.visibility =
-                                if (getRandomBoolean()) View.VISIBLE else View.GONE
+                                if (dayContainsJourneys) View.VISIBLE else View.GONE
 
                         }
                     }
@@ -137,21 +160,20 @@ open class CalendarFragment : HomeFragment() {
         selectedDate = date
         oldDate?.let { calendar.notifyDateChanged(it) }
         calendar.notifyDateChanged(date)
-        updateAdapterForDate(date)
+        journeysAdapter.submitList(emptyList())
+        showLoading(true)
+        vm.fetchJourneysForSelectedDate(date)
     }
 
-    private fun updateAdapterForDate(date: LocalDate) {
-        //todo: use real data
-        journeysAdapter.submitList(emptyList())
-        journeysAdapter.notifyDataSetChanged()
+    private fun showLoading(show: Boolean){
+        loading_indicator.visibility = if (show) View.VISIBLE else View.GONE
+        journeys_recycler_view.visibility = if (show) View.GONE else View.VISIBLE
     }
 
     @Click(resName = ["fab"])
     fun goToAddJourney() {
-        //TODO: hide this fab if user is not a driver
-
         if (selectedDate == null) {
-            toast("Please select a date")
+            toast(getString(R.string.error_select_date))
         } else {
             val action =
                 CalendarFragment_Directions.actionCalendarFragmentToAddJourneyFragment(selectedDate!!)
