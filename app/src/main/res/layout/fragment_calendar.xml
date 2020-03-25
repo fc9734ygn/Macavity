@@ -16,6 +16,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <ProgressBar
+        android:id="@+id/loading_indicator"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:elevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -49,9 +60,21 @@
                 app:cv_inDateStyle="allMonths"
                 app:cv_orientation="horizontal"
                 app:cv_scrollMode="paged"
+                tools:layout_height="200dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calendar_header" />
+
+            <View
+                android:id="@+id/fake_calendar_bottom"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:background="@color/white"
+                android:elevation="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/calendar" />
 
             <View
                 android:id="@+id/background"
@@ -79,14 +102,35 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calendar"
                 app:layout_constraintVertical_bias="0.0"
-                tools:itemCount="2"
+                tools:itemCount="0"
                 tools:listitem="@layout/view_journey" />
 
             <ProgressBar
-                android:id="@+id/loading_indicator"
+                android:id="@+id/loading_indicator_selected_day_journeys"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:elevation="12dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/calendar" />
+
+            <TextView
+                android:id="@+id/no_journeys_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="11dp"
+                android:paddingStart="16dp"
+                android:paddingTop="56dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="56dp"
+                android:visibility="gone"
+                android:text="There are no journeys planned for the selected date."
+                android:textAlignment="center"
+                android:textColor="@color/grey_dark"
+                android:textSize="16sp"
+                android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -19,7 +19,18 @@ data class GroupFirebase(
             id,
             creatorId,
             members.keys.toList(),
-            journeys.size
+            calculateJourneysCompleted(journeys)
         )
     }
+
+    private fun calculateJourneysCompleted(journeys: Map<String, JourneyFirebase>): Int {
+        var index = 0
+        journeys.forEach {
+            if (it.value.timestamp < System.currentTimeMillis()) {
+                index++
+            }
+        }
+        return index
+    }
+
 }

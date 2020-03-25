@@ -11,7 +11,6 @@ import com.example.macavity.data.models.local.UpcomingJourney
 import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.utils.daysToMillis
-import com.example.macavity.utils.getRandomBoolean
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.DayBinder
@@ -32,6 +31,7 @@ open class CalendarFragment : HomeFragment() {
 
     private lateinit var vm: CalendarViewModel
     private var selectedDate: LocalDate? = null
+    private var isUserDriver = false
     private val journeysAdapter =
         JourneysAdapter {
             val action =
@@ -40,18 +40,16 @@ open class CalendarFragment : HomeFragment() {
         }
 
     private val userObserver = Observer<User> {
-        if (it.isDriver) {
-            fab.show()
-        } else {
-            fab.hide()
-        }
+        isUserDriver = it.isDriver
+        updateFabState()
     }
 
     private val selectedDayJourneysObserver = Observer<List<UpcomingJourney>> {
         showLoading(false)
         if (it.isEmpty()) {
-            //todo: show "no journeys for this date" view
+            no_journeys_view.visibility = View.VISIBLE
         } else {
+            no_journeys_view.visibility = View.GONE
             journeysAdapter.submitList(it)
             journeysAdapter.notifyDataSetChanged()
         }
@@ -94,6 +92,7 @@ open class CalendarFragment : HomeFragment() {
         val today = LocalDate.now()
         val dayClickListener: (LocalDate) -> Unit = { selectDate(it) }
 
+        loading_indicator.visibility = View.GONE
         calendar.setup(firstMonth, lastMonth, firstDayOfWeek)
         calendar.scrollToMonth(currentMonth)
         selectDate(today)
@@ -154,6 +153,24 @@ open class CalendarFragment : HomeFragment() {
         }
     }
 
+    private fun updateFabState() {
+        //if selected day is in the past or user is not a driver - hiding the "add journey" button
+        if (isUserDriver) {
+            if (selectedDate != null) {
+                val selectedDayIsInThePast = selectedDate!!.isBefore(LocalDate.now())
+                if (selectedDayIsInThePast) {
+                    fab.hide()
+                } else {
+                    fab.show()
+                }
+            } else {
+                fab.show()
+            }
+        } else {
+            fab.hide()
+        }
+    }
+
     private fun selectDate(date: LocalDate) {
         if (selectedDate == date) return
         val oldDate = selectedDate
@@ -163,10 +180,11 @@ open class CalendarFragment : HomeFragment() {
         journeysAdapter.submitList(emptyList())
         showLoading(true)
         vm.fetchJourneysForSelectedDate(date)
+        updateFabState()
     }
 
-    private fun showLoading(show: Boolean){
-        loading_indicator.visibility = if (show) View.VISIBLE else View.GONE
+    private fun showLoading(show: Boolean) {
+        loading_indicator_selected_day_journeys.visibility = if (show) View.VISIBLE else View.GONE
         journeys_recycler_view.visibility = if (show) View.GONE else View.VISIBLE
     }
 
