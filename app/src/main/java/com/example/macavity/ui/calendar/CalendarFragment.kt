@@ -40,7 +40,7 @@ open class CalendarFragment : HomeFragment() {
         }
 
     private val userObserver = Observer<User> {
-        isUserDriver = it.isDriver
+        isUserDriver = it.driver
         updateFabState()
     }
 

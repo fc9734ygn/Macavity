@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.macavity.R
+import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.HomeFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
@@ -31,10 +32,23 @@ open class EditProfileFragment : HomeFragment() {
     private lateinit var vm: EditProfileViewModel
     private lateinit var currentUser: User
 
+    //use real img
+    val profileImg =
+        "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc="
+
     private val userObserver = Observer<User?> {
         if (it != null) {
             currentUser = it
             setInitialUserData()
+
+            //enabling save button
+            toolbar.setEndIcon(R.drawable.ic_save)
+            toolbar.endIconListener = { verifyUserInput() }
+        }
+    }
+    private val profileEditSuccessObserver = Observer<Boolean> {
+        if (it) {
+            requireActivity().onBackPressed()
         }
     }
 
@@ -47,6 +61,7 @@ open class EditProfileFragment : HomeFragment() {
     private fun initViewModel() {
         vm = ViewModelProviders.of(this, viewModelFactory).get(EditProfileViewModel::class.java)
         vm.currentUser.observe(this, userObserver)
+        vm.profileUpdatedSuccess.observe(this, profileEditSuccessObserver)
         vm.fetchUser()
     }
 
@@ -57,8 +72,10 @@ open class EditProfileFragment : HomeFragment() {
         location.text = currentUser.home.address
         destination.text = currentUser.destination.address
         setAvatarImage(currentUser.avatarUrl)
-        driver_switch.isChecked = currentUser.isDriver
-        if (currentUser.isDriver){
+        driver_switch.isChecked = currentUser.driver
+        vm.home = currentUser.home
+        vm.destination = currentUser.destination
+        if (currentUser.driver) {
             car_number_plate.setText(currentUser.carNumberPlate)
             car_seats.setText(currentUser.carFreeSeats.toString())
         }
@@ -67,11 +84,8 @@ open class EditProfileFragment : HomeFragment() {
     private fun initToolbar() {
         toolbar.setTitle(getString(R.string.edit_profile_toolbar_title))
             .setStartIcon(R.drawable.ic_arrow_back)
-            .setEndIcon(R.drawable.ic_save)
 
         toolbar.startIconListener = { requireActivity().onBackPressed() }
-        //TODO: save changes
-        toolbar.endIconListener = { verifyUserInput() }
     }
 
     private fun verifyUserInput() {
@@ -105,11 +119,18 @@ open class EditProfileFragment : HomeFragment() {
             isDataCorrect = false
         }
         if (isDataCorrect) {
-            //todo: save changes instead of onbackpressed
-            requireActivity().onBackPressed()
+            vm.saveProfileChanges(
+                name.text.toString(),
+                profileImg,
+                email.text.toString(),
+                phone.text.toString(),
+                driver_switch.isChecked,
+                car_number_plate.text.toString(),
+                if (car_seats.text.toString().isNotBlank())
+                    car_seats.text.toString().toInt() else null
+            )
         }
     }
-
 
     private fun showRedBorder(view: View) {
         view.background = resources.getDrawable(R.drawable.background_grey_rounded_red_border, null)
@@ -144,12 +165,49 @@ open class EditProfileFragment : HomeFragment() {
         }
     }
 
+//    private fun onAddressReceived(requestCode: Int, intent: Intent) {
+//        when (requestCode) {
+//            RC_AUTO_COMPLETE_PLACE_LOCATION -> location.text =
+//                Autocomplete.getPlaceFromIntent(intent).address
+//            RC_AUTO_COMPLETE_PLACE_DESTINATION -> destination.text =
+//                Autocomplete.getPlaceFromIntent(intent).address
+//        }
+//    }
+
     private fun onAddressReceived(requestCode: Int, intent: Intent) {
+
+        val address = Autocomplete.getPlaceFromIntent(intent).address
+        val placeId = Autocomplete.getPlaceFromIntent(intent).id
+        val latLng = Autocomplete.getPlaceFromIntent(intent).latLng
+
+        if (address.isNullOrBlank() || placeId == null || latLng == null) {
+            toast(getString(R.string.error_incorrect_address))
+            return
+        }
+
         when (requestCode) {
-            RC_AUTO_COMPLETE_PLACE_LOCATION -> location.text =
-                Autocomplete.getPlaceFromIntent(intent).address
-            RC_AUTO_COMPLETE_PLACE_DESTINATION -> destination.text =
-                Autocomplete.getPlaceFromIntent(intent).address
+            RC_AUTO_COMPLETE_PLACE_LOCATION -> {
+                location.text = address
+                location.background =
+                    resources.getDrawable(R.drawable.background_grey_rounded, null)
+                vm.home = Location(
+                    placeId,
+                    address,
+                    latLng.latitude,
+                    latLng.longitude
+                )
+            }
+            RC_AUTO_COMPLETE_PLACE_DESTINATION -> {
+                destination.text = address
+                destination.background =
+                    resources.getDrawable(R.drawable.background_grey_rounded, null)
+                vm.destination = Location(
+                    placeId,
+                    address,
+                    latLng.latitude,
+                    latLng.longitude
+                )
+            }
         }
     }
 

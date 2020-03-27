@@ -4,6 +4,8 @@ import android.content.Context
 import com.example.macavity.di.DaggerAppComponent
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.net.PlacesClient
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Logger
 import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.android.support.DaggerApplication
 import timber.log.Timber
@@ -32,6 +34,8 @@ class App : DaggerApplication() {
         instance = this
         initPlaces()
         initCalendarLib()
+        FirebaseDatabase.getInstance().setPersistenceEnabled(false)
+        FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG)
     }
 
     private fun initCalendarLib(){

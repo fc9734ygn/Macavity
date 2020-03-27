@@ -25,7 +25,7 @@ class MembersAdapter(private val itemClickListener: (User) -> Unit = {}) :
                     && oldItem.avatarUrl == newItem.avatarUrl
                     && oldItem.email == newItem.email
                     && oldItem.phoneNumber == newItem.phoneNumber
-                    && oldItem.isDriver == newItem.isDriver
+                    && oldItem.driver == newItem.driver
                     && oldItem.name == newItem.name
                     && oldItem.home == newItem.home
                     && oldItem.destination == newItem.destination

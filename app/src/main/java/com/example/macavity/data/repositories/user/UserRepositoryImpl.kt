@@ -3,8 +3,7 @@ package com.example.macavity.data.repositories.user
 import com.example.macavity.data.models.firebase.UserFirebase
 import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.User
-import com.example.macavity.utils.FIREBASE_GROUP_ID
-import com.example.macavity.utils.FIREBASE_USERS
+import com.example.macavity.utils.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import durdinapps.rxfirebase2.DataSnapshotMapper
@@ -36,7 +35,7 @@ class UserRepositoryImpl @Inject constructor(databaseReference: DatabaseReferenc
         ).map { it.toUser() }.toSingle()
     }
 
-    override fun createUser(
+    override fun createUserProfile(
         id: String,
         name: String,
         home: Location,
@@ -65,6 +64,38 @@ class UserRepositoryImpl @Inject constructor(databaseReference: DatabaseReferenc
 
         return RxFirebaseDatabase
             .setValue(usersReference.child(id), user)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun updateUserProfile(
+        id: String,
+        name: String,
+        home: Location,
+        destination: Location,
+        avatarUrl: String,
+        email: String,
+        phoneNumber: String,
+        isDriver: Boolean,
+        carNumberPlate: String?,
+        carFreeSeats: Int?
+    ): Completable {
+
+        val newData: Map<String, Any?> =
+            mapOf(
+                Pair(FIREBASE_USER_NAME, name),
+                Pair(FIREBASE_USER_HOME, home),
+                Pair(FIREBASE_USER_DESTINATION, destination),
+                Pair(FIREBASE_USER_AVATAR, avatarUrl),
+                Pair(FIREBASE_USER_EMAIL, email),
+                Pair(FIREBASE_USER_PHONE, phoneNumber),
+                Pair(FIREBASE_USER_DRIVER, isDriver),
+                Pair(FIREBASE_USER_PLATE, carNumberPlate),
+                Pair(FIREBASE_USER_SEATS, carFreeSeats)
+            )
+
+        return RxFirebaseDatabase
+            .updateChildren(usersReference.child(id), newData)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

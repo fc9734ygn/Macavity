@@ -31,7 +31,7 @@ class CreateProfileViewModel @Inject constructor(
     ) {
 
         disposable.add(
-            userRepo.createUser(
+            userRepo.createUserProfile(
                 userId,
                 name,
                 home,

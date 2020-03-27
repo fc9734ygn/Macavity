@@ -8,7 +8,7 @@ data class User(
     val avatarUrl: String,
     val email: String,
     val phoneNumber: String,
-    val isDriver: Boolean,
+    val driver: Boolean,
     val carNumberPlate: String?,
     val carFreeSeats: Int?,
     val passengerStat: Int,
