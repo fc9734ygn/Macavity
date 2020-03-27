@@ -60,6 +60,10 @@ open class AddJourneyFragment : HomeFragment() {
     private fun setInitialData(user: User) {
         val dateFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM")
         date.text = dateFormatter.format(args.dateWithOutTime)
+        vm.startingLocation = user.home
+        vm.destination = user.destination
+        location.text = user.home.address
+        destination.text = user.destination.address
         free_seats.setText(user.carFreeSeats.toString())
     }
 
