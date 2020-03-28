@@ -30,23 +30,20 @@ open class CreateProfileFragment : AuthFragment() {
 
     val args: CreateProfileFragment_Args by navArgs()
 
-    private val profileCreationObserver = Observer<Boolean> {
+    private val profileCreationSuccessObserver = Observer<Boolean> {
         if (it) {
+            hideKeyboard(requireContext(), this.view!!)
             findNavController().navigate(R.id.action_createProfileFragment__to_tutorialFragment_)
         }
     }
-
-    //use real img
-    val profileImg =
-        "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc="
 
     @AfterViews
     fun afterViews() {
         vm = ViewModelProviders.of(this, viewModelFactory)
             .get(CreateProfileViewModel::class.java)
-        vm.profileCreatedSuccess.observe(this, profileCreationObserver)
+        vm.profileCreatedSuccess.observe(this, profileCreationSuccessObserver)
         initToolbar()
-        setAvatarImage(profileImg)
+        setAvatarImage(args.userPhotoUrl)
     }
 
     private fun initToolbar() {
@@ -92,7 +89,7 @@ open class CreateProfileFragment : AuthFragment() {
             vm.createProfile(
                 args.userId,
                 name.text.toString(),
-                profileImg,
+                args.userPhotoUrl,
                 email.text.toString(),
                 phone.text.toString(),
                 driver_switch.isChecked,

@@ -42,6 +42,9 @@
         <argument
             android:name="userId"
             app:argType="string" />
+        <argument
+            android:name="userPhotoUrl"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/createGroupFragment_"

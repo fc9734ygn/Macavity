@@ -52,6 +52,7 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_edit"
                 android:tint="@color/amber_primary"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
                 app:layout_constraintEnd_toEndOf="@id/profile_avatar" />
 

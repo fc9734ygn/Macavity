@@ -30,6 +30,7 @@ open class SignInFragment : AuthFragment() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var vm: SignInViewModel
     private lateinit var auth: FirebaseAuth
+    private lateinit var photoUrl: String
 
     private val userProfileStateObserver = Observer<SignInViewModel.UserProfileState?> {
         when (it) {
@@ -44,7 +45,10 @@ open class SignInFragment : AuthFragment() {
             }
             SignInViewModel.UserProfileState.NOT_EXISTENT -> {
                 val action =
-                    SignInFragment_Directions.actionSignInFragmentToCreateProfileFragment(auth.uid!!)
+                    SignInFragment_Directions.actionSignInFragmentToCreateProfileFragment(
+                        auth.uid!!,
+                        photoUrl
+                    )
                 findNavController().navigate(action)
             }
         }
@@ -103,7 +107,8 @@ open class SignInFragment : AuthFragment() {
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
-            firebaseAuthWithGoogle(account!!)
+            photoUrl = account!!.photoUrl.toString()
+            firebaseAuthWithGoogle(account)
         } catch (e: ApiException) {
             toast(e.message)
         }

@@ -10,6 +10,7 @@ import com.example.macavity.R
 import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.ui.home.HomeActivity
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
 import com.example.macavity.utils.isValidEmail
@@ -32,10 +33,6 @@ open class EditProfileFragment : HomeFragment() {
     private lateinit var vm: EditProfileViewModel
     private lateinit var currentUser: User
 
-    //use real img
-    val profileImg =
-        "https://media.gettyimages.com/photos/businessman-wearing-eyeglasses-picture-id825083358?b=1&k=6&m=825083358&s=612x612&w=0&h=SV2xnROuodWTh-sXycr-TULWi-bdlwBDXJkcfCz2lLc="
-
     private val userObserver = Observer<User?> {
         if (it != null) {
             currentUser = it
@@ -48,6 +45,7 @@ open class EditProfileFragment : HomeFragment() {
     }
     private val profileEditSuccessObserver = Observer<Boolean> {
         if (it) {
+            hideKeyboard(requireContext(), this.view!!)
             requireActivity().onBackPressed()
         }
     }
@@ -121,7 +119,7 @@ open class EditProfileFragment : HomeFragment() {
         if (isDataCorrect) {
             vm.saveProfileChanges(
                 name.text.toString(),
-                profileImg,
+                currentUser.avatarUrl,
                 email.text.toString(),
                 phone.text.toString(),
                 driver_switch.isChecked,
