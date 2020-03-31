@@ -1,5 +1,6 @@
 package com.example.macavity.ui.upcomingJourneys
 
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -20,9 +21,12 @@ open class UpcomingJourneysFragment : HomeFragment() {
 
     private val journeysObserver = Observer<List<UpcomingJourney>> {
         if (!it.isNullOrEmpty()) {
+            rc_view.visibility = View.VISIBLE
+            no_upcoming_journeys_view.visibility = View.GONE
             journeysAdapter.submitList(it)
         } else {
-            //todo: show no journeys screen
+            rc_view.visibility = View.GONE
+            no_upcoming_journeys_view.visibility = View.VISIBLE
         }
     }
 

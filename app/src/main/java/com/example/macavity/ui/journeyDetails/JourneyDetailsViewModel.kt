@@ -17,10 +17,13 @@ class JourneyDetailsViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : BaseViewModel() {
 
+    enum class UserState {
+        DRIVER, PASSENGER, NEITHER
+    }
+
     val journeyDetails = MutableLiveData<JourneyDetails>()
     val driver = MutableLiveData<User>()
-    val currentUserIsDriver = MutableLiveData<Boolean>()
-    val currentUserIsPassenger = MutableLiveData<Boolean>()
+    val currentUserState = MutableLiveData<UserState>()
     val passengers: MutableLiveData<MutableList<User>> by lazy {
         MutableLiveData<MutableList<User>>(mutableListOf())
     }
@@ -46,48 +49,78 @@ class JourneyDetailsViewModel @Inject constructor(
 
                 if (!journey.passengerIds.isNullOrEmpty()) {
                     getMembers(journey.passengerIds)
-                    currentUserIsPassenger.postValue(journey.passengerIds.contains(currentUserId))
                 } else {
-                    currentUserIsPassenger.postValue(false)
+                    passengers.postValue(mutableListOf())
                 }
-
+                updateCurrentUserState(journey.passengerIds, journey.driverId)
                 userRepository.fetchUserFlowable(journey.driverId)
             }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { journeyDriver ->
-                currentUserIsDriver.postValue(journeyDriver.id == currentUserId)
                 driver.postValue(journeyDriver)
             }
         )
     }
 
+    private fun updateCurrentUserState(
+        passengerIds: List<String>?,
+        driverId: String
+    ) {
+        val currentUserIsDriver = driverId == currentUserId
+        val currentUserIsPassenger = if (passengerIds.isNullOrEmpty()) {
+            false
+        } else {
+            passengerIds.contains(currentUserId)
+        }
+
+        val userState = when {
+            currentUserIsDriver -> {
+                UserState.DRIVER
+            }
+            currentUserIsPassenger -> {
+                UserState.PASSENGER
+            }
+            else -> {
+                UserState.NEITHER
+            }
+        }
+
+        this.currentUserState.postValue(userState)
+    }
+
     private fun getMembers(memberIds: List<String>) {
+        val list = mutableListOf<User>()
         memberIds.forEach {
             disposable.add(userRepository.fetchUserFlowable(it)
                 .distinctUntilChanged()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { user ->
-                    passengers.value!!.add(user)
-                    passengers.postValue(passengers.value)
+                    list.add(user)
+                    passengers.postValue(list)
                 }
             )
         }
     }
 
     fun bookSeat() {
-        disposable.add(journeyRepository
-            .bookSeat(currentUserGroupId, journeyDetails.value!!.id, currentUserId)
-            .subscribe {}
+        disposable.add(
+            journeyRepository
+                .bookSeat(currentUserGroupId, journeyDetails.value!!.id, currentUserId)
+                .subscribe()
         )
     }
 
-    fun cancelJourney() {
-        //todo: cancel journey
-    }
-
     fun cancelBooking() {
-        //todo: cancel booking
+        disposable.add(
+            journeyRepository.cancelBooking(
+                currentUserGroupId,
+                journeyDetails.value!!.id,
+                currentUserId
+            ).subscribe {
+                fetchJourney(journeyDetails.value!!.id)
+            }
+        )
     }
 }

@@ -99,11 +99,33 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
         return doesPassengersNodeExist(groupId, journeyId)
             .flatMapCompletable { exists ->
                 if (exists) {
-                    addPassenger(groupId,journeyId, userId)
+                    addPassenger(groupId, journeyId, userId)
                 } else {
-                    addFirstPassenger(groupId,journeyId, userId)
+                    addFirstPassenger(groupId, journeyId, userId)
                 }
             }
+    }
+
+    override fun cancelJourney(groupId: String, journeyId: String): Completable {
+        return RxFirebaseDatabase.setValue(
+            databaseReference
+                .child(FIREBASE_GROUPS)
+                .child(groupId)
+                .child(FIREBASE_JOURNEYS)
+                .child(journeyId), null
+        )
+    }
+
+    override fun cancelBooking(groupId: String, journeyId: String, userId: String): Completable {
+        return RxFirebaseDatabase.setValue(
+            databaseReference
+                .child(FIREBASE_GROUPS)
+                .child(groupId)
+                .child(FIREBASE_JOURNEYS)
+                .child(journeyId)
+                .child(FIREBASE_PASSENGER_IDS)
+                .child(userId), null
+        )
     }
 
     private fun addJourney(

@@ -64,4 +64,8 @@ class PassengersAdapter(private val itemClickListener: (User) -> Unit = {}) :
                 .into(itemView.passenger_avatar)
         }
     }
+
+    override fun submitList(list: List<User>?) {
+        super.submitList(list?.let { ArrayList(it) })
+    }
 }

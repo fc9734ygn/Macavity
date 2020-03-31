@@ -18,6 +18,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_journey_detail.*
+import kotlinx.android.synthetic.main.fragment_journey_detail.toolbar
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EFragment
@@ -32,17 +33,24 @@ open class JourneyDetailFragment : HomeFragment() {
 
     private lateinit var vm: JourneyDetailsViewModel
     private lateinit var map: GoogleMap
+    private var journeyExpired = false
 
     val args: JourneyDetailFragment_Args by navArgs()
 
-    //TODO: pass user id
     private val passengersAdapter =
-        PassengersAdapter { findNavController().navigate(R.id.action_journeyDetailFragment__to_profileFragment_) }
+        PassengersAdapter {
+            val action =
+                JourneyDetailFragment_Directions.actionJourneyDetailFragmentToProfileFragment(it.id)
+            findNavController().navigate(action)
+        }
 
     private val passengersObserver = Observer<List<User>> {
         if (it.isNullOrEmpty()) {
-            //todo: Show no passengers view
+            no_passengers_view.visibility = View.VISIBLE
+            passengers_rv.visibility = View.GONE
         } else {
+            no_passengers_view.visibility = View.GONE
+            passengers_rv.visibility = View.VISIBLE
             passengersAdapter.submitList(it)
         }
     }
@@ -53,18 +61,14 @@ open class JourneyDetailFragment : HomeFragment() {
 
     private val journeyObserver = Observer<JourneyDetails> {
         setJourneyData(it)
+        journeyExpired = it.timestamp < System.currentTimeMillis()
     }
 
-    private val userIsDriverObserver = Observer<Boolean> {
-        cancel_journey_button.visibility = if (it) View.VISIBLE else View.GONE
-        cancel_booking_button.visibility = if (it) View.GONE else View.VISIBLE
-        book_seat_button.visibility = if (it) View.GONE else View.VISIBLE
-    }
-
-    private val userIsPassengerObserver = Observer<Boolean> {
-        cancel_booking_button.visibility = if (it) View.VISIBLE else View.GONE
-        cancel_journey_button.visibility = if (it) View.VISIBLE else View.GONE
-        book_seat_button.visibility = if (it) View.GONE else View.VISIBLE
+    private val currentUserStateObserver = Observer<JourneyDetailsViewModel.UserState> {
+        book_seat_button.visibility =
+            if (journeyExpired || it == JourneyDetailsViewModel.UserState.DRIVER || it == JourneyDetailsViewModel.UserState.PASSENGER) View.INVISIBLE else View.VISIBLE
+        cancel_booking_button.visibility =
+            if (journeyExpired || it == JourneyDetailsViewModel.UserState.DRIVER || it == JourneyDetailsViewModel.UserState.NEITHER) View.INVISIBLE else View.VISIBLE
     }
 
     @AfterViews
@@ -80,8 +84,7 @@ open class JourneyDetailFragment : HomeFragment() {
         vm.journeyDetails.observe(this, journeyObserver)
         vm.driver.observe(this, driverObserver)
         vm.passengers.observe(this, passengersObserver)
-        vm.currentUserIsDriver.observe(this, userIsDriverObserver)
-        vm.currentUserIsPassenger.observe(this, userIsPassengerObserver)
+        vm.currentUserState.observe(this, currentUserStateObserver)
         vm.fetchJourney(args.journeyId)
     }
 
@@ -166,18 +169,16 @@ open class JourneyDetailFragment : HomeFragment() {
 
     @Click(resName = ["driver_card"])
     fun goToDriverProfile() {
-        //TODO: pass driver id
-        findNavController().navigate(R.id.action_journeyDetailFragment__to_profileFragment_)
+        if (vm.driver.value != null){
+            val action =
+                JourneyDetailFragment_Directions.actionJourneyDetailFragmentToProfileFragment(vm.driver.value!!.id)
+            findNavController().navigate(action)
+        }
     }
 
     @Click(resName = ["book_seat_button"])
     fun bookSeat() {
         vm.bookSeat()
-    }
-
-    @Click(resName = ["cancel_journey_button"])
-    fun cancelJourney() {
-        vm.cancelJourney()
     }
 
     @Click(resName = ["cancel_booking_button"])

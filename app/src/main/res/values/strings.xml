@@ -25,7 +25,7 @@
     <!--Map-->
     <string name="toolbar_title_map">Map</string>
     <!--Profile-->
-    <string name="toolbar_title_profile">Your Profile</string>
+    <string name="toolbar_title_profile">Profile</string>
     <string name="profile_personal_info_title">Personal information</string>
     <string name="profile_stats_title">Statistics</string>
     <!--Edit Profile-->
@@ -64,6 +64,7 @@
     <!--Upcoming Journeys-->
     <string name="toolbar_title_your_journeys">Upcoming journeys</string>
     <string name="journey_leaving_in">Leaving %1$s</string>
+    <string name="journey_left">Left %1$s</string>
     <string name="journey_seats_left">Seats left:</string>
     <!--Add Journey-->
     <string name="add_journey_departure_time_title">Departure time</string>
@@ -105,4 +106,6 @@
     <string name="add_journey_from_address_title">Travel from:</string>
     <string name="add_journey_to_address_title">Travel to:</string>
     <string name="error_select_date">Please select a date</string>
+    <string name="journey_details_no_passengers">Currently no passengers have booked a seat</string>
+    <string name="upcoming_journeys_no_journeys">Currently no upcoming journeys.\n Create a journey or book a seat to see upcoming journeys here.</string>
 </resources>

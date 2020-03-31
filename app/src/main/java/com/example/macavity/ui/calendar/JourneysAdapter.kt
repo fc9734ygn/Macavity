@@ -22,7 +22,10 @@ class JourneysAdapter(private val itemClickListener: (UpcomingJourney) -> Unit =
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: UpcomingJourney, newItem: UpcomingJourney): Boolean {
+        override fun areContentsTheSame(
+            oldItem: UpcomingJourney,
+            newItem: UpcomingJourney
+        ): Boolean {
             return oldItem.freeSeats == newItem.freeSeats
                     && oldItem.passengerIds == newItem.passengerIds
                     && oldItem.timestamp == newItem.timestamp
@@ -43,10 +46,27 @@ class JourneysAdapter(private val itemClickListener: (UpcomingJourney) -> Unit =
 
     inner class JourneyItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(model: UpcomingJourney, position: Int) {
-            val relativeTimeString = getRelativeTimeSpanString(model.timestamp,System.currentTimeMillis(),0).toString().toLowerCase()
-            itemView.departure.text = String.format(itemView.context.getString(R.string.journey_leaving_in),relativeTimeString)
+            val relativeTimeString =
+                getRelativeTimeSpanString(model.timestamp, System.currentTimeMillis(), 0).toString()
+                    .toLowerCase()
+
+            if (System.currentTimeMillis() < model.timestamp) {
+                itemView.departure.text = String.format(
+                    itemView.context.getString(R.string.journey_leaving_in),
+                    relativeTimeString
+                )
+            } else {
+                itemView.departure.text = String.format(
+                    itemView.context.getString(R.string.journey_left),
+                    relativeTimeString
+                )
+            }
+            
             val seatsTaken = if (model.passengerIds.isNullOrEmpty()) 0 else model.passengerIds.size
-            itemView.seats_left.text = String.format(itemView.context.getString(R.string.item_journey_seats_left), model.freeSeats - seatsTaken)
+            itemView.seats_left.text = String.format(
+                itemView.context.getString(R.string.item_journey_seats_left),
+                model.freeSeats - seatsTaken
+            )
             setAvatarImage(model.driverAvatarUrl)
 
             itemView.setOnClickListener {
