@@ -126,7 +126,6 @@ open class CalendarFragment : HomeFragment() {
                                     null
                                 )
                             )
-                            //todo: change according if there are any journeys happening that day
 
                             val dayStartInMillis = daysToMillis(day.date.toEpochDay())
                             val dayEndInMillis = dayStartInMillis + daysToMillis(1)

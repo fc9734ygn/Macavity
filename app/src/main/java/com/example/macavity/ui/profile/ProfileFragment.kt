@@ -56,12 +56,16 @@ open class ProfileFragment : HomeFragment() {
 
     private fun initToolbar() {
         toolbar.setStartIcon(R.drawable.ic_arrow_back)
-            .setEndIcon(R.drawable.ic_edit)
+
             .setTitle(getString(R.string.toolbar_title_profile))
 
         toolbar.startIconListener = { requireActivity().onBackPressed() }
-        //TODO: disable if not your profile
-        toolbar.endIconListener = { goToEditProfile() }
+
+        //If userId is passed when creating the fragment - its current user which means showing "edit profile" button
+        if (args.userId == null){
+            toolbar  .setEndIcon(R.drawable.ic_edit)
+            toolbar.endIconListener = { goToEditProfile() }
+        }
     }
 
     private fun setAvatarImage(url: String) {

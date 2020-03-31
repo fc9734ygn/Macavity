@@ -9,10 +9,10 @@ import com.google.firebase.database.IgnoreExtraProperties
 class LocationFirebase(
     var placeId: String = "",
     var address: String = "",
-    var longitude: Double = 0.0,
-    var latitude: Double = 0.0
+    var latitude: Double = 0.0,
+    var longitude: Double = 0.0
 ) {
     fun toLocation(): Location {
-        return Location(placeId, address, longitude, latitude)
+        return Location(placeId, address, latitude, longitude)
     }
 }

@@ -18,9 +18,12 @@ open class GroupFragment : HomeFragment() {
 
     private lateinit var vm: GroupViewModel
 
-    //todo: pass user id
     private val membersAdapter =
-        MembersAdapter { findNavController().navigate(R.id.action_groupFragment__to_profileFragment_) }
+        MembersAdapter {
+            val action =
+                GroupFragment_Directions.actionGroupFragmentToProfileFragment(it.id)
+            findNavController().navigate(action)
+        }
 
 
     private val groupObserver = Observer<Group> {
@@ -30,8 +33,6 @@ open class GroupFragment : HomeFragment() {
     private val membersObserver = Observer<List<User>> {
         if (it.isNotEmpty()) {
             membersAdapter.submitList(it)
-        } else {
-            //todo: Show no members view
         }
     }
 

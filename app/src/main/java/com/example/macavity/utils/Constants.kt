@@ -30,3 +30,7 @@ const val FIREBASE_USER_SEATS = "carFreeSeats"
 //region Shared Preferences keys
 const val SP_USER_ID = "userId"
 //endregion
+
+//region Map
+const val BOUNDS_PADDING_IN_PIXELS = 200
+//endregion

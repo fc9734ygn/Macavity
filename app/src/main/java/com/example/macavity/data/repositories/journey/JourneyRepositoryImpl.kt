@@ -34,15 +34,15 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
         val startingLocationFirebase = LocationFirebase(
             startingLocation.placeId,
             startingLocation.address,
-            startingLocation.longitude,
-            startingLocation.latitude
+            startingLocation.latitude,
+            startingLocation.longitude
         )
 
         val destinationFirebase = LocationFirebase(
             destination.placeId,
             destination.address,
-            destination.longitude,
-            destination.latitude
+            destination.latitude,
+            destination.longitude
         )
 
         return doesJourneysNodeExist(groupId)

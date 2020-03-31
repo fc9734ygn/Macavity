@@ -12,13 +12,15 @@ import com.example.macavity.R
 import com.example.macavity.data.models.local.JourneyDetails
 import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.utils.BOUNDS_PADDING_IN_PIXELS
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 import kotlinx.android.synthetic.main.fragment_journey_detail.*
-import kotlinx.android.synthetic.main.fragment_journey_detail.toolbar
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EFragment
@@ -102,17 +104,13 @@ open class JourneyDetailFragment : HomeFragment() {
     }
 
     private fun initMap() {
-        //TODO: set correct options/markers/zoom etc.
         val mapFragment =
             childFragmentManager.findFragmentById(R.id.map_view) as SupportMapFragment
 
         mapFragment.getMapAsync { googleMap ->
             map = googleMap
-            val london = LatLng(52.0, 0.0)
-            map.uiSettings.isScrollGesturesEnabled = false
-            map.uiSettings.isRotateGesturesEnabled = false
-            map.addMarker(MarkerOptions().position(london).title("Marker"))
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(london, 10f))
+            map.uiSettings.isScrollGesturesEnabled = true
+            map.uiSettings.isRotateGesturesEnabled = true
         }
     }
 
@@ -132,7 +130,7 @@ open class JourneyDetailFragment : HomeFragment() {
 
     private fun setJourneyData(journey: JourneyDetails) {
         setDate(journey.timestamp)
-
+        setMapMarkers(journey)
         val seatsTaken = if (journey.passengerIds.isNullOrEmpty()) 0 else journey.passengerIds.size
         seats.text = String.format(
             getString(R.string.journey_details_seats),
@@ -143,6 +141,43 @@ open class JourneyDetailFragment : HomeFragment() {
         drivers_note.text = journey.driversNote
         drivers_note_card.visibility =
             if (journey.driversNote.isNullOrBlank()) View.GONE else View.VISIBLE
+
+
+    }
+
+    private fun setMapMarkers(journey: JourneyDetails) {
+
+        val startingPositionMarker = MarkerOptions().position(
+            LatLng(
+                journey.startingLocation.latitude,
+                journey.startingLocation.longitude
+            )
+        )
+
+        val destinationMarker = MarkerOptions().position(
+            LatLng(
+                journey.destination.latitude,
+                journey.destination.longitude
+            )
+        )
+
+        val markers = mutableListOf<MarkerOptions>()
+        markers.add(destinationMarker)
+        markers.add(startingPositionMarker)
+
+        val builder = LatLngBounds.Builder()
+        for (marker in markers) {
+            builder.include(marker.position)
+        }
+
+        val bounds = builder.build()
+        val padding = BOUNDS_PADDING_IN_PIXELS
+        val cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding)
+
+        map.addMarker(destinationMarker)
+        map.addMarker(startingPositionMarker)
+        map.moveCamera(cameraUpdate)
+        map.animateCamera(cameraUpdate)
     }
 
     private fun setDate(timeStamp: Long) {
@@ -169,7 +204,7 @@ open class JourneyDetailFragment : HomeFragment() {
 
     @Click(resName = ["driver_card"])
     fun goToDriverProfile() {
-        if (vm.driver.value != null){
+        if (vm.driver.value != null) {
             val action =
                 JourneyDetailFragment_Directions.actionJourneyDetailFragmentToProfileFragment(vm.driver.value!!.id)
             findNavController().navigate(action)

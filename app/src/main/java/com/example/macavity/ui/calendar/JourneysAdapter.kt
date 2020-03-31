@@ -61,7 +61,7 @@ class JourneysAdapter(private val itemClickListener: (UpcomingJourney) -> Unit =
                     relativeTimeString
                 )
             }
-            
+
             val seatsTaken = if (model.passengerIds.isNullOrEmpty()) 0 else model.passengerIds.size
             itemView.seats_left.text = String.format(
                 itemView.context.getString(R.string.item_journey_seats_left),
