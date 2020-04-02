@@ -19,7 +19,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.PolylineOptions
 import kotlinx.android.synthetic.main.fragment_journey_detail.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click

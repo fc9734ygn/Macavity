@@ -1,6 +1,5 @@
 package com.example.macavity.ui.editProfile
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.macavity.data.SharedPreferencesManager
 import com.example.macavity.data.models.local.Location

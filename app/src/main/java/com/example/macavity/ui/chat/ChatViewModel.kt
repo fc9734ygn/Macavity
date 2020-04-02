@@ -2,7 +2,6 @@ package com.example.macavity.ui.chat
 
 import androidx.lifecycle.LiveDataReactiveStreams
 import com.example.macavity.data.SharedPreferencesManager
-import com.example.macavity.data.models.local.Message
 import com.example.macavity.data.models.local.MessageUI
 import com.example.macavity.data.models.local.User
 import com.example.macavity.data.repositories.chat.ChatRepository

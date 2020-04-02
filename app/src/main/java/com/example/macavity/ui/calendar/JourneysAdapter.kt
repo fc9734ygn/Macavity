@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.macavity.R
-import com.example.macavity.data.models.local.Journey
 import com.example.macavity.data.models.local.UpcomingJourney
-import com.example.macavity.data.models.local.User
 import kotlinx.android.synthetic.main.view_journey.view.*
 
 class JourneysAdapter(private val itemClickListener: (UpcomingJourney) -> Unit = {}) :

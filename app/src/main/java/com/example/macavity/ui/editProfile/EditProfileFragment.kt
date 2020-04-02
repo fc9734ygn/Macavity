@@ -10,7 +10,6 @@ import com.example.macavity.R
 import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.HomeFragment
-import com.example.macavity.ui.home.HomeActivity
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
 import com.example.macavity.utils.isValidEmail
