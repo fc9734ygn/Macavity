@@ -2,12 +2,11 @@ package com.example.macavity.data.repositories.journey
 
 import com.example.macavity.data.models.firebase.JourneyFirebase
 import com.example.macavity.data.models.firebase.LocationFirebase
+import com.example.macavity.data.models.firebase.UserFirebase
 import com.example.macavity.data.models.local.JourneyDetails
 import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.UpcomingJourney
-import com.example.macavity.utils.FIREBASE_GROUPS
-import com.example.macavity.utils.FIREBASE_JOURNEYS
-import com.example.macavity.utils.FIREBASE_PASSENGER_IDS
+import com.example.macavity.utils.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import durdinapps.rxfirebase2.DataSnapshotMapper
@@ -28,7 +27,8 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
         note: String?,
         startingLocation: Location,
         destination: Location,
-        driverAvatarUrl: String
+        driverAvatarUrl: String,
+        driverStat: Int
     ): Completable {
 
         val startingLocationFirebase = LocationFirebase(
@@ -57,7 +57,7 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
                         destinationFirebase,
                         groupId,
                         driverAvatarUrl
-                    )
+                    ).andThen(incrementDriverStat(driverId, driverStat))
                 } else {
                     createJourneysNode(groupId)
                         .andThen(
@@ -71,9 +71,16 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
                                 groupId,
                                 driverAvatarUrl
                             )
-                        )
+                        ).andThen(incrementDriverStat(driverId, driverStat))
                 }
             }
+    }
+
+    private fun incrementDriverStat(driverId: String, driverStat: Int): Completable {
+        val data: Map<String, Int> = mapOf(Pair(FIREBASE_USER_DRIVER_STAT, driverStat + 1))
+        return RxFirebaseDatabase.updateChildren(
+            databaseReference.child(FIREBASE_USERS).child(driverId), data
+        )
     }
 
     override fun fetchUpcomingJourneys(groupId: String): Flowable<MutableList<UpcomingJourney>> {
@@ -95,7 +102,12 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
         ).map { it.toJourneyDetails() }
     }
 
-    override fun bookSeat(groupId: String, journeyId: String, userId: String): Completable {
+    override fun bookSeat(
+        groupId: String,
+        journeyId: String,
+        userId: String,
+        passengerStat: Int
+    ): Completable {
         return doesPassengersNodeExist(groupId, journeyId)
             .flatMapCompletable { exists ->
                 if (exists) {
@@ -103,20 +115,27 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
                 } else {
                     addFirstPassenger(groupId, journeyId, userId)
                 }
-            }
+            }.andThen(updatePassengerStat(userId, passengerStat, true))
     }
 
-    override fun cancelJourney(groupId: String, journeyId: String): Completable {
-        return RxFirebaseDatabase.setValue(
-            databaseReference
-                .child(FIREBASE_GROUPS)
-                .child(groupId)
-                .child(FIREBASE_JOURNEYS)
-                .child(journeyId), null
+    private fun updatePassengerStat(
+        passengerId: String,
+        passengerStat: Int,
+        increment: Boolean
+    ): Completable {
+        val newPassengerStat = if (increment) passengerStat + 1 else passengerStat - 1
+        val data: Map<String, Int> = mapOf(Pair(FIREBASE_USER_PASSENGER_STAT, newPassengerStat))
+        return RxFirebaseDatabase.updateChildren(
+            databaseReference.child(FIREBASE_USERS).child(passengerId), data
         )
     }
 
-    override fun cancelBooking(groupId: String, journeyId: String, userId: String): Completable {
+    override fun cancelBooking(
+        groupId: String,
+        journeyId: String,
+        userId: String,
+        passengerStat: Int
+    ): Completable {
         return RxFirebaseDatabase.setValue(
             databaseReference
                 .child(FIREBASE_GROUPS)
@@ -125,7 +144,7 @@ class JourneyRepositoryImpl @Inject constructor(private val databaseReference: D
                 .child(journeyId)
                 .child(FIREBASE_PASSENGER_IDS)
                 .child(userId), null
-        )
+        ).andThen(updatePassengerStat(userId, passengerStat, false))
     }
 
     private fun addJourney(

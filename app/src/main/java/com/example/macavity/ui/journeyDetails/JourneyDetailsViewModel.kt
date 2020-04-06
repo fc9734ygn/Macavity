@@ -28,16 +28,16 @@ class JourneyDetailsViewModel @Inject constructor(
         MutableLiveData<MutableList<User>>(mutableListOf())
     }
 
-    lateinit var currentUserId: String
+    lateinit var currentUser: User
     lateinit var currentUserGroupId: String
 
     private val currentUserFlowable = sharedPreferencesManager
         .getCurrentUserId()
         .flatMapPublisher {
-            currentUserId = it
-            userRepository.fetchUserFlowable(currentUserId)
+            userRepository.fetchUserFlowable(it)
         }.map {
             currentUserGroupId = it.groupId!!
+            currentUser = it
             it
         }
 
@@ -67,11 +67,11 @@ class JourneyDetailsViewModel @Inject constructor(
         passengerIds: List<String>?,
         driverId: String
     ) {
-        val currentUserIsDriver = driverId == currentUserId
+        val currentUserIsDriver = driverId == currentUser.id
         val currentUserIsPassenger = if (passengerIds.isNullOrEmpty()) {
             false
         } else {
-            passengerIds.contains(currentUserId)
+            passengerIds.contains(currentUser.id)
         }
 
         val userState = when {
@@ -107,7 +107,7 @@ class JourneyDetailsViewModel @Inject constructor(
     fun bookSeat() {
         disposable.add(
             journeyRepository
-                .bookSeat(currentUserGroupId, journeyDetails.value!!.id, currentUserId)
+                .bookSeat(currentUserGroupId, journeyDetails.value!!.id, currentUser.id, currentUser.passengerStat)
                 .subscribe()
         )
     }
@@ -117,7 +117,8 @@ class JourneyDetailsViewModel @Inject constructor(
             journeyRepository.cancelBooking(
                 currentUserGroupId,
                 journeyDetails.value!!.id,
-                currentUserId
+                currentUser.id,
+                currentUser.passengerStat
             ).subscribe {
                 fetchJourney(journeyDetails.value!!.id)
             }

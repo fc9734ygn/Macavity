@@ -13,8 +13,4 @@
         android:id="@+id/inviteFragment_"
         android:icon="@drawable/ic_person_add"
         android:title="@string/drawer_title_invite" />
-    <item
-        android:id="@+id/settingsFragment_"
-        android:icon="@drawable/ic_settings_applications"
-        android:title="@string/drawer_title_settings" />
 </menu>

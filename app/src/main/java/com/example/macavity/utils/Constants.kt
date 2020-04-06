@@ -24,7 +24,8 @@ const val FIREBASE_USER_PHONE = "phoneNumber"
 const val FIREBASE_USER_DRIVER = "driver"
 const val FIREBASE_USER_PLATE = "carNumberPlate"
 const val FIREBASE_USER_SEATS = "carFreeSeats"
-
+const val FIREBASE_USER_DRIVER_STAT = "driverStat"
+const val FIREBASE_USER_PASSENGER_STAT = "passengerStat"
 //endregion
 
 //region Shared Preferences keys
@@ -34,3 +35,8 @@ const val SP_USER_ID = "userId"
 //region Map
 const val BOUNDS_PADDING_IN_PIXELS = 200
 //endregion
+
+//region Spash screen
+const val DELAY_AMOUNT_IN_MILLIS: Long = 3000
+//endregion
+

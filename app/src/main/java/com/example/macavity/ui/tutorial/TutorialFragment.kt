@@ -20,11 +20,11 @@ open class TutorialFragment : AuthFragment() {
     data class TutorialPage(val textResource: Int, val imageResource: Int)
 
     private val tutorialPages = listOf(
-        TutorialPage(R.string.tutorial_text_page_1, R.drawable.cat),
-        TutorialPage(R.string.tutorial_text_page_2, R.drawable.cat),
-        TutorialPage(R.string.tutorial_text_page_3, R.drawable.cat),
-        TutorialPage(R.string.tutorial_text_page_4, R.drawable.cat),
-        TutorialPage(R.string.tutorial_text_page_5, R.drawable.cat)
+        TutorialPage(R.string.tutorial_text_page_1, R.drawable.ic_tutorial1),
+        TutorialPage(R.string.tutorial_text_page_2, R.drawable.ic_tutorial2),
+        TutorialPage(R.string.tutorial_text_page_3, R.drawable.ic_tutorial3),
+        TutorialPage(R.string.tutorial_text_page_4, R.drawable.ic_tutorial4),
+        TutorialPage(R.string.tutorial_text_page_5, R.drawable.ic_tutorial5)
     )
 
     @AfterViews

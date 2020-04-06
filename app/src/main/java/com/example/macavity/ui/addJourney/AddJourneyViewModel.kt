@@ -38,15 +38,16 @@ class AddJourneyViewModel @Inject constructor(
 
         disposable.add(
             journeysRepository.createJourney(
-                    currentUser.value!!.groupId!!,
-                    currentUserId,
-                    freeSeats,
-                    timeStamp,
-                    note,
-                    startingLocation,
-                    destination,
-                    currentUser.value!!.avatarUrl
-                ).subscribeOn(Schedulers.io())
+                currentUser.value!!.groupId!!,
+                currentUserId,
+                freeSeats,
+                timeStamp,
+                note,
+                startingLocation,
+                destination,
+                currentUser.value!!.avatarUrl,
+                currentUser.value!!.driverStat
+            ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { journeyCreatedSuccess.value = true }
         )
