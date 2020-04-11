@@ -4,8 +4,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.macavity.R
 import com.example.macavity.data.models.local.User
-import com.example.macavity.ui.base.HomeFragment
-import com.example.macavity.utils.BOUNDS_PADDING_IN_PIXELS
+import com.example.macavity.ui.home.HomeFragment
+import com.example.macavity.utils.MARKER_BOUNDS_PADDING_IN_PIXELS
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -22,7 +22,6 @@ open class MapFragment : HomeFragment() {
 
     private lateinit var vm: MapViewModel
     private lateinit var map: GoogleMap
-
     private val membersObserver = Observer<List<User>> { addMarkers(it) }
 
     @AfterViews
@@ -40,8 +39,10 @@ open class MapFragment : HomeFragment() {
         val markers = mutableListOf<MarkerOptions>()
 
         groupMembers.forEach {
-            val destinationMarker = MarkerOptions().position(LatLng(it.home.latitude, it.home.longitude))
-            val startingPositionMarker = MarkerOptions().position(LatLng(it.destination.latitude, it.destination.longitude))
+            val destinationMarker =
+                MarkerOptions().position(LatLng(it.home.latitude, it.home.longitude))
+            val startingPositionMarker =
+                MarkerOptions().position(LatLng(it.destination.latitude, it.destination.longitude))
 
             markers.add(destinationMarker)
             markers.add(startingPositionMarker)
@@ -56,7 +57,7 @@ open class MapFragment : HomeFragment() {
         }
 
         val bounds = builder.build()
-        val padding = BOUNDS_PADDING_IN_PIXELS
+        val padding = MARKER_BOUNDS_PADDING_IN_PIXELS
         val cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding)
 
         map.moveCamera(cameraUpdate)

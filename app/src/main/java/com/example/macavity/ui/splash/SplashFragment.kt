@@ -4,8 +4,8 @@ import android.os.Handler
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.macavity.R
-import com.example.macavity.ui.base.AuthFragment
-import com.example.macavity.utils.DELAY_AMOUNT_IN_MILLIS
+import com.example.macavity.ui.auth.AuthFragment
+import com.example.macavity.utils.SPLASH_DELAY_AMOUNT_IN_MILLIS
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.EFragment
 
@@ -22,8 +22,7 @@ open class SplashFragment : AuthFragment() {
             {
                 findNavController().navigate(R.id.action_splashFragment__to_signInFragment_)
             },
-            DELAY_AMOUNT_IN_MILLIS
+            SPLASH_DELAY_AMOUNT_IN_MILLIS
         )
     }
-
 }

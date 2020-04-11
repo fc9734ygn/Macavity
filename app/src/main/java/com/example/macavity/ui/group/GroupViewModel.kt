@@ -45,7 +45,7 @@ class GroupViewModel @Inject constructor(
                 .distinctUntilChanged()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe{ user ->
+                .subscribe { user ->
                     members.value!!.add(user)
                     members.postValue(members.value)
                 }

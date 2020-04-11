@@ -2,7 +2,7 @@ package com.example.macavity.ui.settings
 
 import androidx.lifecycle.ViewModelProviders
 import com.example.macavity.R
-import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.fragment_map.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.EFragment
@@ -24,5 +24,4 @@ open class SettingsFragment : HomeFragment() {
 
         toolbar.startIconListener = { openDrawer() }
     }
-
 }

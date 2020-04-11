@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.User
-import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.ui.home.HomeFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
 import com.example.macavity.utils.isValidEmail
@@ -161,15 +161,6 @@ open class EditProfileFragment : HomeFragment() {
             toast(status.statusMessage)
         }
     }
-
-//    private fun onAddressReceived(requestCode: Int, intent: Intent) {
-//        when (requestCode) {
-//            RC_AUTO_COMPLETE_PLACE_LOCATION -> location.text =
-//                Autocomplete.getPlaceFromIntent(intent).address
-//            RC_AUTO_COMPLETE_PLACE_DESTINATION -> destination.text =
-//                Autocomplete.getPlaceFromIntent(intent).address
-//        }
-//    }
 
     private fun onAddressReceived(requestCode: Int, intent: Intent) {
 

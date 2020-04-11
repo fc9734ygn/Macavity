@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.macavity.R
 import com.example.macavity.data.models.local.UpcomingJourney
 import com.example.macavity.data.models.local.User
-import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.ui.home.HomeFragment
 import com.example.macavity.utils.daysToMillis
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.DayOwner

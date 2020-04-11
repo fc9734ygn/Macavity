@@ -14,7 +14,7 @@ const val DEFAULT_CLICK_AREA_INCREASE_IN_DP = 24
  *
  * Default value 24dp for each side
  *
- * Doesn't work when using for multiple views in the same parent view use increaseClickAreaForMultipleViews()
+ * Doesn't work when using for multiple views in the same parent view use [increaseClickAreaForMultipleViews]
  *
  * @param top amount to increase on top of the view
  * @param bottom amount to increase bottom of the view

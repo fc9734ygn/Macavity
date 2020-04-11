@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.local.MessageUI
 import com.example.macavity.data.models.local.User
-import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.ui.home.HomeFragment
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.messages.MessageInput
 import com.stfalcon.chatkit.messages.MessagesListAdapter
@@ -58,7 +58,6 @@ open class ChatFragment : HomeFragment() {
         vm.sendMessage(it.toString())
         true
     }
-
 
     private fun initToolbar() {
         toolbar.setStartIcon(R.drawable.ic_arrow_back)

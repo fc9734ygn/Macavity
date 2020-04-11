@@ -16,7 +16,7 @@ class EditProfileViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     val currentUser = MutableLiveData<User?>(null)
-    val profileUpdatedSuccess =  MutableLiveData<Boolean>(false)
+    val profileUpdatedSuccess = MutableLiveData<Boolean>(false)
     lateinit var home: Location
     lateinit var destination: Location
 
@@ -46,8 +46,6 @@ class EditProfileViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { profileUpdatedSuccess.postValue(true) }
         )
-
-
     }
 
     fun fetchUser() {

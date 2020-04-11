@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.macavity.R
-import com.example.macavity.ui.base.AuthFragment
+import com.example.macavity.ui.auth.AuthFragment
 import kotlinx.android.synthetic.main.fragment_tutorial.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click

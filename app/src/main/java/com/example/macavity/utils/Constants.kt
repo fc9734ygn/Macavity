@@ -33,10 +33,10 @@ const val SP_USER_ID = "userId"
 //endregion
 
 //region Map
-const val BOUNDS_PADDING_IN_PIXELS = 200
+const val MARKER_BOUNDS_PADDING_IN_PIXELS = 200
 //endregion
 
 //region Spash screen
-const val DELAY_AMOUNT_IN_MILLIS: Long = 3000
+const val SPLASH_DELAY_AMOUNT_IN_MILLIS: Long = 3000
 //endregion
 

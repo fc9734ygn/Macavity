@@ -21,13 +21,12 @@ class AddJourneyViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : BaseViewModel() {
 
-    val journeyCreatedSuccess = MutableLiveData<Boolean>(false)
+    val journeyCreatedSuccess = MutableLiveData(false)
     val currentUser = MutableLiveData<User>()
-    private lateinit var currentUserId: String
-
     lateinit var startingLocation: Location
     lateinit var destination: Location
     lateinit var dateTime: LocalDateTime
+    private lateinit var currentUserId: String
 
     fun createJourney(
         freeSeats: Int,

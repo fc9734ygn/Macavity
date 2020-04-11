@@ -11,8 +11,8 @@ import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.local.JourneyDetails
 import com.example.macavity.data.models.local.User
-import com.example.macavity.ui.base.HomeFragment
-import com.example.macavity.utils.BOUNDS_PADDING_IN_PIXELS
+import com.example.macavity.ui.home.HomeFragment
+import com.example.macavity.utils.MARKER_BOUNDS_PADDING_IN_PIXELS
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -35,7 +35,6 @@ open class JourneyDetailFragment : HomeFragment() {
     private lateinit var vm: JourneyDetailsViewModel
     private lateinit var map: GoogleMap
     private var journeyExpired = false
-
     val args: JourneyDetailFragment_Args by navArgs()
 
     private val passengersAdapter =
@@ -140,12 +139,9 @@ open class JourneyDetailFragment : HomeFragment() {
         drivers_note.text = journey.driversNote
         drivers_note_card.visibility =
             if (journey.driversNote.isNullOrBlank()) View.GONE else View.VISIBLE
-
-
     }
 
     private fun setMapMarkers(journey: JourneyDetails) {
-
         val startingPositionMarker = MarkerOptions().position(
             LatLng(
                 journey.startingLocation.latitude,
@@ -170,7 +166,7 @@ open class JourneyDetailFragment : HomeFragment() {
         }
 
         val bounds = builder.build()
-        val padding = BOUNDS_PADDING_IN_PIXELS
+        val padding = MARKER_BOUNDS_PADDING_IN_PIXELS
         val cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding)
 
         map.addMarker(destinationMarker)

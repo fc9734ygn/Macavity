@@ -13,7 +13,7 @@ class CreateGroupViewModel @Inject constructor(
     private val sharedPreferencesManager: SharedPreferencesManager
 ) : BaseViewModel() {
 
-    val userIsInGroup = MutableLiveData<Boolean>(false)
+    val userIsInGroup = MutableLiveData(false)
 
     fun createGroup() {
         disposable.add(sharedPreferencesManager

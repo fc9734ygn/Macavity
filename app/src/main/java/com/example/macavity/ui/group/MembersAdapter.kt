@@ -47,10 +47,15 @@ class MembersAdapter(private val itemClickListener: (User) -> Unit = {}) :
 
     inner class MemberItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(member: User, position: Int) {
-
             itemView.member_name.text = member.name
-            itemView.member_driver_stat.text = String.format(itemView.context.getString(R.string.journey_details_driver_stat), member.driverStat)
-            itemView.member_passenger_stat.text = String.format(itemView.context.getString(R.string.journey_details_passenger_stat), member.passengerStat)
+            itemView.member_driver_stat.text = String.format(
+                itemView.context.getString(R.string.journey_details_driver_stat),
+                member.driverStat
+            )
+            itemView.member_passenger_stat.text = String.format(
+                itemView.context.getString(R.string.journey_details_passenger_stat),
+                member.passengerStat
+            )
             setAvatarImage(member.avatarUrl)
             itemView.setOnClickListener {
                 itemClickListener.invoke(member)

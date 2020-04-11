@@ -15,7 +15,6 @@ class ChatViewModel @Inject constructor(
     private val chatRepository: ChatRepository
 ) : BaseViewModel() {
 
-
     private val userFlowable = sharedPreferencesManager
         .getCurrentUserId()
         .flatMapPublisher { userRepository.fetchUserFlowable(it) }

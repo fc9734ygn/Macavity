@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.macavity.R
 import com.example.macavity.data.models.local.Group
 import com.example.macavity.data.models.local.User
-import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.fragment_group.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.EFragment
@@ -24,7 +24,6 @@ open class GroupFragment : HomeFragment() {
                 GroupFragment_Directions.actionGroupFragmentToProfileFragment(it.id)
             findNavController().navigate(action)
         }
-
 
     private val groupObserver = Observer<Group> {
         group_stat.text = it.journeysCompleted.toString()

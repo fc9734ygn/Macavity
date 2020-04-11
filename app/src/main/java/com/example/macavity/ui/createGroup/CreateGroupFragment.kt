@@ -3,7 +3,7 @@ package com.example.macavity.ui.createGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.macavity.R
-import com.example.macavity.ui.base.AuthFragment
+import com.example.macavity.ui.auth.AuthFragment
 import com.example.macavity.ui.home.HomeActivity_
 import kotlinx.android.synthetic.main.fragment_create_group.*
 import org.androidannotations.annotations.AfterViews

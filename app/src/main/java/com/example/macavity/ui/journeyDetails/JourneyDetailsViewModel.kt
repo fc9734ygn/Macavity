@@ -27,7 +27,6 @@ class JourneyDetailsViewModel @Inject constructor(
     val passengers: MutableLiveData<MutableList<User>> by lazy {
         MutableLiveData<MutableList<User>>(mutableListOf())
     }
-
     lateinit var currentUser: User
     lateinit var currentUserGroupId: String
 
@@ -85,7 +84,6 @@ class JourneyDetailsViewModel @Inject constructor(
                 UserState.NEITHER
             }
         }
-
         this.currentUserState.postValue(userState)
     }
 

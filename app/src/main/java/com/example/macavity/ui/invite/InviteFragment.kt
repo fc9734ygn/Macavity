@@ -3,7 +3,7 @@ package com.example.macavity.ui.invite
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.macavity.R
-import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.ui.home.HomeFragment
 import com.example.macavity.utils.copyToClipboard
 import com.example.macavity.utils.sendEmail
 import kotlinx.android.synthetic.main.fragment_invite.*

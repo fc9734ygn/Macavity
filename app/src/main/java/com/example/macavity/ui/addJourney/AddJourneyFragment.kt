@@ -10,7 +10,7 @@ import com.example.macavity.R
 import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.User
 
-import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.ui.home.HomeFragment
 import com.example.macavity.ui.widgets.TimePickerFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
@@ -31,7 +31,6 @@ import org.threeten.bp.format.DateTimeFormatter
 open class AddJourneyFragment : HomeFragment() {
 
     private lateinit var vm: AddJourneyViewModel
-
     val args: AddJourneyFragment_Args by navArgs()
 
     private val journeyCreatedSuccessObserver = Observer<Boolean> {
@@ -124,7 +123,6 @@ open class AddJourneyFragment : HomeFragment() {
     }
 
     private fun onAddressReceived(requestCode: Int, intent: Intent) {
-
         val address = Autocomplete.getPlaceFromIntent(intent).address
         val placeId = Autocomplete.getPlaceFromIntent(intent).id
         val latLng = Autocomplete.getPlaceFromIntent(intent).latLng

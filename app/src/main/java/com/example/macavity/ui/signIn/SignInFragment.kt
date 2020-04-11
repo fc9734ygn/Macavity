@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.macavity.R
-import com.example.macavity.ui.base.AuthFragment
+import com.example.macavity.ui.auth.AuthFragment
 import com.example.macavity.ui.home.HomeActivity_
 import com.example.macavity.utils.RC_SIGN_IN
 import com.google.android.gms.auth.api.signin.GoogleSignIn

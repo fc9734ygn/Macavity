@@ -7,7 +7,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.local.User
-import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.ui.home.HomeFragment
 import com.example.macavity.utils.callPhoneNumber
 import com.example.macavity.utils.sendEmail
 import kotlinx.android.synthetic.main.fragment_map.toolbar
@@ -56,14 +56,13 @@ open class ProfileFragment : HomeFragment() {
 
     private fun initToolbar() {
         toolbar.setStartIcon(R.drawable.ic_arrow_back)
-
             .setTitle(getString(R.string.toolbar_title_profile))
 
         toolbar.startIconListener = { requireActivity().onBackPressed() }
 
         //If userId is passed when creating the fragment - its current user which means showing "edit profile" button
-        if (args.userId == null){
-            toolbar  .setEndIcon(R.drawable.ic_edit)
+        if (args.userId == null) {
+            toolbar.setEndIcon(R.drawable.ic_edit)
             toolbar.endIconListener = { goToEditProfile() }
         }
     }

@@ -52,7 +52,7 @@ fun callPhoneNumber(activity: Activity, phoneNumber: String) {
 }
 
 fun copyToClipboard(context: Context, text: String){
-    val myClipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-    val myClip: ClipData = ClipData.newPlainText("note", text)
-    myClipboard.setPrimaryClip(myClip)
+    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    val clip: ClipData = ClipData.newPlainText("note", text)
+    clipboard.setPrimaryClip(clip)
 }

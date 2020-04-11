@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.local.Location
-import com.example.macavity.ui.base.AuthFragment
+import com.example.macavity.ui.auth.AuthFragment
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_DESTINATION
 import com.example.macavity.utils.RC_AUTO_COMPLETE_PLACE_LOCATION
 import com.example.macavity.utils.isValidEmail
@@ -27,7 +27,6 @@ import org.androidannotations.annotations.*
 open class CreateProfileFragment : AuthFragment() {
 
     private lateinit var vm: CreateProfileViewModel
-
     val args: CreateProfileFragment_Args by navArgs()
 
     private val profileCreationSuccessObserver = Observer<Boolean> {

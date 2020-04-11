@@ -16,5 +16,4 @@ class HomeViewModel @Inject constructor(
         .flatMapPublisher { userRepository.fetchUserFlowable(it) }
 
     val userLiveData = LiveDataReactiveStreams.fromPublisher(userFlowable)
-
 }

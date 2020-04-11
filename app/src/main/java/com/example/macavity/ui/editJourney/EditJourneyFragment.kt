@@ -2,7 +2,7 @@ package com.example.macavity.ui.editJourney
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
-import com.example.macavity.ui.base.HomeFragment
+import com.example.macavity.ui.home.HomeFragment
 import org.androidannotations.annotations.EFragment
 
 @EFragment(resName = "fragment_edit_journey")
@@ -14,5 +14,4 @@ open class EditJourneyFragment : HomeFragment() {
         super.onActivityCreated(savedInstanceState)
         vm = ViewModelProviders.of(this, viewModelFactory).get(EditJourneyViewModel::class.java)
     }
-
 }
