@@ -50,7 +50,6 @@ open class HomeActivity : BaseActivity() {
                 FirebaseAuth.getInstance().signOut()
                 activity.finishAffinity()
             }
-            FirebaseAuth.getInstance().signOut()
         }
     }
 
