@@ -40,14 +40,15 @@ class GroupViewModel @Inject constructor(
     }
 
     private fun getMembers(memberIds: List<String>) {
+        val list = mutableListOf<User>()
         memberIds.forEach {
             disposable.add(userRepository.fetchUserFlowable(it)
                 .distinctUntilChanged()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { user ->
-                    members.value!!.add(user)
-                    members.postValue(members.value)
+                    list.add(user)
+                    members.postValue(list)
                 }
             )
         }

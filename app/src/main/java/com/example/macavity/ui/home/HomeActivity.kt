@@ -1,5 +1,6 @@
 package com.example.macavity.ui.home
 
+import android.app.Activity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -15,6 +16,11 @@ import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.BaseActivity
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.GoogleApiClient
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.header_drawer.view.*
 import org.androidannotations.annotations.AfterViews
@@ -33,10 +39,26 @@ open class HomeActivity : BaseActivity() {
         setDrawerHeaderData()
     }
 
+    private val signOutSuccessObserver = Observer<Boolean> {
+        val activity = this as Activity
+        if (it) {
+            val client = GoogleSignIn.getClient(
+                activity,
+                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+            )
+            client.revokeAccess().addOnCompleteListener {
+                FirebaseAuth.getInstance().signOut()
+                activity.finishAffinity()
+            }
+            FirebaseAuth.getInstance().signOut()
+        }
+    }
+
     @AfterViews
     fun afterViews() {
         vm = ViewModelProviders.of(this, viewModelFactory)[HomeViewModel::class.java]
         vm.userLiveData.observe(this, userObserver)
+        vm.signOutSuccess.observe(this, signOutSuccessObserver)
         initDrawerNavigation()
     }
 
@@ -44,6 +66,15 @@ open class HomeActivity : BaseActivity() {
         navController = nav_host_fragment.findNavController()
         nav_view.setupWithNavController(navController)
         bottom_nav.setupWithNavController(navController)
+        nav_view.setNavigationItemSelectedListener { item ->
+            if (item.itemId == R.id.sign_out) {
+                vm.signOut()
+                true
+            } else {
+                drawer_layout.closeDrawer(nav_view)
+                onOptionsItemSelected(item)
+            }
+        }
     }
 
     private fun setDrawerHeaderData() {
@@ -58,17 +89,16 @@ open class HomeActivity : BaseActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val retValue = super.onCreateOptionsMenu(menu)
         if (nav_view == null) {
             menuInflater.inflate(R.menu.menu_drawer, menu)
             return true
         }
-        return retValue
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return item!!.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
-                || super.onOptionsItemSelected(item)
+        return (item!!.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
+                || super.onOptionsItemSelected(item))
     }
 
     fun openDrawer() {

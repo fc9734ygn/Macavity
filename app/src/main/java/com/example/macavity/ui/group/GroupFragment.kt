@@ -30,7 +30,7 @@ open class GroupFragment : HomeFragment() {
     }
 
     private val membersObserver = Observer<List<User>> {
-        if (it.isNotEmpty()) {
+        if (!it.isNullOrEmpty()) {
             membersAdapter.submitList(it)
         }
     }
@@ -56,9 +56,9 @@ open class GroupFragment : HomeFragment() {
     }
 
     private fun initToolbar() {
-        toolbar.setStartIcon(R.drawable.ic_menu)
+        toolbar.setStartIcon(R.drawable.ic_arrow_back)
             .setTitle(getString(R.string.toolbar_title_group))
 
-        toolbar.startIconListener = { openDrawer() }
+        toolbar.startIconListener = { requireActivity().onBackPressed() }
     }
 }

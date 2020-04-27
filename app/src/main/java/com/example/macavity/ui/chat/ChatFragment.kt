@@ -60,9 +60,9 @@ open class ChatFragment : HomeFragment() {
     }
 
     private fun initToolbar() {
-        toolbar.setStartIcon(R.drawable.ic_arrow_back)
+        toolbar.setStartIcon(R.drawable.ic_menu)
             .setTitle(getString(R.string.toolbar_title_chat))
 
-        toolbar.startIconListener = { requireActivity().onBackPressed() }
+        toolbar.startIconListener = { openDrawer() }
     }
 }

@@ -13,4 +13,9 @@
         android:id="@+id/inviteFragment_"
         android:icon="@drawable/ic_person_add"
         android:title="@string/drawer_title_invite" />
+
+    <item
+        android:id="@+id/sign_out"
+        android:icon="@drawable/ic_exit"
+        android:title="@string/drawer_title_sign_out" />
 </menu>

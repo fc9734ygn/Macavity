@@ -77,7 +77,7 @@ open class SignInFragment : AuthFragment() {
             sign_in_button.visibility = View.VISIBLE
             sign_in_button.setSize(SignInButton.SIZE_WIDE)
         } else {
-            HomeActivity_.intent(this).start()
+            vm.checkIfUserProfileExists(auth.uid!!)
         }
     }
 

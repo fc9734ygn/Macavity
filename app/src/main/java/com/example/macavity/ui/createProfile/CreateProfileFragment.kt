@@ -47,10 +47,8 @@ open class CreateProfileFragment : AuthFragment() {
 
     private fun initToolbar() {
         toolbar.setTitle(getString(R.string.profile_create_toolbar_title))
-            .setStartIcon(R.drawable.ic_arrow_back)
             .setEndIcon(R.drawable.ic_save)
 
-        toolbar.startIconListener = { requireActivity().onBackPressed() }
         toolbar.endIconListener = { verifyUserInput() }
     }
 

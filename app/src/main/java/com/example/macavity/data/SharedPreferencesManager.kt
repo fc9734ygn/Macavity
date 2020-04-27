@@ -19,9 +19,15 @@ class SharedPreferencesManager @Inject constructor(private val sharedPreferences
         }
     }
 
-    fun saveCurrentUserId(id: String): Completable{
+    fun saveCurrentUserId(id: String): Completable {
         return Completable.fromAction {
             sharedPreferences.edit().putString(SP_USER_ID, id).apply()
+        }
+    }
+
+    fun clearData(): Completable {
+        return Completable.fromAction {
+            sharedPreferences.edit().clear().apply()
         }
     }
 }
