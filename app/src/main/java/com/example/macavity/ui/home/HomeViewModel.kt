@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.example.macavity.data.SharedPreferencesManager
 import com.example.macavity.data.repositories.user.UserRepository
 import com.example.macavity.ui.base.BaseViewModel
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.firebase.auth.FirebaseAuth
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject

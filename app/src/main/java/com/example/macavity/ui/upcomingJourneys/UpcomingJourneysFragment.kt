@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.macavity.R
 import com.example.macavity.data.models.local.UpcomingJourney
-import com.example.macavity.ui.home.HomeFragment
 import com.example.macavity.ui.calendar.JourneysAdapter
+import com.example.macavity.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.fragment_upcoming_journeys.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.EFragment

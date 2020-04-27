@@ -1,6 +1,5 @@
 package com.example.macavity.ui.auth
 
-import androidx.navigation.NavController
 import com.example.macavity.ui.base.BaseActivity
 import org.androidannotations.annotations.EActivity
 

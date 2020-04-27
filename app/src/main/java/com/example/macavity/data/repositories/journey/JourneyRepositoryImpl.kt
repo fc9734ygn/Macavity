@@ -2,7 +2,6 @@ package com.example.macavity.data.repositories.journey
 
 import com.example.macavity.data.models.firebase.JourneyFirebase
 import com.example.macavity.data.models.firebase.LocationFirebase
-import com.example.macavity.data.models.firebase.UserFirebase
 import com.example.macavity.data.models.local.JourneyDetails
 import com.example.macavity.data.models.local.Location
 import com.example.macavity.data.models.local.UpcomingJourney

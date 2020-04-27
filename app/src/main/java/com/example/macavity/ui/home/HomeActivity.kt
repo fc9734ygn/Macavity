@@ -16,10 +16,8 @@ import com.bumptech.glide.Glide
 import com.example.macavity.R
 import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.base.BaseActivity
-import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.header_drawer.view.*
