@@ -34,6 +34,8 @@ open class BaseActivity : DaggerAppCompatActivity() {
             .setBgGradientCenter(getColor(R.color.blue_primary))
             .setBgGradientEnd(getColor(R.color.blue_dark))
             .setButtonColor(getColor(R.color.amber_primary))
+            .setButtonIconsColor(getColor(R.color.black))
+            .setButtonTextColor(getColor(R.color.black))
             .build()
     }
 
