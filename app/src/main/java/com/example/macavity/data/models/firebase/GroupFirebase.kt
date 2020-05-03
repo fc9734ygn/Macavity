@@ -30,5 +30,4 @@ data class GroupFirebase(
         }
         return index
     }
-
 }

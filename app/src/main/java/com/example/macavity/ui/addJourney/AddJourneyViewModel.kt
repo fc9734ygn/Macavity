@@ -26,7 +26,19 @@ class AddJourneyViewModel @Inject constructor(
     lateinit var startingLocation: Location
     lateinit var destination: Location
     lateinit var dateTime: LocalDateTime
-    private lateinit var currentUserId: String
+
+    fun fetchUser() {
+        disposable.add(sharedPreferencesManager
+            .getCurrentUserId()
+            .flatMap { userId ->
+                userRepository.fetchUserSingle(userId)
+            }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { user ->
+                currentUser.postValue(user)
+            }
+        )
+    }
 
     fun createJourney(
         freeSeats: Int,
@@ -38,7 +50,7 @@ class AddJourneyViewModel @Inject constructor(
         disposable.add(
             journeysRepository.createJourney(
                 currentUser.value!!.groupId!!,
-                currentUserId,
+                currentUser.value!!.id,
                 freeSeats,
                 timeStamp,
                 note,
@@ -48,21 +60,7 @@ class AddJourneyViewModel @Inject constructor(
                 currentUser.value!!.driverStat
             ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { journeyCreatedSuccess.value = true }
-        )
-    }
-
-    fun fetchUser() {
-        disposable.add(sharedPreferencesManager
-            .getCurrentUserId()
-            .flatMap { userId ->
-                currentUserId = userId
-                userRepository.fetchUserSingle(userId)
-            }.subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { user ->
-                currentUser.setValue(user)
-            }
+                .subscribe { journeyCreatedSuccess.postValue(true) }
         )
     }
 }

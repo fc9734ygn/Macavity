@@ -1,3 +1,5 @@
+@file:JvmName("DateUtils")
+
 package com.example.macavity.utils
 
 import java.util.*
