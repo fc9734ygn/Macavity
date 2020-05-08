@@ -70,7 +70,7 @@
     <!--Add Journey-->
     <string name="add_journey_departure_time_title">Departure time</string>
     <string name="add_journey_available_seats_title">Available seats</string>
-    <string name="add_journey_additional_note_title">Additional note</string>
+    <string name="add_journey_additional_note_title">Additional note (Optional)</string>
     <string name="add_journey_note_hint">250 characters max</string>
     <string name="add_journey_time">%1$s:%2$s</string>
     <!--Invite-->
