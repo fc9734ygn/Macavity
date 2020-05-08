@@ -39,7 +39,6 @@ fun View.increaseClickArea(
     }
 }
 
-
 /**
  * Function to increase click area for multiple hardToClickViews in same parent.
  */

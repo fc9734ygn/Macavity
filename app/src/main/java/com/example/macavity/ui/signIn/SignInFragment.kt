@@ -35,20 +35,20 @@ open class SignInFragment : AuthFragment() {
     private val userProfileStateObserver = Observer<SignInViewModel.UserProfileState?> {
         when (it) {
             null -> {
-                //do nothing
+                // Do nothing
             }
             SignInViewModel.UserProfileState.COMPLETE -> {
+                // Navigating to home screen
                 HomeActivity_.intent(this).start()
             }
             SignInViewModel.UserProfileState.NOT_IN_GROUP -> {
+                // Navigating to group creation/joining screen
                 findNavController().navigate(R.id.action_signInFragment__to_createGroupFragment_)
             }
             SignInViewModel.UserProfileState.NOT_EXISTENT -> {
+                // Navigating to profile creation screen
                 val action =
-                    SignInFragment_Directions.actionSignInFragmentToCreateProfileFragment(
-                        auth.uid!!,
-                        photoUrl
-                    )
+                    SignInFragment_Directions.actionSignInFragmentToCreateProfileFragment(auth.uid!!, photoUrl)
                 findNavController().navigate(action)
             }
         }

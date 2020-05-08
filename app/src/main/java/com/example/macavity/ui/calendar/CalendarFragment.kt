@@ -28,6 +28,7 @@ import java.util.*
 
 @EFragment(resName = "fragment_calendar")
 open class CalendarFragment : HomeFragment() {
+    //todo: REFACTOR THIS WHOLE CLASS
 
     private lateinit var vm: CalendarViewModel
     private var selectedDate: LocalDate? = null

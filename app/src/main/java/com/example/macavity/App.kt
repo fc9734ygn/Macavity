@@ -35,7 +35,6 @@ class App : DaggerApplication() {
         initPlaces()
         initCalendarLib()
         FirebaseDatabase.getInstance().setPersistenceEnabled(false)
-        FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG)
     }
 
     private fun initCalendarLib(){

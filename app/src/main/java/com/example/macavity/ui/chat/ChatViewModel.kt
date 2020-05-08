@@ -23,7 +23,7 @@ class ChatViewModel @Inject constructor(
         currentUser = it
         chatRepository.fetchChat(it.groupId!!)
     }.map { list ->
-
+        // Mapping to library specific models and sorting
         val sortedList = list.sortedBy { it.timestamp }
         val newList = mutableListOf<MessageUI>()
 
