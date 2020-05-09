@@ -23,7 +23,11 @@
     <fragment
         android:id="@+id/mapFragment_"
         android:name="com.example.macavity.ui.map.MapFragment_"
-        android:label="MapFragment_" />
+        android:label="MapFragment_" >
+        <action
+            android:id="@+id/action_mapFragment__to_profileFragment_"
+            app:destination="@id/profileFragment_" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment_"
         android:name="com.example.macavity.ui.profile.ProfileFragment_"

@@ -1,7 +1,10 @@
 package com.example.macavity.ui.map
 
+import android.view.View
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.macavity.R
 import com.example.macavity.data.models.local.User
 import com.example.macavity.ui.home.HomeFragment
@@ -9,9 +12,7 @@ import com.example.macavity.utils.MARKER_BOUNDS_PADDING_IN_PIXELS
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import kotlinx.android.synthetic.main.fragment_map.*
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.EFragment
@@ -38,17 +39,39 @@ open class MapFragment : HomeFragment() {
 
         val markers = mutableListOf<MarkerOptions>()
 
-        groupMembers.forEach {
+        groupMembers.forEach { user ->
+
             val destinationMarker =
-                MarkerOptions().position(LatLng(it.home.latitude, it.home.longitude))
+                MarkerOptions()
+                    .position(LatLng(user.destination.latitude, user.destination.longitude))
+                    .title(user.name + getString(R.string.map_window_title_destination))
+                    .snippet(user.destination.address)
+                    .icon(
+                        BitmapDescriptorFactory.defaultMarker(
+                            BitmapDescriptorFactory.HUE_AZURE
+                        )
+                    )
+
             val startingPositionMarker =
-                MarkerOptions().position(LatLng(it.destination.latitude, it.destination.longitude))
+                MarkerOptions()
+                    .position(LatLng(user.home.latitude, user.home.longitude))
+                    .title(user.name + getString(R.string.map_window_title_home))
+                    .snippet(user.home.address)
+                    .icon(
+                        BitmapDescriptorFactory.defaultMarker(
+                            BitmapDescriptorFactory.HUE_AZURE
+                        )
+                    )
 
             markers.add(destinationMarker)
             markers.add(startingPositionMarker)
 
-            map.addMarker(destinationMarker)
-            map.addMarker(startingPositionMarker)
+            val m1 = map.addMarker(destinationMarker)
+            val m2 = map.addMarker(startingPositionMarker)
+
+            //passing avatar url through tag as title and snippet are already being used
+            m1.tag = user
+            m2.tag = user
         }
 
         val builder = LatLngBounds.Builder()
@@ -71,7 +94,15 @@ open class MapFragment : HomeFragment() {
 
         mapFragment.getMapAsync { googleMap ->
             map = googleMap
+            map.setInfoWindowAdapter(CustomInfoWindowAdapter(layoutInflater))
+            map.setOnInfoWindowClickListener {
+                val user = it.tag as User
+                val action =
+                    MapFragment_Directions.actionMapFragmentToProfileFragment(user.id)
+                findNavController().navigate(action)
+            }
         }
+
     }
 
     private fun initToolbar() {

@@ -16,6 +16,7 @@ import com.example.macavity.utils.MARKER_BOUNDS_PADDING_IN_PIXELS
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
@@ -142,19 +143,29 @@ open class JourneyDetailFragment : HomeFragment() {
     }
 
     private fun setMapMarkers(journey: JourneyDetails) {
-        val startingPositionMarker = MarkerOptions().position(
-            LatLng(
-                journey.startingLocation.latitude,
-                journey.startingLocation.longitude
+        val startingPositionMarker = MarkerOptions()
+            .position(
+                LatLng(
+                    journey.startingLocation.latitude,
+                    journey.startingLocation.longitude
+                )
+            ).icon(
+                BitmapDescriptorFactory.defaultMarker(
+                    BitmapDescriptorFactory.HUE_AZURE
+                )
             )
-        )
 
-        val destinationMarker = MarkerOptions().position(
-            LatLng(
-                journey.destination.latitude,
-                journey.destination.longitude
+        val destinationMarker = MarkerOptions()
+            .position(
+                LatLng(
+                    journey.destination.latitude,
+                    journey.destination.longitude
+                )
+            ).icon(
+                BitmapDescriptorFactory.defaultMarker(
+                    BitmapDescriptorFactory.HUE_AZURE
+                )
             )
-        )
 
         val markers = mutableListOf<MarkerOptions>()
         markers.add(destinationMarker)

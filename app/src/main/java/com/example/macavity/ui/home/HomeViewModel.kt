@@ -14,7 +14,7 @@ class HomeViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : BaseViewModel() {
 
-    val signOutSuccess = MutableLiveData(false)
+    val localDataClearedSuccess = MutableLiveData(false)
 
     private val userFlowable = sharedPreferencesManager
         .getCurrentUserId()
@@ -22,13 +22,13 @@ class HomeViewModel @Inject constructor(
 
     val userLiveData = LiveDataReactiveStreams.fromPublisher(userFlowable)
 
-    fun signOut() {
+    fun clearLocalData() {
         disposable.add(
             sharedPreferencesManager.clearData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    signOutSuccess.postValue(true)
+                    localDataClearedSuccess.postValue(true)
                 }
         )
     }

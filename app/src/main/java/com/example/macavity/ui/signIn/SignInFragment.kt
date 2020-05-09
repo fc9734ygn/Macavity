@@ -32,26 +32,35 @@ open class SignInFragment : AuthFragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var photoUrl: String
 
+    private var actionCompleted = false //FIXME hotfix for issue when HomeActivity is opened twice
+
     private val userProfileStateObserver = Observer<SignInViewModel.UserProfileState?> {
-        when (it) {
-            null -> {
-                // Do nothing
-            }
-            SignInViewModel.UserProfileState.COMPLETE -> {
-                // Navigating to home screen
-                HomeActivity_.intent(this).start()
-            }
-            SignInViewModel.UserProfileState.NOT_IN_GROUP -> {
-                // Navigating to group creation/joining screen
-                findNavController().navigate(R.id.action_signInFragment__to_createGroupFragment_)
-            }
-            SignInViewModel.UserProfileState.NOT_EXISTENT -> {
-                // Navigating to profile creation screen
-                val action =
-                    SignInFragment_Directions.actionSignInFragmentToCreateProfileFragment(auth.uid!!, photoUrl)
-                findNavController().navigate(action)
-            }
-        }
+
+       if (!actionCompleted){
+           when (it) {
+               null -> {
+                   // Do nothing
+               }
+               SignInViewModel.UserProfileState.COMPLETE -> {
+                   actionCompleted = true
+                   // Navigating to home screen
+                   HomeActivity_.intent(this).start()
+                   activity!!.finish()
+               }
+               SignInViewModel.UserProfileState.NOT_IN_GROUP -> {
+                   actionCompleted = true
+                   // Navigating to group creation/joining screen
+                   findNavController().navigate(R.id.action_signInFragment__to_createGroupFragment_)
+               }
+               SignInViewModel.UserProfileState.NOT_EXISTENT -> {
+                   actionCompleted = true
+                   // Navigating to profile creation screen
+                   val action =
+                       SignInFragment_Directions.actionSignInFragmentToCreateProfileFragment(auth.uid!!, photoUrl)
+                   findNavController().navigate(action)
+               }
+           }
+       }
     }
 
     @AfterViews

@@ -110,4 +110,6 @@
     <string name="journey_details_no_passengers">Currently no passengers have booked a seat</string>
     <string name="upcoming_journeys_no_journeys">Currently no upcoming journeys.\n Create a journey or book a seat to see upcoming journeys here.</string>
     <string name="calendar_no_journeys">There are no journeys planned for the selected date. Only drivers can create journeys.</string>
+    <string name="map_window_title_destination">\'s destination</string>
+    <string name="map_window_title_home">\'s home</string>
 </resources>

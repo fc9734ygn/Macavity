@@ -37,16 +37,16 @@ open class HomeActivity : BaseActivity() {
         setDrawerHeaderData()
     }
 
-    private val signOutSuccessObserver = Observer<Boolean> {
-        val activity = this as Activity
+    private val localDataClearedSuccessObserver = Observer<Boolean> {
+        // signing out
         if (it) {
             val client = GoogleSignIn.getClient(
-                activity,
+                this,
                 GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
             )
             client.revokeAccess().addOnCompleteListener {
                 FirebaseAuth.getInstance().signOut()
-                activity.finishAffinity()
+                this.finishAffinity()
             }
         }
     }
@@ -55,7 +55,7 @@ open class HomeActivity : BaseActivity() {
     fun afterViews() {
         vm = ViewModelProviders.of(this, viewModelFactory)[HomeViewModel::class.java]
         vm.userLiveData.observe(this, userObserver)
-        vm.signOutSuccess.observe(this, signOutSuccessObserver)
+        vm.localDataClearedSuccess.observe(this, localDataClearedSuccessObserver)
         initDrawerNavigation()
     }
 
@@ -65,7 +65,7 @@ open class HomeActivity : BaseActivity() {
         bottom_nav.setupWithNavController(navController)
         nav_view.setNavigationItemSelectedListener { item ->
             if (item.itemId == R.id.sign_out) {
-                vm.signOut()
+                vm.clearLocalData()
                 true
             } else {
                 drawer_layout.closeDrawer(nav_view)
