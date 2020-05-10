@@ -36,6 +36,7 @@ open class JourneyDetailFragment : HomeFragment() {
     private lateinit var vm: JourneyDetailsViewModel
     private lateinit var map: GoogleMap
     private var journeyExpired = false
+    private var journeyFullyBooked = false
     val args: JourneyDetailFragment_Args by navArgs()
 
     private val passengersAdapter =
@@ -61,13 +62,19 @@ open class JourneyDetailFragment : HomeFragment() {
     }
 
     private val journeyObserver = Observer<JourneyDetails> {
+
         setJourneyData(it)
         journeyExpired = it.timestamp < System.currentTimeMillis()
+        journeyFullyBooked = if (it.passengerIds == null) {
+            false
+        } else {
+            it.passengerIds.size >= it.freeSeats
+        }
     }
 
     private val currentUserStateObserver = Observer<JourneyDetailsViewModel.UserState> {
         book_seat_button.visibility =
-            if (journeyExpired || it == JourneyDetailsViewModel.UserState.DRIVER || it == JourneyDetailsViewModel.UserState.PASSENGER) View.INVISIBLE else View.VISIBLE
+            if (journeyFullyBooked || journeyExpired || it == JourneyDetailsViewModel.UserState.DRIVER || it == JourneyDetailsViewModel.UserState.PASSENGER) View.INVISIBLE else View.VISIBLE
         cancel_booking_button.visibility =
             if (journeyExpired || it == JourneyDetailsViewModel.UserState.DRIVER || it == JourneyDetailsViewModel.UserState.NEITHER) View.INVISIBLE else View.VISIBLE
     }
