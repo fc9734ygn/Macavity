@@ -96,6 +96,9 @@ class JourneyDetailsViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { user ->
                     list.add(user)
+                    list.sortBy { person ->
+                        person.name
+                    }
                     passengers.postValue(list)
                 }
             )
@@ -105,7 +108,12 @@ class JourneyDetailsViewModel @Inject constructor(
     fun bookSeat() {
         disposable.add(
             journeyRepository
-                .bookSeat(currentUserGroupId, journeyDetails.value!!.id, currentUser.id, currentUser.passengerStat)
+                .bookSeat(
+                    currentUserGroupId,
+                    journeyDetails.value!!.id,
+                    currentUser.id,
+                    currentUser.passengerStat
+                )
                 .subscribe()
         )
     }

@@ -27,6 +27,7 @@ class GroupViewModel @Inject constructor(
     private val memberIdsFlowable = groupFlowable
         .map { it.members }
 
+
     val members: MutableLiveData<MutableList<User>> by lazy {
         MutableLiveData<MutableList<User>>(mutableListOf())
     }
@@ -48,6 +49,9 @@ class GroupViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { user ->
                     list.add(user)
+                    list.sortBy { person ->
+                        person.name
+                    }
                     members.postValue(list)
                 }
             )
