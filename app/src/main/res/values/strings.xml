@@ -103,10 +103,6 @@
     <!--Sign In-->
     <string name="sign_in_toolbar_title">Sign in</string>
     <string name="sign_in_description">We take your privacy and security seriously, that\'s why we only allow trusted and secure sign in method.</string>
-    <!--Keys-->
-    <!--TODO: find a better solution-->
-    <string name="web_client">769984106768-k1l8aahnf07pfg7fsg83s45ou2dsdnrn.apps.googleusercontent.com</string>
-    <string name="places_api_key">AIzaSyBFAKKZIOg_zVnIj_n26Dco8-9ehWvZp8c</string>
     <!--Global-->
     <string name="app_name">Macavity</string>
     <string name="default_error_message">Oops, something went wrong</string>

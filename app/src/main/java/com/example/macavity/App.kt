@@ -42,7 +42,7 @@ class App : DaggerApplication() {
     }
 
     private fun initPlaces() {
-        Places.initialize(applicationContext, getString(R.string.places_api_key))
+        Places.initialize(applicationContext, getString(R.string.google_maps_api_key))
         placesClient = Places.createClient(this)
     }
 

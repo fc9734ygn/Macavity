@@ -92,7 +92,7 @@ open class SignInFragment : AuthFragment() {
 
     private fun buildGoogleSignInClient() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.web_client))
+            .requestIdToken(getString(R.string.oauth_client_key))
             .requestProfile()
             .build()
 
