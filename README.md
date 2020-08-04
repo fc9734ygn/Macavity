@@ -12,7 +12,7 @@ The application attempts to implement MVVP architecture pattern using ViewModels
 
 <b>Navigation</b>
 
-The application uses Navigation component  for navigation between fragments which are hosted by two activities.
+The application uses Navigation Component  for navigation between fragments which are hosted by two activities.
 
 <b>Programming language</b>
 
