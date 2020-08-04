@@ -1,5 +1,3 @@
-# Macavity
-
 ![image](https://user-images.githubusercontent.com/49984953/89312258-bab77f80-d67f-11ea-9224-0c5030271988.png)
 
 Macavity is a prototype carpooling application I have developed for Final Year Project module at the University of Kent.
