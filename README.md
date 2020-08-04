@@ -38,10 +38,16 @@ Due to the time constrains only an example has been made to showcase the ability
 
 Due to the time constrains the application lacks proper error handling. I was planning on catching data related errors with RxJava error-handling operators and passing them to viewmodels where they would propagate them to the view using viemodel error state (enum).
 
-<b>How to compile the project:</b>
+<b>How to run the project:</b>
 
-Please send me an email asking for a file containing API keys and put it in *\Macavity\app\src\main\res\values
+Send me an email asking for APK
+
 OR
+
+Please send me an email asking for a file containing API keys and put it in *\Macavity\app\src\main\res\values and send me your SHA-1 fingerprint certificate so I can add it as a viable API client.
+
+OR
+
 Create your own API keys
 
 <b>Setting up the remote database (Firebase Realtime Database)</b>
